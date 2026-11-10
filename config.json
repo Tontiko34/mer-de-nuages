@@ -1,0 +1,26 @@
+{
+  "_commentaire": "Paramètres de l'alerte mer de nuages. Les altitudes sont en mètres.",
+
+  "modeles": ["meteofrance_seamless", "icon_seamless", "ecmwf_ifs025"],
+  "jours_prevision": 3,
+
+  "seuil_alerte": 60,
+  "jours_alerte": [1, 2],
+  "fenetre_matin_heures": 3,
+
+  "points_vallee": [
+    {"id": "limagne_nord", "nom": "Limagne (Clermont)",        "lat": 45.78, "lon": 3.10},
+    {"id": "limagne_sud",  "nom": "Val d'Allier (Issoire)",    "lat": 45.54, "lon": 3.25},
+    {"id": "ouest",        "nom": "Haute-Dordogne (Bort)",     "lat": 45.40, "lon": 2.50}
+  ],
+
+  "sommets": [
+    {"nom": "Puy de Dôme",     "altitude": 1465, "vallees": ["limagne_nord"]},
+    {"nom": "Puy de la Tâche", "altitude": 1629, "vallees": ["limagne_nord", "limagne_sud", "ouest"]},
+    {"nom": "Puy de l'Angle",  "altitude": 1738, "vallees": ["limagne_nord", "limagne_sud", "ouest"]},
+    {"nom": "Puy de Sancy",    "altitude": 1886, "vallees": ["limagne_nord", "limagne_sud", "ouest"]}
+  ],
+
+  "ntfy_serveur": "https://ntfy.sh",
+  "url_tableau_de_bord": ""
+}
