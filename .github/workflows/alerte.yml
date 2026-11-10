@@ -1,0 +1,42 @@
+name: Alerte mer de nuages
+
+on:
+  schedule:
+    # Heures en UTC : 05:20 et 16:50 UTC = 6h20 et 17h50 à Paris en hiver (7h20 / 18h50 en été)
+    - cron: "20 5 * * *"
+    - cron: "50 16 * * *"
+  workflow_dispatch:   # bouton « Run workflow » pour lancer à la main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: mer-de-nuages
+  cancel-in-progress: true
+
+jobs:
+  prevision:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploiement.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Calcul et alerte
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: python mer_de_nuages.py --sortie docs/index.html
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+      - id: deploiement
+        uses: actions/deploy-pages@v4
