@@ -1,0 +1,33 @@
+name: Rejeu de dates passées
+
+# Se lance quand le fichier rejeu.txt est modifié (contenu : "AAAA-MM-JJ AAAA-MM-JJ")
+on:
+  push:
+    paths: ["rejeu.txt"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  rejeu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Rejeu
+        run: |
+          read DEBUT FIN < rejeu.txt
+          mkdir -p rejeu
+          python mer_de_nuages.py --debut "$DEBUT" --fin "$FIN" \
+            --sortie rejeu/index.html --sauver-donnees rejeu/donnees.json \
+            > rejeu/resultat.txt 2>&1 || true
+      - name: Enregistrer le résultat
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
+          git add rejeu
+          git commit -m "Résultat du rejeu $(cat rejeu.txt)" || echo "rien à enregistrer"
+          git push
