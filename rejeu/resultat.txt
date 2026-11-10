@@ -1,376 +1,645 @@
 
 Aujourd'hui (jeu. 01/10)  (lever 06:45)
-  Puy de Dôme      score   0  vers –  lever    0  haut des nuages  1954 m  accord 0/3
-  Puy de la Tâche  score  13  vers 06:00  lever   10  haut des nuages   492 m  accord 0/3
-  Puy de l'Angle   score   6  vers 06:00  lever    5  haut des nuages   492 m  accord 0/3
-  Puy de Sancy     score   6  vers 06:00  lever    5  haut des nuages   492 m  accord 0/3
-  Couleurs        lever   2 (06:45)  coucher  19 (18:27)
-  Nuit étoilée     score   0  0 h  -–-  Lune 69 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+  Col de la Croix-Morand score   8  vers 06:00  lever    6  haut des nuages  1066 m  accord 1/3
+  Col de la Croix-Saint-Robert score  13  vers 06:00  lever   10  haut des nuages  1066 m  accord 1/3
+  Puy de Dôme      score   8  vers 06:00  lever    6  haut des nuages   612 m  accord 1/3
+  Puy Gros         score   6  vers 08:00  lever    0  haut des nuages  3169 m  accord 0/3
+  Banne d'Ordanche score   7  vers 09:00  lever    0  haut des nuages  1874 m  accord 0/3
+  Puy de la Tâche  score  13  vers 06:00  lever   10  haut des nuages  1066 m  accord 1/3
+  Puy de l'Angle   score   9  vers 10:00  lever    6  haut des nuages  1344 m  accord 1/3
+  Puy de Sancy     score   8  vers 09:00  lever    6  haut des nuages  1874 m  accord 0/3
+  Couleurs Vallée (Saint-Saturnin lever   1 (06:45)  coucher  40 (18:27)
+  Couleurs Montagne (Mont-Dore –  lever   2 (06:45)  coucher  16 (18:27)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 69 %
+  Étoiles Col de la Croix-Saint-R score   0  0 h  -–-  Lune 69 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 69 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 Demain (ven. 02/10)  (lever 06:47)
-  Puy de Dôme      score   1  vers –  lever    1  haut des nuages  2008 m  accord 0/3
-  Puy de la Tâche  score  21  vers 07:00  lever   16  haut des nuages   762 m  accord 1/3
-  Puy de l'Angle   score  28  vers 07:00  lever   22  haut des nuages   762 m  accord 1/3
-  Puy de Sancy     score  37  vers 07:00  lever   36  haut des nuages   762 m  accord 1/3
-  Couleurs        lever  13 (06:47)  coucher  56 (18:26)
-  Nuit étoilée     score   0  0 h  -–-  Lune 58 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+  Col de la Croix-Morand score  42  vers 06:00  lever   33  haut des nuages  1253 m  accord 0/3
+  Col de la Croix-Saint-Robert score  50  vers 07:00  lever   39  haut des nuages  1078 m  accord 2/3
+  Puy de Dôme      score  40  vers 06:00  lever   31  haut des nuages   820 m  accord 1/3
+  Puy Gros         score  35  vers 06:00  lever   26  haut des nuages   820 m  accord 1/3
+  Banne d'Ordanche score  35  vers 06:00  lever   27  haut des nuages   820 m  accord 1/3
+  Puy de la Tâche  score  70  vers 06:00  lever   58  haut des nuages   820 m  accord 1/3
+  Puy de l'Angle   score  74  vers 06:00  lever   62  haut des nuages   820 m  accord 1/3
+  Puy de Sancy     score  80  vers 06:00  lever   68  haut des nuages   820 m  accord 2/3
+  Couleurs Vallée (Saint-Saturnin lever  12 (06:47)  coucher  39 (18:26)
+  Couleurs Montagne (Mont-Dore –  lever   4 (06:47)  coucher  45 (18:26)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 58 %
+  Étoiles Col de la Croix-Saint-R score   0  0 h  -–-  Lune 58 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 58 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 Après-demain (sam. 03/10)  (lever 06:48)
-  Puy de Dôme      score   0  vers –  lever    0  haut des nuages  3200 m  accord 0/3
-  Puy de la Tâche  score   0  vers –  lever    0  haut des nuages  1816 m  accord 1/3
-  Puy de l'Angle   score   0  vers –  lever    0  haut des nuages  3200 m  accord 0/3
-  Puy de Sancy     score   0  vers –  lever    0  haut des nuages  3200 m  accord 0/3
-  Couleurs        lever  18 (06:48)  coucher  13 (18:24)
-  Nuit étoilée     score   0  0 h  -–-  Lune 46 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+  Col de la Croix-Morand score   2  vers 06:00  lever    2  haut des nuages  3199 m  accord 1/3
+  Col de la Croix-Saint-Robert score   2  vers 06:00  lever    2  haut des nuages  1816 m  accord 1/3
+  Puy de Dôme      score  10  vers 06:00  lever    8  haut des nuages  3199 m  accord 1/3
+  Puy Gros         score   8  vers 06:00  lever    6  haut des nuages  3200 m  accord 0/3
+  Banne d'Ordanche score   8  vers 06:00  lever    6  haut des nuages  3200 m  accord 0/3
+  Puy de la Tâche  score  10  vers 06:00  lever    8  haut des nuages  3199 m  accord 1/3
+  Puy de l'Angle   score   2  vers 06:00  lever    2  haut des nuages  3199 m  accord 1/3
+  Puy de Sancy     score   2  vers 06:00  lever    2  haut des nuages  3199 m  accord 1/3
+  Couleurs Vallée (Saint-Saturnin lever  23 (06:48)  coucher  14 (18:24)
+  Couleurs Montagne (Mont-Dore –  lever  21 (06:48)  coucher   8 (18:24)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 46 %
+  Étoiles Col de la Croix-Saint-R score   0  0 h  -–-  Lune 46 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 46 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 dim. 04/10  (lever 06:49)
+  Col de la Croix-Morand score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Col de la Croix-Saint-Robert score   0  vers –  lever    0  haut des nuages       -  accord 0/3
   Puy de Dôme      score   0  vers –  lever    0  haut des nuages  3186 m  accord 0/3
+  Puy Gros         score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Banne d'Ordanche score   0  vers –  lever    0  haut des nuages       -  accord 0/3
   Puy de la Tâche  score   0  vers –  lever    0  haut des nuages  3186 m  accord 0/3
   Puy de l'Angle   score   0  vers –  lever    0  haut des nuages  3186 m  accord 0/3
   Puy de Sancy     score   0  vers –  lever    0  haut des nuages  3186 m  accord 0/3
-  Couleurs        lever  31 (06:49)  coucher  33 (18:22)
-  Nuit étoilée     score  24  1 h  01:00–02:00  Lune 34 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+  Couleurs Vallée (Saint-Saturnin lever  17 (06:49)  coucher  30 (18:22)
+  Couleurs Montagne (Mont-Dore –  lever  38 (06:49)  coucher  15 (18:22)
+  Étoiles Col de la Croix-Morand  score  24  1 h  01:00–02:00  Lune 34 %
+  Étoiles Col de la Croix-Saint-R score  23  1 h  01:00–02:00  Lune 34 %
+  Étoiles Lac de Guéry            score  25  1 h  23:00–00:00  Lune 34 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 lun. 05/10  (lever 06:50)
+  Col de la Croix-Morand score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Col de la Croix-Saint-Robert score   0  vers –  lever    0  haut des nuages       -  accord 0/3
   Puy de Dôme      score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Puy Gros         score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Banne d'Ordanche score   0  vers –  lever    0  haut des nuages       -  accord 0/3
   Puy de la Tâche  score   0  vers –  lever    0  haut des nuages       -  accord 0/3
   Puy de l'Angle   score   0  vers –  lever    0  haut des nuages       -  accord 0/3
   Puy de Sancy     score   0  vers –  lever    0  haut des nuages       -  accord 0/3
-  Couleurs        lever   0 (06:50)  coucher  52 (18:20)
-  Nuit étoilée     score  47  2 h  22:00–00:00  Lune 24 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+  Couleurs Vallée (Saint-Saturnin lever   0 (06:50)  coucher  49 (18:20)
+  Couleurs Montagne (Mont-Dore –  lever   0 (06:50)  coucher  38 (18:20)
+  Étoiles Col de la Croix-Morand  score  47  2 h  22:00–00:00  Lune 24 %
+  Étoiles Col de la Croix-Saint-R score  45  2 h  22:00–00:00  Lune 24 %
+  Étoiles Lac de Guéry            score  48  2 h  22:00–00:00  Lune 24 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 mar. 06/10  (lever 06:52)
+  Col de la Croix-Morand score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Col de la Croix-Saint-Robert score   0  vers –  lever    0  haut des nuages       -  accord 0/3
   Puy de Dôme      score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Puy Gros         score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Banne d'Ordanche score   0  vers –  lever    0  haut des nuages       -  accord 0/3
   Puy de la Tâche  score   0  vers –  lever    0  haut des nuages       -  accord 0/3
   Puy de l'Angle   score   0  vers –  lever    0  haut des nuages       -  accord 0/3
   Puy de Sancy     score   0  vers –  lever    0  haut des nuages       -  accord 0/3
-  Couleurs        lever  42 (06:52)  coucher  10 (18:18)
-  Nuit étoilée     score   0  0 h  -–-  Lune 15 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+  Couleurs Vallée (Saint-Saturnin lever  31 (06:52)  coucher  30 (18:18)
+  Couleurs Montagne (Mont-Dore –  lever  34 (06:52)  coucher  30 (18:18)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 15 %
+  Étoiles Col de la Croix-Saint-R score   0  0 h  -–-  Lune 15 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 15 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 mer. 07/10  (lever 06:53)
-  Puy de Dôme      score   0  vers –  lever    0  haut des nuages  3062 m  accord 0/3
-  Puy de la Tâche  score  10  vers 18:00  lever    1  haut des nuages  1186 m  accord 0/3
-  Puy de l'Angle   score  10  vers 18:00  lever    1  haut des nuages  1186 m  accord 0/3
-  Puy de Sancy     score   9  vers 18:00  lever    0  haut des nuages  1186 m  accord 0/3
-  Couleurs        lever   3 (06:53)  coucher   4 (18:16)
-  Nuit étoilée     score   0  0 h  -–-  Lune 8 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+  Col de la Croix-Morand score   0  vers –  lever    0  haut des nuages  3066 m  accord 0/3
+  Col de la Croix-Saint-Robert score   0  vers –  lever    0  haut des nuages  3066 m  accord 0/3
+  Puy de Dôme      score  23  vers 06:00  lever   17  haut des nuages   709 m  accord 0/3
+  Puy Gros         score  23  vers 06:00  lever   17  haut des nuages   709 m  accord 0/3
+  Banne d'Ordanche score  22  vers 06:00  lever   17  haut des nuages   709 m  accord 0/3
+  Puy de la Tâche  score  15  vers 06:00  lever   11  haut des nuages   709 m  accord 0/3
+  Puy de l'Angle   score  15  vers 06:00  lever   11  haut des nuages   709 m  accord 0/3
+  Puy de Sancy     score  15  vers 06:00  lever   11  haut des nuages   709 m  accord 0/3
+  Couleurs Vallée (Saint-Saturnin lever   6 (06:53)  coucher   3 (18:16)
+  Couleurs Montagne (Mont-Dore –  lever   2 (06:53)  coucher   1 (18:16)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 8 %
+  Étoiles Col de la Croix-Saint-R score   0  0 h  -–-  Lune 8 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 8 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 jeu. 08/10  (lever 06:54)
+  Col de la Croix-Morand score   0  vers –  lever    0  haut des nuages  3037 m  accord 0/3
+  Col de la Croix-Saint-Robert score   0  vers –  lever    0  haut des nuages  3037 m  accord 0/3
   Puy de Dôme      score   0  vers –  lever    0  haut des nuages  3037 m  accord 0/3
+  Puy Gros         score   0  vers –  lever    0  haut des nuages  3041 m  accord 0/3
+  Banne d'Ordanche score   0  vers –  lever    0  haut des nuages  3041 m  accord 0/3
   Puy de la Tâche  score   1  vers –  lever    0  haut des nuages  1606 m  accord 0/3
   Puy de l'Angle   score   2  vers 14:00  lever    0  haut des nuages  1614 m  accord 0/3
   Puy de Sancy     score   3  vers 13:00  lever    0  haut des nuages  1910 m  accord 0/3
-  Couleurs        lever   1 (06:54)  coucher   0 (18:14)
-  Nuit étoilée     score  55  3 h  04:00–07:00  Lune 3 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 1.3 cm
+  Couleurs Vallée (Saint-Saturnin lever   0 (06:54)  coucher   0 (18:14)
+  Couleurs Montagne (Mont-Dore –  lever   0 (06:54)  coucher   0 (18:14)
+  Étoiles Col de la Croix-Morand  score  55  3 h  04:00–07:00  Lune 3 %
+  Étoiles Col de la Croix-Saint-R score  31  2 h  05:00–07:00  Lune 3 %
+  Étoiles Lac de Guéry            score  48  3 h  04:00–07:00  Lune 3 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 1.3 cm
 
 ven. 09/10  (lever 06:56)
-  Puy de Dôme      score   0  vers –  lever    0  haut des nuages       -  accord 0/3
-  Puy de la Tâche  score  40  vers 06:00  lever   30  haut des nuages   680 m  accord 2/3
-  Puy de l'Angle   score  40  vers 06:00  lever   30  haut des nuages   680 m  accord 2/3
-  Puy de Sancy     score  40  vers 06:00  lever   30  haut des nuages   680 m  accord 2/3
-  Couleurs        lever  21 (06:56)  coucher   0 (18:12)
-  Nuit étoilée     score   0  0 h  -–-  Lune 0 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0.1 cm
+  Col de la Croix-Morand score   1  vers 06:00  lever    1  haut des nuages       -  accord 0/3
+  Col de la Croix-Saint-Robert score  10  vers 06:00  lever    8  haut des nuages   426 m  accord 0/3
+  Puy de Dôme      score  53  vers 06:00  lever   40  haut des nuages   767 m  accord 2/3
+  Puy Gros         score  53  vers 06:00  lever   40  haut des nuages   767 m  accord 2/3
+  Banne d'Ordanche score  53  vers 06:00  lever   40  haut des nuages   767 m  accord 2/3
+  Puy de la Tâche  score  53  vers 06:00  lever   40  haut des nuages   767 m  accord 2/3
+  Puy de l'Angle   score  53  vers 06:00  lever   40  haut des nuages   767 m  accord 2/3
+  Puy de Sancy     score  53  vers 06:00  lever   40  haut des nuages   767 m  accord 2/3
+  Couleurs Vallée (Saint-Saturnin lever  31 (06:56)  coucher   0 (18:12)
+  Couleurs Montagne (Mont-Dore –  lever  17 (06:56)  coucher   1 (18:12)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 0 %
+  Étoiles Col de la Croix-Saint-R score   0  0 h  -–-  Lune 0 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 0 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0.1 cm
 
 sam. 10/10  (lever 06:57)
-  Puy de Dôme      score   0  vers –  lever    0  haut des nuages  2709 m  accord 0/3
-  Puy de la Tâche  score   6  vers 18:00  lever    0  haut des nuages   710 m  accord 0/3
-  Puy de l'Angle   score   8  vers 18:00  lever    0  haut des nuages   710 m  accord 0/3
-  Puy de Sancy     score  16  vers 18:00  lever    2  haut des nuages   710 m  accord 0/3
-  Couleurs        lever   0 (06:57)  coucher   0 (18:11)
-  Nuit étoilée     score   0  0 h  -–-  Lune 0 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+  Col de la Croix-Morand score  22  vers 06:00  lever   16  haut des nuages   535 m  accord 0/3
+  Col de la Croix-Saint-Robert score  22  vers 06:00  lever   16  haut des nuages   535 m  accord 0/3
+  Puy de Dôme      score  22  vers 06:00  lever   16  haut des nuages   535 m  accord 0/3
+  Puy Gros         score   4  vers 18:00  lever    0  haut des nuages   710 m  accord 0/3
+  Banne d'Ordanche score   5  vers 18:00  lever    0  haut des nuages   710 m  accord 0/3
+  Puy de la Tâche  score  15  vers 06:00  lever   11  haut des nuages  2709 m  accord 0/3
+  Puy de l'Angle   score  14  vers 06:00  lever   11  haut des nuages  2709 m  accord 0/3
+  Puy de Sancy     score  16  vers 18:00  lever   11  haut des nuages   710 m  accord 0/3
+  Couleurs Vallée (Saint-Saturnin lever   0 (06:57)  coucher   4 (18:11)
+  Couleurs Montagne (Mont-Dore –  lever   0 (06:57)  coucher   0 (18:11)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 0 %
+  Étoiles Col de la Croix-Saint-R score   0  0 h  -–-  Lune 0 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 0 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 dim. 11/10  (lever 06:58)
-  Puy de Dôme      score   0  vers –  lever    0  haut des nuages   681 m  accord 0/3
-  Puy de la Tâche  score  75  vers 06:00  lever   56  haut des nuages   596 m  accord 2/3
-  Puy de l'Angle   score  80  vers 06:00  lever   60  haut des nuages   596 m  accord 2/3
-  Puy de Sancy     score  83  vers 06:00  lever   62  haut des nuages   596 m  accord 2/3
-  Couleurs        lever   8 (06:58)  coucher  45 (18:09)
-  Nuit étoilée     score   0  0 h  -–-  Lune 2 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+  Col de la Croix-Morand score  19  vers 06:00  lever   14  haut des nuages   530 m  accord 0/3
+  Col de la Croix-Saint-Robert score  25  vers 06:00  lever   19  haut des nuages   570 m  accord 0/3
+  Puy de Dôme      score  53  vers 06:00  lever   40  haut des nuages   750 m  accord 2/3
+  Puy Gros         score  71  vers 06:00  lever   53  haut des nuages   596 m  accord 2/3
+  Banne d'Ordanche score  72  vers 06:00  lever   54  haut des nuages   596 m  accord 2/3
+  Puy de la Tâche  score  79  vers 06:00  lever   59  haut des nuages   596 m  accord 2/3
+  Puy de l'Angle   score  84  vers 06:00  lever   63  haut des nuages   596 m  accord 2/3
+  Puy de Sancy     score  88  vers 06:00  lever   66  haut des nuages   596 m  accord 2/3
+  Couleurs Vallée (Saint-Saturnin lever   7 (06:58)  coucher  59 (18:09)
+  Couleurs Montagne (Mont-Dore –  lever  12 (06:58)  coucher  37 (18:09)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 2 %
+  Étoiles Col de la Croix-Saint-R score  25  1 h  03:00–04:00  Lune 2 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 2 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 lun. 12/10  (lever 07:00)
-  Puy de Dôme      score   0  vers –  lever    0  haut des nuages       -  accord 0/3
-  Puy de la Tâche  score   0  vers –  lever    0  haut des nuages  3097 m  accord 0/3
-  Puy de l'Angle   score   2  vers 17:00  lever    0  haut des nuages  1984 m  accord 0/3
-  Puy de Sancy     score   2  vers 17:00  lever    0  haut des nuages  1984 m  accord 0/3
-  Couleurs        lever  19 (07:00)  coucher   1 (18:07)
-  Nuit étoilée     score   0  0 h  -–-  Lune 6 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+  Col de la Croix-Morand score   2  vers 06:00  lever    1  haut des nuages       -  accord 0/3
+  Col de la Croix-Saint-Robert score   2  vers 06:00  lever    1  haut des nuages       -  accord 0/3
+  Puy de Dôme      score  13  vers 06:00  lever    8  haut des nuages   714 m  accord 1/3
+  Puy Gros         score  11  vers 06:00  lever    7  haut des nuages   714 m  accord 1/3
+  Banne d'Ordanche score  11  vers 06:00  lever    7  haut des nuages   714 m  accord 1/3
+  Puy de la Tâche  score  13  vers 06:00  lever    8  haut des nuages   714 m  accord 1/3
+  Puy de l'Angle   score  14  vers 06:00  lever    8  haut des nuages   714 m  accord 1/3
+  Puy de Sancy     score  14  vers 06:00  lever    8  haut des nuages   714 m  accord 1/3
+  Couleurs Vallée (Saint-Saturnin lever  32 (07:00)  coucher   2 (18:07)
+  Couleurs Montagne (Mont-Dore –  lever  32 (07:00)  coucher   3 (18:07)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 6 %
+  Étoiles Col de la Croix-Saint-R score   0  0 h  -–-  Lune 6 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 6 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 mar. 13/10  (lever 07:01)
+  Col de la Croix-Morand score   0  vers –  lever    0  haut des nuages  1667 m  accord 0/3
+  Col de la Croix-Saint-Robert score   0  vers –  lever    0  haut des nuages  1667 m  accord 0/3
   Puy de Dôme      score   0  vers –  lever    0  haut des nuages  1909 m  accord 0/3
-  Puy de la Tâche  score   0  vers –  lever    0  haut des nuages  1909 m  accord 0/3
-  Puy de l'Angle   score   2  vers 15:00  lever    0  haut des nuages  2341 m  accord 0/3
+  Puy Gros         score   0  vers –  lever    0  haut des nuages  1798 m  accord 0/3
+  Banne d'Ordanche score   0  vers –  lever    0  haut des nuages  1798 m  accord 0/3
+  Puy de la Tâche  score   0  vers –  lever    0  haut des nuages  1667 m  accord 0/3
+  Puy de l'Angle   score   4  vers 10:00  lever    0  haut des nuages  1811 m  accord 0/3
   Puy de Sancy     score  11  vers 07:00  lever   10  haut des nuages   784 m  accord 0/3
-  Couleurs        lever   0 (07:01)  coucher   4 (18:05)
-  Nuit étoilée     score   0  0 h  -–-  Lune 11 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+  Couleurs Vallée (Saint-Saturnin lever   0 (07:01)  coucher  14 (18:05)
+  Couleurs Montagne (Mont-Dore –  lever   0 (07:01)  coucher   6 (18:05)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 11 %
+  Étoiles Col de la Croix-Saint-R score   0  0 h  -–-  Lune 11 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 11 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 mer. 14/10  (lever 07:02)
-  Puy de Dôme      score  12  vers 08:00  lever   15  haut des nuages  1429 m  accord 0/3
-  Puy de la Tâche  score  36  vers 07:00  lever   35  haut des nuages   946 m  accord 1/3
-  Puy de l'Angle   score  41  vers 07:00  lever   39  haut des nuages   946 m  accord 1/3
-  Puy de Sancy     score  47  vers 07:00  lever   44  haut des nuages   638 m  accord 1/3
-  Couleurs        lever   0 (07:02)  coucher   0 (18:03)
-  Nuit étoilée     score 100  10 h  21:00–07:00  Lune 18 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+  Col de la Croix-Morand score  19  vers 07:00  lever   17  haut des nuages   461 m  accord 1/3
+  Col de la Croix-Saint-Robert score  29  vers 07:00  lever   24  haut des nuages   461 m  accord 1/3
+  Puy de Dôme      score  41  vers 07:00  lever   37  haut des nuages   461 m  accord 1/3
+  Puy Gros         score  40  vers 07:00  lever   31  haut des nuages  1254 m  accord 1/3
+  Banne d'Ordanche score  42  vers 07:00  lever   38  haut des nuages  1254 m  accord 1/3
+  Puy de la Tâche  score  56  vers 07:00  lever   50  haut des nuages   461 m  accord 2/3
+  Puy de l'Angle   score  57  vers 07:00  lever   52  haut des nuages   461 m  accord 2/3
+  Puy de Sancy     score  57  vers 07:00  lever   52  haut des nuages   461 m  accord 2/3
+  Couleurs Vallée (Saint-Saturnin lever   0 (07:02)  coucher   0 (18:03)
+  Couleurs Montagne (Mont-Dore –  lever   1 (07:02)  coucher   0 (18:03)
+  Étoiles Col de la Croix-Morand  score 100  10 h  21:00–07:00  Lune 18 %
+  Étoiles Col de la Croix-Saint-R score 100  10 h  21:00–07:00  Lune 18 %
+  Étoiles Lac de Guéry            score  99  10 h  21:00–07:00  Lune 18 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 jeu. 15/10  (lever 07:04)
+  Col de la Croix-Morand score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Col de la Croix-Saint-Robert score 100  vers 07:00  lever   75  haut des nuages   536 m  accord 2/3
   Puy de Dôme      score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Puy Gros         score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Banne d'Ordanche score   0  vers –  lever    0  haut des nuages       -  accord 0/3
   Puy de la Tâche  score 100  vers 07:00  lever   75  haut des nuages   536 m  accord 2/3
   Puy de l'Angle   score 100  vers 07:00  lever   75  haut des nuages   536 m  accord 2/3
   Puy de Sancy     score 100  vers 07:00  lever   75  haut des nuages   536 m  accord 2/3
-  Couleurs        lever   0 (07:04)  coucher   0 (18:02)
-  Nuit étoilée     score 100  9 h  22:00–07:00  Lune 26 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+  Couleurs Vallée (Saint-Saturnin lever   0 (07:04)  coucher   0 (18:02)
+  Couleurs Montagne (Mont-Dore –  lever   0 (07:04)  coucher   0 (18:02)
+  Étoiles Col de la Croix-Morand  score 100  9 h  22:00–07:00  Lune 26 %
+  Étoiles Col de la Croix-Saint-R score 100  9 h  22:00–07:00  Lune 26 %
+  Étoiles Lac de Guéry            score 100  9 h  22:00–07:00  Lune 26 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 ven. 16/10  (lever 07:05)
+  Col de la Croix-Morand score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Col de la Croix-Saint-Robert score   0  vers –  lever    0  haut des nuages       -  accord 0/3
   Puy de Dôme      score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Puy Gros         score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Banne d'Ordanche score   0  vers –  lever    0  haut des nuages       -  accord 0/3
   Puy de la Tâche  score   0  vers –  lever    0  haut des nuages       -  accord 0/3
   Puy de l'Angle   score   0  vers –  lever    0  haut des nuages       -  accord 0/3
   Puy de Sancy     score   0  vers –  lever    0  haut des nuages       -  accord 0/3
-  Couleurs        lever   0 (07:05)  coucher  15 (18:00)
-  Nuit étoilée     score   0  0 h  -–-  Lune 34 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+  Couleurs Vallée (Saint-Saturnin lever   0 (07:05)  coucher   7 (18:00)
+  Couleurs Montagne (Mont-Dore –  lever   0 (07:05)  coucher   3 (18:00)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 34 %
+  Étoiles Col de la Croix-Saint-R score   0  0 h  -–-  Lune 34 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 34 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 sam. 17/10  (lever 07:06)
+  Col de la Croix-Morand score   0  vers –  lever    0  haut des nuages  2558 m  accord 0/3
+  Col de la Croix-Saint-Robert score   0  vers –  lever    0  haut des nuages  2558 m  accord 0/3
   Puy de Dôme      score   0  vers –  lever    0  haut des nuages  2680 m  accord 0/3
+  Puy Gros         score   0  vers –  lever    0  haut des nuages  1969 m  accord 0/3
+  Banne d'Ordanche score   0  vers –  lever    0  haut des nuages  1969 m  accord 0/3
   Puy de la Tâche  score   0  vers –  lever    0  haut des nuages  2680 m  accord 0/3
-  Puy de l'Angle   score   3  vers 13:00  lever    0  haut des nuages  2320 m  accord 0/3
-  Puy de Sancy     score  26  vers 16:00  lever    2  haut des nuages  1785 m  accord 0/3
-  Couleurs        lever   0 (07:06)  coucher  26 (17:58)
-  Nuit étoilée     score   0  0 h  -–-  Lune 43 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0.3 cm
+  Puy de l'Angle   score   5  vers 14:00  lever    0  haut des nuages  1751 m  accord 0/3
+  Puy de Sancy     score  28  vers 17:00  lever    2  haut des nuages  1775 m  accord 0/3
+  Couleurs Vallée (Saint-Saturnin lever   0 (07:06)  coucher  19 (17:58)
+  Couleurs Montagne (Mont-Dore –  lever   0 (07:06)  coucher  12 (17:58)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 43 %
+  Étoiles Col de la Croix-Saint-R score   0  0 h  -–-  Lune 43 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 43 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0.3 cm
 
 dim. 18/10  (lever 07:08)
-  Puy de Dôme      score   0  vers –  lever    0  haut des nuages  2170 m  accord 0/3
-  Puy de la Tâche  score   4  vers 07:00  lever    3  haut des nuages  1621 m  accord 0/3
-  Puy de l'Angle   score  11  vers 08:00  lever    9  haut des nuages  1551 m  accord 0/3
-  Puy de Sancy     score  19  vers 10:00  lever   16  haut des nuages  1655 m  accord 0/3
-  Couleurs        lever   3 (07:08)  coucher   0 (17:56)
-  Nuit étoilée     score   0  0 h  -–-  Lune 53 %
-  Neige           Puy de Dôme 0.6 cm  Puy de Sancy 1.5 cm
+  Col de la Croix-Morand score   0  vers –  lever    0  haut des nuages  1582 m  accord 0/3
+  Col de la Croix-Saint-Robert score   1  vers –  lever    0  haut des nuages  1582 m  accord 0/3
+  Puy de Dôme      score   3  vers 07:00  lever    2  haut des nuages  1444 m  accord 0/3
+  Puy Gros         score   3  vers 07:00  lever    2  haut des nuages  1444 m  accord 0/3
+  Banne d'Ordanche score   7  vers 07:00  lever    5  haut des nuages  1444 m  accord 0/3
+  Puy de la Tâche  score   9  vers 07:00  lever    7  haut des nuages  1502 m  accord 0/3
+  Puy de l'Angle   score  12  vers 08:00  lever   11  haut des nuages  1551 m  accord 0/3
+  Puy de Sancy     score  22  vers 14:00  lever   17  haut des nuages  1676 m  accord 0/3
+  Couleurs Vallée (Saint-Saturnin lever   2 (07:08)  coucher   0 (17:56)
+  Couleurs Montagne (Mont-Dore –  lever   1 (07:08)  coucher   0 (17:56)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 53 %
+  Étoiles Col de la Croix-Saint-R score   0  0 h  -–-  Lune 53 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 53 %
+  Neige           Puy de Dôme 0.6 cm  Col de la Croix-Morand 0.3 cm  Super-Besse 0 cm  Puy de Sancy 1.5 cm
 
 lun. 19/10  (lever 07:09)
-  Puy de Dôme      score  12  vers 15:00  lever    2  haut des nuages   771 m  accord 0/3
-  Puy de la Tâche  score  19  vers 16:00  lever    3  haut des nuages  1325 m  accord 0/3
-  Puy de l'Angle   score  23  vers 16:00  lever    3  haut des nuages  1325 m  accord 0/3
-  Puy de Sancy     score  28  vers 16:00  lever    8  haut des nuages  1325 m  accord 0/3
-  Couleurs        lever   3 (07:09)  coucher   1 (17:55)
-  Nuit étoilée     score   0  0 h  -–-  Lune 62 %
-  Neige           Puy de Dôme 0.7 cm  Puy de Sancy 0 cm
+  Col de la Croix-Morand score  38  vers 07:00  lever   31  haut des nuages   564 m  accord 1/3
+  Col de la Croix-Saint-Robert score  38  vers 07:00  lever   31  haut des nuages   564 m  accord 1/3
+  Puy de Dôme      score  57  vers 07:00  lever   45  haut des nuages   564 m  accord 1/3
+  Puy Gros         score  33  vers 09:00  lever   17  haut des nuages   766 m  accord 2/3
+  Banne d'Ordanche score  33  vers 09:00  lever   19  haut des nuages   766 m  accord 2/3
+  Puy de la Tâche  score  37  vers 07:00  lever   30  haut des nuages   623 m  accord 0/3
+  Puy de l'Angle   score  36  vers 07:00  lever   29  haut des nuages   623 m  accord 0/3
+  Puy de Sancy     score  35  vers 08:00  lever   30  haut des nuages   514 m  accord 1/3
+  Couleurs Vallée (Saint-Saturnin lever   2 (07:09)  coucher   1 (17:55)
+  Couleurs Montagne (Mont-Dore –  lever   2 (07:09)  coucher   1 (17:55)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 62 %
+  Étoiles Col de la Croix-Saint-R score   0  0 h  -–-  Lune 62 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 62 %
+  Neige           Puy de Dôme 0.7 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 mar. 20/10  (lever 07:10)
-  Puy de Dôme      score  34  vers 07:00  lever   28  haut des nuages   521 m  accord 0/3
-  Puy de la Tâche  score  20  vers 07:00  lever   17  haut des nuages   521 m  accord 0/3
-  Puy de l'Angle   score  17  vers 07:00  lever   14  haut des nuages   521 m  accord 0/3
-  Puy de Sancy     score  24  vers 17:00  lever   11  haut des nuages  1690 m  accord 1/3
-  Couleurs        lever   0 (07:10)  coucher  18 (17:53)
-  Nuit étoilée     score   0  0 h  -–-  Lune 71 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0.2 cm
+  Col de la Croix-Morand score  55  vers 07:00  lever   48  haut des nuages   478 m  accord 3/3
+  Col de la Croix-Saint-Robert score  49  vers 07:00  lever   44  haut des nuages   478 m  accord 3/3
+  Puy de Dôme      score  54  vers 07:00  lever   48  haut des nuages   478 m  accord 3/3
+  Puy Gros         score  19  vers 08:00  lever   17  haut des nuages  1024 m  accord 0/3
+  Banne d'Ordanche score  35  vers 08:00  lever   32  haut des nuages   570 m  accord 1/3
+  Puy de la Tâche  score  22  vers 08:00  lever   22  haut des nuages   570 m  accord 1/3
+  Puy de l'Angle   score  19  vers 07:00  lever   20  haut des nuages   478 m  accord 0/3
+  Puy de Sancy     score  24  vers 17:00  lever   17  haut des nuages  1690 m  accord 1/3
+  Couleurs Vallée (Saint-Saturnin lever   0 (07:10)  coucher   2 (17:53)
+  Couleurs Montagne (Mont-Dore –  lever   0 (07:10)  coucher   9 (17:53)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 71 %
+  Étoiles Col de la Croix-Saint-R score   0  0 h  -–-  Lune 71 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 71 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0.2 cm
 
 mer. 21/10  (lever 07:12)
-  Puy de Dôme      score   0  vers –  lever    0  haut des nuages  3007 m  accord 0/3
-  Puy de la Tâche  score   2  vers 07:00  lever    1  haut des nuages  1439 m  accord 0/3
-  Puy de l'Angle   score   1  vers 07:00  lever    1  haut des nuages  1439 m  accord 0/3
-  Puy de Sancy     score   7  vers 10:00  lever    2  haut des nuages  1793 m  accord 0/3
-  Couleurs        lever   2 (07:12)  coucher   0 (17:51)
-  Nuit étoilée     score   0  0 h  -–-  Lune 80 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 8.2 cm
+  Col de la Croix-Morand score   7  vers 07:00  lever    6  haut des nuages  3010 m  accord 0/3
+  Col de la Croix-Saint-Robert score   7  vers 07:00  lever    6  haut des nuages  3010 m  accord 0/3
+  Puy de Dôme      score  13  vers 07:00  lever   10  haut des nuages  1008 m  accord 0/3
+  Puy Gros         score   8  vers 07:00  lever    6  haut des nuages  1008 m  accord 0/3
+  Banne d'Ordanche score   8  vers 07:00  lever    6  haut des nuages  1008 m  accord 0/3
+  Puy de la Tâche  score   6  vers 07:00  lever    5  haut des nuages  1008 m  accord 0/3
+  Puy de l'Angle   score   7  vers 07:00  lever    6  haut des nuages  1008 m  accord 0/3
+  Puy de Sancy     score   9  vers 17:00  lever    7  haut des nuages  1590 m  accord 0/3
+  Couleurs Vallée (Saint-Saturnin lever  13 (07:12)  coucher   0 (17:51)
+  Couleurs Montagne (Mont-Dore –  lever   1 (07:12)  coucher   0 (17:51)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 80 %
+  Étoiles Col de la Croix-Saint-R score   0  0 h  -–-  Lune 80 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 80 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 8.2 cm
 
 jeu. 22/10  (lever 07:13)
-  Puy de Dôme      score   0  vers –  lever    0  haut des nuages       -  accord 0/3
-  Puy de la Tâche  score  17  vers 07:00  lever   17  haut des nuages  1116 m  accord 0/3
-  Puy de l'Angle   score  17  vers 07:00  lever   17  haut des nuages  1116 m  accord 0/3
-  Puy de Sancy     score  19  vers 07:00  lever   18  haut des nuages  1116 m  accord 0/3
-  Couleurs        lever  30 (07:13)  coucher  26 (17:49)
-  Nuit étoilée     score   0  0 h  -–-  Lune 88 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 1 cm
+  Col de la Croix-Morand score   0  vers –  lever    0  haut des nuages  1014 m  accord 0/3
+  Col de la Croix-Saint-Robert score   0  vers –  lever    0  haut des nuages  1480 m  accord 0/3
+  Puy de Dôme      score  20  vers 07:00  lever   15  haut des nuages  1118 m  accord 0/3
+  Puy Gros         score  22  vers 07:00  lever   20  haut des nuages  1116 m  accord 0/3
+  Banne d'Ordanche score  23  vers 07:00  lever   21  haut des nuages  1116 m  accord 0/3
+  Puy de la Tâche  score  24  vers 07:00  lever   22  haut des nuages  1116 m  accord 0/3
+  Puy de l'Angle   score  25  vers 07:00  lever   22  haut des nuages  1116 m  accord 0/3
+  Puy de Sancy     score  24  vers 07:00  lever   22  haut des nuages  1116 m  accord 0/3
+  Couleurs Vallée (Saint-Saturnin lever  11 (07:13)  coucher  23 (17:49)
+  Couleurs Montagne (Mont-Dore –  lever  15 (07:13)  coucher  14 (17:49)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 88 %
+  Étoiles Col de la Croix-Saint-R score   0  0 h  -–-  Lune 88 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 88 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 1 cm
 
 ven. 23/10  (lever 07:14)
+  Col de la Croix-Morand score   0  vers –  lever    0  haut des nuages  3009 m  accord 0/3
+  Col de la Croix-Saint-Robert score   0  vers –  lever    0  haut des nuages  3009 m  accord 0/3
   Puy de Dôme      score   0  vers –  lever    0  haut des nuages   430 m  accord 0/3
-  Puy de la Tâche  score   0  vers –  lever    0  haut des nuages   430 m  accord 0/3
-  Puy de l'Angle   score   2  vers 12:00  lever    0  haut des nuages  1607 m  accord 0/3
-  Puy de Sancy     score   3  vers 12:00  lever    0  haut des nuages  1607 m  accord 0/3
-  Couleurs        lever   7 (07:14)  coucher   0 (17:48)
-  Nuit étoilée     score   0  0 h  -–-  Lune 94 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 16.3 cm
+  Puy Gros         score   0  vers –  lever    0  haut des nuages  3006 m  accord 0/3
+  Banne d'Ordanche score   0  vers –  lever    0  haut des nuages  3006 m  accord 0/3
+  Puy de la Tâche  score   1  vers 08:00  lever    1  haut des nuages   442 m  accord 0/3
+  Puy de l'Angle   score   2  vers 12:00  lever    1  haut des nuages  1607 m  accord 0/3
+  Puy de Sancy     score   4  vers 09:00  lever    2  haut des nuages  1331 m  accord 0/3
+  Couleurs Vallée (Saint-Saturnin lever   3 (07:14)  coucher   1 (17:48)
+  Couleurs Montagne (Mont-Dore –  lever   2 (07:14)  coucher   0 (17:48)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 94 %
+  Étoiles Col de la Croix-Saint-R score   0  0 h  -–-  Lune 94 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 94 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0.7 cm  Super-Besse 0.8 cm  Puy de Sancy 16.3 cm
 
 sam. 24/10  (lever 07:16)
+  Col de la Croix-Morand score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Col de la Croix-Saint-Robert score   0  vers –  lever    0  haut des nuages       -  accord 0/3
   Puy de Dôme      score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Puy Gros         score   3  vers 08:00  lever    2  haut des nuages  2110 m  accord 0/3
+  Banne d'Ordanche score   4  vers 08:00  lever    3  haut des nuages  2110 m  accord 0/3
   Puy de la Tâche  score   6  vers 08:00  lever    4  haut des nuages       -  accord 0/3
-  Puy de l'Angle   score   8  vers 08:00  lever    6  haut des nuages  1719 m  accord 0/3
-  Puy de Sancy     score  12  vers 08:00  lever    9  haut des nuages  1719 m  accord 0/3
-  Couleurs        lever   4 (07:16)  coucher   0 (17:46)
-  Nuit étoilée     score   0  0 h  -–-  Lune 98 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 8.5 cm
+  Puy de l'Angle   score  10  vers 09:00  lever    6  haut des nuages  1212 m  accord 0/3
+  Puy de Sancy     score  13  vers 09:00  lever   10  haut des nuages  1212 m  accord 0/3
+  Couleurs Vallée (Saint-Saturnin lever   2 (07:16)  coucher   0 (17:46)
+  Couleurs Montagne (Mont-Dore –  lever   1 (07:16)  coucher   0 (17:46)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 98 %
+  Étoiles Col de la Croix-Saint-R score   0  0 h  -–-  Lune 98 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 98 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0.8 cm  Super-Besse 0.7 cm  Puy de Sancy 8.5 cm
 
 dim. 25/10  (lever 07:17)
+  Col de la Croix-Morand score   1  vers 07:00  lever    1  haut des nuages  1225 m  accord 0/3
+  Col de la Croix-Saint-Robert score   1  vers 07:00  lever    1  haut des nuages  1225 m  accord 0/3
   Puy de Dôme      score   0  vers –  lever    0  haut des nuages  1549 m  accord 0/3
-  Puy de la Tâche  score   8  vers 16:00  lever    1  haut des nuages  1053 m  accord 0/3
-  Puy de l'Angle   score  12  vers 16:00  lever    1  haut des nuages  1053 m  accord 0/3
-  Puy de Sancy     score  37  vers 17:00  lever    2  haut des nuages  1228 m  accord 1/3
-  Couleurs        lever   1 (07:17)  coucher   0 (17:44)
-  Nuit étoilée     score   0  0 h  -–-  Lune 100 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 1.4 cm
+  Puy Gros         score   5  vers 16:00  lever    0  haut des nuages  1053 m  accord 0/3
+  Banne d'Ordanche score   6  vers 16:00  lever    0  haut des nuages  1053 m  accord 0/3
+  Puy de la Tâche  score  10  vers 16:00  lever    2  haut des nuages  1053 m  accord 0/3
+  Puy de l'Angle   score  14  vers 16:00  lever    4  haut des nuages  1053 m  accord 0/3
+  Puy de Sancy     score  40  vers 17:00  lever    8  haut des nuages  1270 m  accord 0/3
+  Couleurs Vallée (Saint-Saturnin lever   1 (07:17)  coucher   0 (17:44)
+  Couleurs Montagne (Mont-Dore –  lever   0 (07:17)  coucher   0 (17:44)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 100 %
+  Étoiles Col de la Croix-Saint-R score   0  0 h  -–-  Lune 100 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 100 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 1.4 cm
 
 lun. 26/10  (lever 07:19)
-  Puy de Dôme      score   0  vers –  lever    0  haut des nuages   539 m  accord 1/3
+  Col de la Croix-Morand score   5  vers 07:00  lever    4  haut des nuages   426 m  accord 0/3
+  Col de la Croix-Saint-Robert score  33  vers 07:00  lever   25  haut des nuages   724 m  accord 2/3
+  Puy de Dôme      score   5  vers 07:00  lever    4  haut des nuages   426 m  accord 0/3
+  Puy Gros         score  25  vers 07:00  lever   19  haut des nuages   711 m  accord 2/3
+  Banne d'Ordanche score  25  vers 07:00  lever   19  haut des nuages   711 m  accord 2/3
   Puy de la Tâche  score  34  vers 07:00  lever   26  haut des nuages   724 m  accord 2/3
   Puy de l'Angle   score  34  vers 07:00  lever   26  haut des nuages   724 m  accord 2/3
   Puy de Sancy     score  38  vers 17:00  lever   26  haut des nuages  1436 m  accord 1/3
-  Couleurs        lever  56 (07:19)  coucher   0 (17:43)
-  Nuit étoilée     score   0  0 h  -–-  Lune 99 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+  Couleurs Vallée (Saint-Saturnin lever  29 (07:19)  coucher   0 (17:43)
+  Couleurs Montagne (Mont-Dore –  lever  39 (07:19)  coucher   0 (17:43)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 99 %
+  Étoiles Col de la Croix-Saint-R score   0  0 h  -–-  Lune 99 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 99 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 mar. 27/10  (lever 07:20)
+  Col de la Croix-Morand score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Col de la Croix-Saint-Robert score  92  vers 07:00  lever   69  haut des nuages   490 m  accord 2/3
   Puy de Dôme      score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Puy Gros         score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Banne d'Ordanche score   0  vers –  lever    0  haut des nuages       -  accord 0/3
   Puy de la Tâche  score  92  vers 07:00  lever   69  haut des nuages   490 m  accord 2/3
   Puy de l'Angle   score  92  vers 07:00  lever   69  haut des nuages   490 m  accord 2/3
   Puy de Sancy     score  92  vers 07:00  lever   69  haut des nuages   490 m  accord 2/3
-  Couleurs        lever   0 (07:20)  coucher  11 (17:41)
-  Nuit étoilée     score   0  0 h  -–-  Lune 96 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+  Couleurs Vallée (Saint-Saturnin lever  15 (07:20)  coucher  23 (17:41)
+  Couleurs Montagne (Mont-Dore –  lever  41 (07:20)  coucher  10 (17:41)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 96 %
+  Étoiles Col de la Croix-Saint-R score   0  0 h  -–-  Lune 96 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 96 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 mer. 28/10  (lever 07:21)
-  Puy de Dôme      score   0  vers –  lever    0  haut des nuages  1512 m  accord 0/3
-  Puy de la Tâche  score  23  vers 07:00  lever   17  haut des nuages   840 m  accord 2/3
-  Puy de l'Angle   score  25  vers 07:00  lever   19  haut des nuages   840 m  accord 2/3
+  Col de la Croix-Morand score   1  vers –  lever    0  haut des nuages  1787 m  accord 0/3
+  Col de la Croix-Saint-Robert score   1  vers 08:00  lever    1  haut des nuages  2324 m  accord 0/3
+  Puy de Dôme      score   1  vers –  lever    0  haut des nuages  1650 m  accord 0/3
+  Puy Gros         score  23  vers 07:00  lever   17  haut des nuages   840 m  accord 2/3
+  Banne d'Ordanche score  23  vers 07:00  lever   17  haut des nuages   840 m  accord 2/3
+  Puy de la Tâche  score  23  vers 07:00  lever   19  haut des nuages   840 m  accord 2/3
+  Puy de l'Angle   score  26  vers 07:00  lever   22  haut des nuages   840 m  accord 2/3
   Puy de Sancy     score  40  vers 07:00  lever   34  haut des nuages   840 m  accord 2/3
-  Couleurs        lever   0 (07:21)  coucher   0 (17:40)
-  Nuit étoilée     score   0  0 h  -–-  Lune 90 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+  Couleurs Vallée (Saint-Saturnin lever   0 (07:21)  coucher   0 (17:40)
+  Couleurs Montagne (Mont-Dore –  lever   0 (07:21)  coucher   0 (17:40)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 90 %
+  Étoiles Col de la Croix-Saint-R score   0  0 h  -–-  Lune 90 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 90 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 jeu. 29/10  (lever 07:23)
-  Puy de Dôme      score   0  vers –  lever    0  haut des nuages   708 m  accord 1/3
+  Col de la Croix-Morand score  57  vers 07:00  lever   42  haut des nuages   591 m  accord 3/3
+  Col de la Croix-Saint-Robert score  95  vers 07:00  lever   73  haut des nuages   588 m  accord 3/3
+  Puy de Dôme      score  57  vers 07:00  lever   42  haut des nuages   591 m  accord 3/3
+  Puy Gros         score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Banne d'Ordanche score   0  vers –  lever    0  haut des nuages       -  accord 0/3
   Puy de la Tâche  score  95  vers 07:00  lever   73  haut des nuages   588 m  accord 3/3
   Puy de l'Angle   score  95  vers 07:00  lever   73  haut des nuages   588 m  accord 3/3
   Puy de Sancy     score  95  vers 07:00  lever   73  haut des nuages   588 m  accord 3/3
-  Couleurs        lever  26 (07:23)  coucher  56 (17:38)
-  Nuit étoilée     score   0  0 h  -–-  Lune 82 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+  Couleurs Vallée (Saint-Saturnin lever   0 (07:23)  coucher  95 (17:38)
+  Couleurs Montagne (Mont-Dore –  lever  55 (07:23)  coucher  73 (17:38)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 82 %
+  Étoiles Col de la Croix-Saint-R score   0  0 h  -–-  Lune 82 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 82 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 ven. 30/10  (lever 07:24)
+  Col de la Croix-Morand score 100  vers 07:00  lever   75  haut des nuages   618 m  accord 2/3
+  Col de la Croix-Saint-Robert score 100  vers 07:00  lever   91  haut des nuages   623 m  accord 2/3
   Puy de Dôme      score 100  vers 07:00  lever   75  haut des nuages   618 m  accord 2/3
+  Puy Gros         score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Banne d'Ordanche score 100  vers 07:00  lever   75  haut des nuages   618 m  accord 2/3
   Puy de la Tâche  score 100  vers 07:00  lever   91  haut des nuages   618 m  accord 2/3
   Puy de l'Angle   score 100  vers 07:00  lever   91  haut des nuages   618 m  accord 2/3
   Puy de Sancy     score 100  vers 07:00  lever   91  haut des nuages   618 m  accord 2/3
-  Couleurs        lever   0 (07:24)  coucher   0 (17:37)
-  Nuit étoilée     score  25  1 h  20:00–21:00  Lune 72 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+  Couleurs Vallée (Saint-Saturnin lever   0 (07:24)  coucher   0 (17:37)
+  Couleurs Montagne (Mont-Dore –  lever   0 (07:24)  coucher   0 (17:37)
+  Étoiles Col de la Croix-Morand  score  25  1 h  20:00–21:00  Lune 72 %
+  Étoiles Col de la Croix-Saint-R score  25  1 h  20:00–21:00  Lune 72 %
+  Étoiles Lac de Guéry            score  25  1 h  20:00–21:00  Lune 72 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 sam. 31/10  (lever 07:26)
-  Puy de Dôme      score  99  vers 08:00  lever   86  haut des nuages   852 m  accord 2/3
-  Puy de la Tâche  score 100  vers 10:00  lever  100  haut des nuages   772 m  accord 2/3
-  Puy de l'Angle   score 100  vers 10:00  lever  100  haut des nuages   772 m  accord 2/3
-  Puy de Sancy     score 100  vers 10:00  lever  100  haut des nuages   772 m  accord 2/3
-  Couleurs        lever   0 (07:26)  coucher   0 (17:35)
-  Nuit étoilée     score  50  2 h  20:00–22:00  Lune 61 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+  Col de la Croix-Morand score 100  vers 07:00  lever  100  haut des nuages   740 m  accord 3/3
+  Col de la Croix-Saint-Robert score 100  vers 07:00  lever  100  haut des nuages   740 m  accord 3/3
+  Puy de Dôme      score 100  vers 07:00  lever  100  haut des nuages   740 m  accord 3/3
+  Puy Gros         score  25  vers 07:00  lever   18  haut des nuages   760 m  accord 1/3
+  Banne d'Ordanche score  99  vers 08:00  lever   86  haut des nuages   852 m  accord 2/3
+  Puy de la Tâche  score 100  vers 07:00  lever  100  haut des nuages   740 m  accord 3/3
+  Puy de l'Angle   score 100  vers 07:00  lever  100  haut des nuages   740 m  accord 3/3
+  Puy de Sancy     score 100  vers 07:00  lever  100  haut des nuages   740 m  accord 3/3
+  Couleurs Vallée (Saint-Saturnin lever   0 (07:26)  coucher   0 (17:35)
+  Couleurs Montagne (Mont-Dore –  lever   0 (07:26)  coucher   0 (17:35)
+  Étoiles Col de la Croix-Morand  score  50  2 h  20:00–22:00  Lune 61 %
+  Étoiles Col de la Croix-Saint-R score  50  2 h  20:00–22:00  Lune 61 %
+  Étoiles Lac de Guéry            score  50  2 h  20:00–22:00  Lune 61 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 dim. 01/11  (lever 07:27)
-  Puy de Dôme      score  40  vers 07:00  lever   30  haut des nuages   518 m  accord 1/3
-  Puy de la Tâche  score  61  vers 07:00  lever   61  haut des nuages   711 m  accord 2/3
-  Puy de l'Angle   score  61  vers 07:00  lever   61  haut des nuages   711 m  accord 2/3
-  Puy de Sancy     score  61  vers 07:00  lever   61  haut des nuages   711 m  accord 2/3
-  Couleurs        lever   0 (07:27)  coucher   0 (17:34)
-  Nuit étoilée     score  25  1 h  23:00–00:00  Lune 50 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+  Col de la Croix-Morand score  59  vers 07:00  lever   54  haut des nuages   671 m  accord 2/3
+  Col de la Croix-Saint-Robert score  60  vers 07:00  lever   60  haut des nuages   711 m  accord 2/3
+  Puy de Dôme      score  60  vers 07:00  lever   54  haut des nuages   762 m  accord 2/3
+  Puy Gros         score  41  vers 07:00  lever   31  haut des nuages   762 m  accord 2/3
+  Banne d'Ordanche score  60  vers 07:00  lever   45  haut des nuages   762 m  accord 2/3
+  Puy de la Tâche  score  62  vers 07:00  lever   61  haut des nuages   762 m  accord 2/3
+  Puy de l'Angle   score  62  vers 07:00  lever   61  haut des nuages   762 m  accord 2/3
+  Puy de Sancy     score  62  vers 07:00  lever   61  haut des nuages   762 m  accord 2/3
+  Couleurs Vallée (Saint-Saturnin lever   0 (07:27)  coucher   0 (17:34)
+  Couleurs Montagne (Mont-Dore –  lever   0 (07:27)  coucher   0 (17:34)
+  Étoiles Col de la Croix-Morand  score  25  1 h  23:00–00:00  Lune 50 %
+  Étoiles Col de la Croix-Saint-R score  39  2 h  22:00–00:00  Lune 50 %
+  Étoiles Lac de Guéry            score  94  4 h  20:00–00:00  Lune 50 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 lun. 02/11  (lever 07:28)
+  Col de la Croix-Morand score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Col de la Croix-Saint-Robert score   5  vers 07:00  lever    4  haut des nuages   652 m  accord 0/3
   Puy de Dôme      score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Puy Gros         score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Banne d'Ordanche score   0  vers –  lever    0  haut des nuages       -  accord 0/3
   Puy de la Tâche  score   5  vers 07:00  lever    4  haut des nuages   652 m  accord 0/3
   Puy de l'Angle   score   5  vers 07:00  lever    4  haut des nuages   652 m  accord 0/3
   Puy de Sancy     score   5  vers 07:00  lever    4  haut des nuages   652 m  accord 0/3
-  Couleurs        lever  28 (07:28)  coucher   9 (17:32)
-  Nuit étoilée     score   0  0 h  -–-  Lune 38 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+  Couleurs Vallée (Saint-Saturnin lever  45 (07:28)  coucher   2 (17:32)
+  Couleurs Montagne (Mont-Dore –  lever  48 (07:28)  coucher  17 (17:32)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 38 %
+  Étoiles Col de la Croix-Saint-R score   0  0 h  -–-  Lune 38 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 38 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 mar. 03/11  (lever 07:30)
-  Puy de Dôme      score   0  vers –  lever    0  haut des nuages  1732 m  accord 0/3
-  Puy de la Tâche  score  14  vers 09:00  lever   10  haut des nuages  1297 m  accord 1/3
-  Puy de l'Angle   score  15  vers 09:00  lever   12  haut des nuages  1297 m  accord 1/3
+  Col de la Croix-Morand score   2  vers 11:00  lever    0  haut des nuages  1730 m  accord 0/3
+  Col de la Croix-Saint-Robert score  11  vers 08:00  lever    8  haut des nuages  1343 m  accord 0/3
+  Puy de Dôme      score   5  vers 12:00  lever    0  haut des nuages  1588 m  accord 0/3
+  Puy Gros         score   2  vers 12:00  lever    0  haut des nuages       -  accord 0/3
+  Banne d'Ordanche score   3  vers 12:00  lever    0  haut des nuages       -  accord 0/3
+  Puy de la Tâche  score  14  vers 09:00  lever   11  haut des nuages  1297 m  accord 1/3
+  Puy de l'Angle   score  18  vers 09:00  lever   14  haut des nuages  1666 m  accord 0/3
   Puy de Sancy     score  65  vers 11:00  lever   62  haut des nuages  1475 m  accord 2/3
-  Couleurs        lever   0 (07:30)  coucher   0 (17:31)
-  Nuit étoilée     score   0  0 h  -–-  Lune 27 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+  Couleurs Vallée (Saint-Saturnin lever   0 (07:30)  coucher   0 (17:31)
+  Couleurs Montagne (Mont-Dore –  lever   0 (07:30)  coucher   0 (17:31)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 27 %
+  Étoiles Col de la Croix-Saint-R score   0  0 h  -–-  Lune 27 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 27 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 mer. 04/11  (lever 07:31)
-  Puy de Dôme      score   0  vers –  lever    0  haut des nuages   651 m  accord 0/3
-  Puy de la Tâche  score  48  vers 07:00  lever   36  haut des nuages   524 m  accord 3/3
-  Puy de l'Angle   score  48  vers 07:00  lever   36  haut des nuages   524 m  accord 3/3
-  Puy de Sancy     score  48  vers 07:00  lever   36  haut des nuages   524 m  accord 3/3
-  Couleurs        lever  38 (07:31)  coucher   2 (17:30)
-  Nuit étoilée     score   0  0 h  -–-  Lune 18 %
-  Neige           Puy de Dôme 3.5 cm  Puy de Sancy 5.7 cm
+  Col de la Croix-Morand score  21  vers 07:00  lever   16  haut des nuages   550 m  accord 2/3
+  Col de la Croix-Saint-Robert score  48  vers 07:00  lever   37  haut des nuages   550 m  accord 2/3
+  Puy de Dôme      score  56  vers 07:00  lever   43  haut des nuages   740 m  accord 2/3
+  Puy Gros         score  56  vers 07:00  lever   42  haut des nuages   740 m  accord 2/3
+  Banne d'Ordanche score  56  vers 07:00  lever   42  haut des nuages   740 m  accord 2/3
+  Puy de la Tâche  score  66  vers 07:00  lever   51  haut des nuages   740 m  accord 2/3
+  Puy de l'Angle   score  66  vers 07:00  lever   51  haut des nuages   740 m  accord 2/3
+  Puy de Sancy     score  66  vers 07:00  lever   51  haut des nuages   740 m  accord 2/3
+  Couleurs Vallée (Saint-Saturnin lever  44 (07:31)  coucher   1 (17:30)
+  Couleurs Montagne (Mont-Dore –  lever  42 (07:31)  coucher   2 (17:30)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 18 %
+  Étoiles Col de la Croix-Saint-R score   0  0 h  -–-  Lune 18 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 18 %
+  Neige           Puy de Dôme 3.5 cm  Col de la Croix-Morand 3.2 cm  Super-Besse 2.5 cm  Puy de Sancy 5.7 cm
 
 jeu. 05/11  (lever 07:33)
-  Puy de Dôme      score   3  vers 07:00  lever    3  haut des nuages   530 m  accord 0/3
-  Puy de la Tâche  score  20  vers 17:00  lever    6  haut des nuages   661 m  accord 0/3
-  Puy de l'Angle   score  20  vers 17:00  lever    8  haut des nuages   661 m  accord 0/3
-  Puy de Sancy     score  20  vers 17:00  lever   14  haut des nuages   661 m  accord 0/3
-  Couleurs        lever   0 (07:33)  coucher  22 (17:28)
-  Nuit étoilée     score  75  3 h  02:00–05:00  Lune 11 %
-  Neige           Puy de Dôme 1 cm  Puy de Sancy 0.2 cm
+  Col de la Croix-Morand score  10  vers 13:00  lever   10  haut des nuages   666 m  accord 0/3
+  Col de la Croix-Saint-Robert score  21  vers 17:00  lever   14  haut des nuages   661 m  accord 0/3
+  Puy de Dôme      score  10  vers 08:00  lever   13  haut des nuages   519 m  accord 0/3
+  Puy Gros         score   7  vers 07:00  lever    5  haut des nuages   720 m  accord 1/3
+  Banne d'Ordanche score   9  vers 07:00  lever    7  haut des nuages   720 m  accord 1/3
+  Puy de la Tâche  score  20  vers 17:00  lever   18  haut des nuages   661 m  accord 0/3
+  Puy de l'Angle   score  20  vers 17:00  lever   19  haut des nuages   661 m  accord 0/3
+  Puy de Sancy     score  21  vers 17:00  lever   21  haut des nuages  1250 m  accord 0/3
+  Couleurs Vallée (Saint-Saturnin lever   2 (07:33)  coucher  20 (17:28)
+  Couleurs Montagne (Mont-Dore –  lever   0 (07:33)  coucher  78 (17:28)
+  Étoiles Col de la Croix-Morand  score  75  3 h  02:00–05:00  Lune 11 %
+  Étoiles Col de la Croix-Saint-R score  75  3 h  02:00–05:00  Lune 11 %
+  Étoiles Lac de Guéry            score  75  3 h  02:00–05:00  Lune 11 %
+  Neige           Puy de Dôme 1 cm  Col de la Croix-Morand 0.1 cm  Super-Besse 0 cm  Puy de Sancy 0.2 cm
 
 ven. 06/11  (lever 07:34)
-  Puy de Dôme      score   3  vers 07:00  lever    2  haut des nuages   596 m  accord 1/3
-  Puy de la Tâche  score  94  vers 07:00  lever   82  haut des nuages   576 m  accord 3/3
-  Puy de l'Angle   score  94  vers 07:00  lever   82  haut des nuages   576 m  accord 3/3
-  Puy de Sancy     score  94  vers 07:00  lever   82  haut des nuages   576 m  accord 3/3
-  Couleurs        lever  23 (07:34)  coucher   0 (17:27)
-  Nuit étoilée     score  77  10 h  20:00–06:00  Lune 5 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+  Col de la Croix-Morand score  31  vers 07:00  lever   23  haut des nuages  1079 m  accord 2/3
+  Col de la Croix-Saint-Robert score  91  vers 07:00  lever   73  haut des nuages   576 m  accord 3/3
+  Puy de Dôme      score  99  vers 07:00  lever   74  haut des nuages   776 m  accord 3/3
+  Puy Gros         score  99  vers 07:00  lever   85  haut des nuages   776 m  accord 3/3
+  Banne d'Ordanche score  99  vers 07:00  lever   85  haut des nuages   776 m  accord 3/3
+  Puy de la Tâche  score  99  vers 07:00  lever   85  haut des nuages   776 m  accord 3/3
+  Puy de l'Angle   score  99  vers 07:00  lever   85  haut des nuages   776 m  accord 3/3
+  Puy de Sancy     score  99  vers 07:00  lever   85  haut des nuages   776 m  accord 3/3
+  Couleurs Vallée (Saint-Saturnin lever  22 (07:34)  coucher   0 (17:27)
+  Couleurs Montagne (Mont-Dore –  lever  20 (07:34)  coucher   0 (17:27)
+  Étoiles Col de la Croix-Morand  score  77  10 h  20:00–06:00  Lune 5 %
+  Étoiles Col de la Croix-Saint-R score  77  10 h  20:00–06:00  Lune 5 %
+  Étoiles Lac de Guéry            score  78  10 h  20:00–06:00  Lune 5 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 sam. 07/11  (lever 07:36)
-  Puy de Dôme      score   0  vers –  lever    0  haut des nuages   728 m  accord 1/3
+  Col de la Croix-Morand score  35  vers 07:00  lever   26  haut des nuages   654 m  accord 2/3
+  Col de la Croix-Saint-Robert score 100  vers 07:00  lever   91  haut des nuages   730 m  accord 3/3
+  Puy de Dôme      score  68  vers 07:00  lever   51  haut des nuages   756 m  accord 2/3
+  Puy Gros         score  67  vers 07:00  lever   50  haut des nuages   756 m  accord 2/3
+  Banne d'Ordanche score  67  vers 07:00  lever   50  haut des nuages   756 m  accord 2/3
   Puy de la Tâche  score 100  vers 07:00  lever   91  haut des nuages   730 m  accord 3/3
   Puy de l'Angle   score 100  vers 07:00  lever   91  haut des nuages   730 m  accord 3/3
   Puy de Sancy     score 100  vers 07:00  lever   91  haut des nuages   730 m  accord 3/3
-  Couleurs        lever   0 (07:36)  coucher  42 (17:26)
-  Nuit étoilée     score  50  2 h  20:00–22:00  Lune 2 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+  Couleurs Vallée (Saint-Saturnin lever   0 (07:36)  coucher  25 (17:26)
+  Couleurs Montagne (Mont-Dore –  lever   0 (07:36)  coucher  84 (17:26)
+  Étoiles Col de la Croix-Morand  score  50  2 h  20:00–22:00  Lune 2 %
+  Étoiles Col de la Croix-Saint-R score  50  2 h  00:00–02:00  Lune 2 %
+  Étoiles Lac de Guéry            score  50  2 h  20:00–22:00  Lune 2 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 dim. 08/11  (lever 07:37)
+  Col de la Croix-Morand score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Col de la Croix-Saint-Robert score  21  vers 07:00  lever   16  haut des nuages   482 m  accord 2/3
   Puy de Dôme      score   0  vers –  lever    0  haut des nuages   438 m  accord 1/3
+  Puy Gros         score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Banne d'Ordanche score   0  vers –  lever    0  haut des nuages       -  accord 0/3
   Puy de la Tâche  score  20  vers 07:00  lever   15  haut des nuages   482 m  accord 2/3
   Puy de l'Angle   score  20  vers 07:00  lever   15  haut des nuages   482 m  accord 2/3
   Puy de Sancy     score  20  vers 07:00  lever   15  haut des nuages   482 m  accord 2/3
-  Couleurs        lever  52 (07:37)  coucher  17 (17:24)
-  Nuit étoilée     score   0  0 h  -–-  Lune 0 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+  Couleurs Vallée (Saint-Saturnin lever  30 (07:37)  coucher  22 (17:24)
+  Couleurs Montagne (Mont-Dore –  lever  83 (07:37)  coucher  19 (17:24)
+  Étoiles Col de la Croix-Morand  score   0  0 h  -–-  Lune 0 %
+  Étoiles Col de la Croix-Saint-R score   0  0 h  -–-  Lune 0 %
+  Étoiles Lac de Guéry            score   0  0 h  -–-  Lune 0 %
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 lun. 09/11  (lever 07:38)
-  Puy de Dôme      score   0  vers –  lever    0  haut des nuages       -  accord 0/3
-  Puy de la Tâche  score   2  vers 07:00  lever    1  haut des nuages   534 m  accord 1/3
-  Puy de l'Angle   score   2  vers 07:00  lever    1  haut des nuages   534 m  accord 1/3
-  Puy de Sancy     score   2  vers 07:00  lever    1  haut des nuages   534 m  accord 1/3
-  Couleurs        lever  30 (07:38)  coucher  13 (17:23)
-  Nuit étoilée     score   0  0 h  -–-  Lune 1 %
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
-
-mar. 10/11  (lever 07:40)
-  Puy de Dôme      score   0  vers –  lever    0  haut des nuages   483 m  accord 0/3
-  Puy de la Tâche  score   5  vers 07:00  lever    4  haut des nuages   483 m  accord 0/3
-  Puy de l'Angle   score   5  vers 07:00  lever    4  haut des nuages   483 m  accord 0/3
-  Puy de Sancy     score   5  vers 07:00  lever    4  haut des nuages  2215 m  accord 0/3
-  Couleurs        lever   3 (07:40)  coucher  32 (17:22)
-  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+  Col de la Croix-Morand score   2  vers 07:00  lever    1  haut des nuages   635 m  accord 1/3
+  Col de la Croix-Saint-Robert score   2  vers 07:00  lever    1  haut des nuages   635 m  accord 1/3
+  Puy de Dôme      score  13  vers 07:00  lever   10  haut des nuages   635 m  accord 1/3
+  Puy Gros         score  13  vers 07:00  lever   10  haut des nuages   534 m  accord 1/3
+  Banne d'Ordanche score  13  vers 07:00  lever   10  haut des nuages   534 m  accord 1/3
+  Puy de la Tâche  score  13  vers 07:00  lever   10  haut des nuages   635 m  accord 1/3
+  Puy de l'Angle   score  13  vers 07:00  lever   10  haut des nuages   635 m  accord 1/3
+  Puy de Sancy     score  13  vers 07:00  lever   10  haut des nuages   635 m  accord 1/3
+  Couleurs Vallée (Saint-Saturnin lever  26 (07:38)  coucher  14 (17:23)
+  Couleurs Montagne (Mont-Dore –  lever  11 (07:38)  coucher  12 (17:23)
+  Neige           Puy de Dôme 0 cm  Col de la Croix-Morand 0 cm  Super-Besse 0 cm  Puy de Sancy 0 cm
 
 Tableau de bord : rejeu/index.html
 
 Alertes qui auraient été envoyées sur la période :
-  ☁️ Mer de nuages : 10  2026-10-11 2026-10-15 2026-10-27 2026-10-29 2026-10-30 2026-10-31 2026-11-01 2026-11-03 2026-11-06 2026-11-07
-  🌅 Ciel coloré : 2  2026-10-26:lever 2026-10-29:coucher
-  ✨ Ciel étoilé : 4  2026-10-14 2026-10-15 2026-11-05 2026-11-06
+  ☁️ Mer de nuages : 12  2026-10-02 2026-10-11 2026-10-15 2026-10-27 2026-10-29 2026-10-30 2026-10-31 2026-11-01 2026-11-03 2026-11-04 2026-11-06 2026-11-07
+  🌅 Ciel coloré : 5  2026-10-11:coucher 2026-10-29:coucher 2026-11-05:coucher 2026-11-07:coucher 2026-11-08:lever
+  ✨ Ciel étoilé : 5  2026-10-14 2026-10-15 2026-11-05 2026-11-06 2026-11-01
   ❄️ Neige sur les puys : 4  2026-10-08 2026-10-18 2026-10-21 2026-11-04
