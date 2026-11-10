@@ -4,7 +4,7 @@
   "modeles": ["meteofrance_seamless", "icon_seamless", "ecmwf_ifs025"],
   "jours_prevision": 3,
 
-  "seuil_alerte": 60,
+  "seuil_alerte": 0,
   "jours_alerte": [1, 2],
   "fenetre_matin_heures": 3,
 
