@@ -1,21 +1,367 @@
-[avertissement] ecmwf_ifs025 / Limagne (Clermont) indisponible : <urlopen error _ssl.c:994: The handshake operation timed out> 
 
-Aujourd'hui (ven. 30/10)  (lever 07:24)
-  Puy de Dôme      score 100  vers 07:00  lever   83  haut des nuages   618 m  accord 2/2
-  Puy de la Tâche  score 100  vers 07:00  lever   91  haut des nuages   618 m  accord 2/2
-  Puy de l'Angle   score 100  vers 07:00  lever   91  haut des nuages   618 m  accord 2/2
-  Puy de Sancy     score 100  vers 07:00  lever   91  haut des nuages   618 m  accord 2/2
+Aujourd'hui (jeu. 01/10)  (lever 06:45)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages  1954 m  accord 0/3
+  Puy de la Tâche  score  13  vers 06:00  lever   10  haut des nuages   492 m  accord 0/3
+  Puy de l'Angle   score   6  vers 06:00  lever    5  haut des nuages   492 m  accord 0/3
+  Puy de Sancy     score   6  vers 06:00  lever    5  haut des nuages   492 m  accord 0/3
+  Couleurs        lever   1 (06:45)  coucher   9 (18:27)
+  Nuit étoilée     score   0  0 h  -–-  Lune 69 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
 
-Demain (sam. 31/10)  (lever 07:26)
-  Puy de Dôme      score  99  vers 08:00  lever   93  haut des nuages   852 m  accord 2/2
+Demain (ven. 02/10)  (lever 06:47)
+  Puy de Dôme      score   1  vers –  lever    1  haut des nuages  2008 m  accord 0/3
+  Puy de la Tâche  score  21  vers 07:00  lever   16  haut des nuages   762 m  accord 1/3
+  Puy de l'Angle   score  28  vers 07:00  lever   22  haut des nuages   762 m  accord 1/3
+  Puy de Sancy     score  37  vers 07:00  lever   36  haut des nuages   762 m  accord 1/3
+  Couleurs        lever   7 (06:47)  coucher  27 (18:26)
+  Nuit étoilée     score   0  0 h  -–-  Lune 58 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+
+Après-demain (sam. 03/10)  (lever 06:48)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages  3200 m  accord 0/3
+  Puy de la Tâche  score   0  vers –  lever    0  haut des nuages  1816 m  accord 1/3
+  Puy de l'Angle   score   0  vers –  lever    0  haut des nuages  3200 m  accord 0/3
+  Puy de Sancy     score   0  vers –  lever    0  haut des nuages  3200 m  accord 0/3
+  Couleurs        lever  16 (06:48)  coucher   6 (18:24)
+  Nuit étoilée     score   0  0 h  -–-  Lune 46 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+
+dim. 04/10  (lever 06:49)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages  3186 m  accord 0/3
+  Puy de la Tâche  score   0  vers –  lever    0  haut des nuages  3186 m  accord 0/3
+  Puy de l'Angle   score   0  vers –  lever    0  haut des nuages  3186 m  accord 0/3
+  Puy de Sancy     score   0  vers –  lever    0  haut des nuages  3186 m  accord 0/3
+  Couleurs        lever  10 (06:49)  coucher  16 (18:22)
+  Nuit étoilée     score  24  1 h  01:00–02:00  Lune 34 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+
+lun. 05/10  (lever 06:50)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Puy de la Tâche  score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Puy de l'Angle   score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Puy de Sancy     score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Couleurs        lever   0 (06:50)  coucher  15 (18:20)
+  Nuit étoilée     score  47  2 h  22:00–00:00  Lune 24 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+
+mar. 06/10  (lever 06:52)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Puy de la Tâche  score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Puy de l'Angle   score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Puy de Sancy     score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Couleurs        lever  23 (06:52)  coucher   4 (18:18)
+  Nuit étoilée     score   0  0 h  -–-  Lune 15 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+
+mer. 07/10  (lever 06:53)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages  3062 m  accord 0/3
+  Puy de la Tâche  score  10  vers 18:00  lever    1  haut des nuages  1186 m  accord 0/3
+  Puy de l'Angle   score  10  vers 18:00  lever    1  haut des nuages  1186 m  accord 0/3
+  Puy de Sancy     score   9  vers 18:00  lever    0  haut des nuages  1186 m  accord 0/3
+  Couleurs        lever   3 (06:53)  coucher   2 (18:16)
+  Nuit étoilée     score   0  0 h  -–-  Lune 8 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+
+jeu. 08/10  (lever 06:54)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages  3037 m  accord 0/3
+  Puy de la Tâche  score   1  vers –  lever    0  haut des nuages  1606 m  accord 0/3
+  Puy de l'Angle   score   2  vers 14:00  lever    0  haut des nuages  1614 m  accord 0/3
+  Puy de Sancy     score   3  vers 13:00  lever    0  haut des nuages  1910 m  accord 0/3
+  Couleurs        lever   0 (06:54)  coucher   0 (18:14)
+  Nuit étoilée     score  55  3 h  04:00–07:00  Lune 3 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 1.3 cm
+
+ven. 09/10  (lever 06:56)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Puy de la Tâche  score  40  vers 06:00  lever   30  haut des nuages   680 m  accord 2/3
+  Puy de l'Angle   score  40  vers 06:00  lever   30  haut des nuages   680 m  accord 2/3
+  Puy de Sancy     score  40  vers 06:00  lever   30  haut des nuages   680 m  accord 2/3
+  Couleurs        lever   4 (06:56)  coucher   0 (18:12)
+  Nuit étoilée     score   0  0 h  -–-  Lune 0 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0.1 cm
+
+sam. 10/10  (lever 06:57)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages  2709 m  accord 0/3
+  Puy de la Tâche  score   6  vers 18:00  lever    0  haut des nuages   710 m  accord 0/3
+  Puy de l'Angle   score   8  vers 18:00  lever    0  haut des nuages   710 m  accord 0/3
+  Puy de Sancy     score  16  vers 18:00  lever    2  haut des nuages   710 m  accord 0/3
+  Couleurs        lever   0 (06:57)  coucher   0 (18:11)
+  Nuit étoilée     score   0  0 h  -–-  Lune 0 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+
+dim. 11/10  (lever 06:58)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages   681 m  accord 0/3
+  Puy de la Tâche  score  75  vers 06:00  lever   56  haut des nuages   596 m  accord 2/3
+  Puy de l'Angle   score  80  vers 06:00  lever   60  haut des nuages   596 m  accord 2/3
+  Puy de Sancy     score  83  vers 06:00  lever   62  haut des nuages   596 m  accord 2/3
+  Couleurs        lever   1 (06:58)  coucher  37 (18:09)
+  Nuit étoilée     score   0  0 h  -–-  Lune 2 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+
+lun. 12/10  (lever 07:00)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Puy de la Tâche  score   0  vers –  lever    0  haut des nuages  3097 m  accord 0/3
+  Puy de l'Angle   score   2  vers 17:00  lever    0  haut des nuages  1984 m  accord 0/3
+  Puy de Sancy     score   2  vers 17:00  lever    0  haut des nuages  1984 m  accord 0/3
+  Couleurs        lever  23 (07:00)  coucher   0 (18:07)
+  Nuit étoilée     score   0  0 h  -–-  Lune 6 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+
+mar. 13/10  (lever 07:01)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages  1909 m  accord 0/3
+  Puy de la Tâche  score   0  vers –  lever    0  haut des nuages  1909 m  accord 0/3
+  Puy de l'Angle   score   2  vers 15:00  lever    0  haut des nuages  2341 m  accord 0/3
+  Puy de Sancy     score  11  vers 07:00  lever   10  haut des nuages   784 m  accord 0/3
+  Couleurs        lever   0 (07:01)  coucher   6 (18:05)
+  Nuit étoilée     score   0  0 h  -–-  Lune 11 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+
+mer. 14/10  (lever 07:02)
+  Puy de Dôme      score  12  vers 08:00  lever   15  haut des nuages  1429 m  accord 0/3
+  Puy de la Tâche  score  36  vers 07:00  lever   35  haut des nuages   946 m  accord 1/3
+  Puy de l'Angle   score  41  vers 07:00  lever   39  haut des nuages   946 m  accord 1/3
+  Puy de Sancy     score  47  vers 07:00  lever   44  haut des nuages   638 m  accord 1/3
+  Couleurs        lever   0 (07:02)  coucher   0 (18:03)
+  Nuit étoilée     score 100  10 h  21:00–07:00  Lune 18 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+
+jeu. 15/10  (lever 07:04)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Puy de la Tâche  score 100  vers 07:00  lever   75  haut des nuages   536 m  accord 2/3
+  Puy de l'Angle   score 100  vers 07:00  lever   75  haut des nuages   536 m  accord 2/3
+  Puy de Sancy     score 100  vers 07:00  lever   75  haut des nuages   536 m  accord 2/3
+  Couleurs        lever   0 (07:04)  coucher   0 (18:02)
+  Nuit étoilée     score 100  9 h  22:00–07:00  Lune 26 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+
+ven. 16/10  (lever 07:05)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Puy de la Tâche  score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Puy de l'Angle   score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Puy de Sancy     score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Couleurs        lever   0 (07:05)  coucher   0 (18:00)
+  Nuit étoilée     score   0  0 h  -–-  Lune 34 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+
+sam. 17/10  (lever 07:06)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages  2680 m  accord 0/3
+  Puy de la Tâche  score   0  vers –  lever    0  haut des nuages  2680 m  accord 0/3
+  Puy de l'Angle   score   3  vers 13:00  lever    0  haut des nuages  2320 m  accord 0/3
+  Puy de Sancy     score  26  vers 16:00  lever    2  haut des nuages  1785 m  accord 0/3
+  Couleurs        lever   0 (07:06)  coucher   4 (17:58)
+  Nuit étoilée     score   0  0 h  -–-  Lune 43 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0.3 cm
+
+dim. 18/10  (lever 07:08)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages  2170 m  accord 0/3
+  Puy de la Tâche  score   4  vers 07:00  lever    3  haut des nuages  1621 m  accord 0/3
+  Puy de l'Angle   score  11  vers 08:00  lever    9  haut des nuages  1551 m  accord 0/3
+  Puy de Sancy     score  19  vers 10:00  lever   16  haut des nuages  1655 m  accord 0/3
+  Couleurs        lever   0 (07:08)  coucher  30 (17:56)
+  Nuit étoilée     score   0  0 h  -–-  Lune 53 %
+  Neige           Puy de Dôme 0.6 cm  Puy de Sancy 1.5 cm
+
+lun. 19/10  (lever 07:09)
+  Puy de Dôme      score  12  vers 15:00  lever    2  haut des nuages   771 m  accord 0/3
+  Puy de la Tâche  score  19  vers 16:00  lever    3  haut des nuages  1325 m  accord 0/3
+  Puy de l'Angle   score  23  vers 16:00  lever    3  haut des nuages  1325 m  accord 0/3
+  Puy de Sancy     score  28  vers 16:00  lever    8  haut des nuages  1325 m  accord 0/3
+  Couleurs        lever   0 (07:09)  coucher   1 (17:55)
+  Nuit étoilée     score   0  0 h  -–-  Lune 62 %
+  Neige           Puy de Dôme 0.7 cm  Puy de Sancy 0 cm
+
+mar. 20/10  (lever 07:10)
+  Puy de Dôme      score  34  vers 07:00  lever   28  haut des nuages   521 m  accord 0/3
+  Puy de la Tâche  score  20  vers 07:00  lever   17  haut des nuages   521 m  accord 0/3
+  Puy de l'Angle   score  17  vers 07:00  lever   14  haut des nuages   521 m  accord 0/3
+  Puy de Sancy     score  24  vers 17:00  lever   11  haut des nuages  1690 m  accord 1/3
+  Couleurs        lever   0 (07:10)  coucher   5 (17:53)
+  Nuit étoilée     score   0  0 h  -–-  Lune 71 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0.2 cm
+
+mer. 21/10  (lever 07:12)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages  3007 m  accord 0/3
+  Puy de la Tâche  score   2  vers 07:00  lever    1  haut des nuages  1439 m  accord 0/3
+  Puy de l'Angle   score   1  vers 07:00  lever    1  haut des nuages  1439 m  accord 0/3
+  Puy de Sancy     score   7  vers 10:00  lever    2  haut des nuages  1793 m  accord 0/3
+  Couleurs        lever  11 (07:12)  coucher   0 (17:51)
+  Nuit étoilée     score   0  0 h  -–-  Lune 80 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 8.2 cm
+
+jeu. 22/10  (lever 07:13)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Puy de la Tâche  score  17  vers 07:00  lever   17  haut des nuages  1116 m  accord 0/3
+  Puy de l'Angle   score  17  vers 07:00  lever   17  haut des nuages  1116 m  accord 0/3
+  Puy de Sancy     score  19  vers 07:00  lever   18  haut des nuages  1116 m  accord 0/3
+  Couleurs        lever  11 (07:13)  coucher   9 (17:49)
+  Nuit étoilée     score   0  0 h  -–-  Lune 88 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 1 cm
+
+ven. 23/10  (lever 07:14)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages   430 m  accord 0/3
+  Puy de la Tâche  score   0  vers –  lever    0  haut des nuages   430 m  accord 0/3
+  Puy de l'Angle   score   2  vers 12:00  lever    0  haut des nuages  1607 m  accord 0/3
+  Puy de Sancy     score   3  vers 12:00  lever    0  haut des nuages  1607 m  accord 0/3
+  Couleurs        lever   1 (07:14)  coucher   0 (17:48)
+  Nuit étoilée     score   0  0 h  -–-  Lune 94 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 16.3 cm
+
+sam. 24/10  (lever 07:16)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Puy de la Tâche  score   6  vers 08:00  lever    4  haut des nuages       -  accord 0/3
+  Puy de l'Angle   score   8  vers 08:00  lever    6  haut des nuages  1719 m  accord 0/3
+  Puy de Sancy     score  12  vers 08:00  lever    9  haut des nuages  1719 m  accord 0/3
+  Couleurs        lever   1 (07:16)  coucher   0 (17:46)
+  Nuit étoilée     score   0  0 h  -–-  Lune 98 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 8.5 cm
+
+dim. 25/10  (lever 07:17)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages  1549 m  accord 0/3
+  Puy de la Tâche  score   8  vers 16:00  lever    1  haut des nuages  1053 m  accord 0/3
+  Puy de l'Angle   score  12  vers 16:00  lever    1  haut des nuages  1053 m  accord 0/3
+  Puy de Sancy     score  37  vers 17:00  lever    2  haut des nuages  1228 m  accord 1/3
+  Couleurs        lever   0 (07:17)  coucher   0 (17:44)
+  Nuit étoilée     score   0  0 h  -–-  Lune 100 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 1.4 cm
+
+lun. 26/10  (lever 07:19)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages   539 m  accord 1/3
+  Puy de la Tâche  score  34  vers 07:00  lever   26  haut des nuages   724 m  accord 2/3
+  Puy de l'Angle   score  34  vers 07:00  lever   26  haut des nuages   724 m  accord 2/3
+  Puy de Sancy     score  38  vers 17:00  lever   26  haut des nuages  1436 m  accord 1/3
+  Couleurs        lever  23 (07:19)  coucher   0 (17:43)
+  Nuit étoilée     score   0  0 h  -–-  Lune 99 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+
+mar. 27/10  (lever 07:20)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Puy de la Tâche  score  92  vers 07:00  lever   69  haut des nuages   490 m  accord 2/3
+  Puy de l'Angle   score  92  vers 07:00  lever   69  haut des nuages   490 m  accord 2/3
+  Puy de Sancy     score  92  vers 07:00  lever   69  haut des nuages   490 m  accord 2/3
+  Couleurs        lever   0 (07:20)  coucher   7 (17:41)
+  Nuit étoilée     score   0  0 h  -–-  Lune 96 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+
+mer. 28/10  (lever 07:21)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages  1512 m  accord 0/3
+  Puy de la Tâche  score  23  vers 07:00  lever   17  haut des nuages   840 m  accord 2/3
+  Puy de l'Angle   score  25  vers 07:00  lever   19  haut des nuages   840 m  accord 2/3
+  Puy de Sancy     score  40  vers 07:00  lever   34  haut des nuages   840 m  accord 2/3
+  Couleurs        lever   0 (07:21)  coucher   0 (17:40)
+  Nuit étoilée     score   0  0 h  -–-  Lune 90 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+
+jeu. 29/10  (lever 07:23)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages   708 m  accord 1/3
+  Puy de la Tâche  score  95  vers 07:00  lever   73  haut des nuages   588 m  accord 3/3
+  Puy de l'Angle   score  95  vers 07:00  lever   73  haut des nuages   588 m  accord 3/3
+  Puy de Sancy     score  95  vers 07:00  lever   73  haut des nuages   588 m  accord 3/3
+  Couleurs        lever  17 (07:23)  coucher   5 (17:38)
+  Nuit étoilée     score   0  0 h  -–-  Lune 82 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+
+ven. 30/10  (lever 07:24)
+  Puy de Dôme      score 100  vers 07:00  lever   75  haut des nuages   618 m  accord 2/3
+  Puy de la Tâche  score 100  vers 07:00  lever   91  haut des nuages   618 m  accord 2/3
+  Puy de l'Angle   score 100  vers 07:00  lever   91  haut des nuages   618 m  accord 2/3
+  Puy de Sancy     score 100  vers 07:00  lever   91  haut des nuages   618 m  accord 2/3
+  Couleurs        lever   0 (07:24)  coucher   0 (17:37)
+  Nuit étoilée     score  25  1 h  20:00–21:00  Lune 72 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+
+sam. 31/10  (lever 07:26)
+  Puy de Dôme      score  99  vers 08:00  lever   86  haut des nuages   852 m  accord 2/3
   Puy de la Tâche  score 100  vers 10:00  lever  100  haut des nuages   772 m  accord 2/3
   Puy de l'Angle   score 100  vers 10:00  lever  100  haut des nuages   772 m  accord 2/3
   Puy de Sancy     score 100  vers 10:00  lever  100  haut des nuages   772 m  accord 2/3
+  Couleurs        lever   0 (07:26)  coucher   0 (17:35)
+  Nuit étoilée     score  50  2 h  20:00–22:00  Lune 61 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
 
-Après-demain (dim. 01/11)  (lever 07:27)
-  Puy de Dôme      score  52  vers 07:00  lever   46  haut des nuages   518 m  accord 1/2
-  Puy de la Tâche  score  62  vers 07:00  lever   61  haut des nuages   711 m  accord 2/3
-  Puy de l'Angle   score  62  vers 07:00  lever   61  haut des nuages   711 m  accord 2/3
-  Puy de Sancy     score  62  vers 07:00  lever   61  haut des nuages   711 m  accord 2/3
+dim. 01/11  (lever 07:27)
+  Puy de Dôme      score  40  vers 07:00  lever   30  haut des nuages   518 m  accord 1/3
+  Puy de la Tâche  score  61  vers 07:00  lever   61  haut des nuages   711 m  accord 2/3
+  Puy de l'Angle   score  61  vers 07:00  lever   61  haut des nuages   711 m  accord 2/3
+  Puy de Sancy     score  61  vers 07:00  lever   61  haut des nuages   711 m  accord 2/3
+  Couleurs        lever   0 (07:27)  coucher   0 (17:34)
+  Nuit étoilée     score  25  1 h  23:00–00:00  Lune 50 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+
+lun. 02/11  (lever 07:28)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Puy de la Tâche  score   5  vers 07:00  lever    4  haut des nuages   652 m  accord 0/3
+  Puy de l'Angle   score   5  vers 07:00  lever    4  haut des nuages   652 m  accord 0/3
+  Puy de Sancy     score   5  vers 07:00  lever    4  haut des nuages   652 m  accord 0/3
+  Couleurs        lever  15 (07:28)  coucher   0 (17:32)
+  Nuit étoilée     score   0  0 h  -–-  Lune 38 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+
+mar. 03/11  (lever 07:30)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages  1732 m  accord 0/3
+  Puy de la Tâche  score  14  vers 09:00  lever   10  haut des nuages  1297 m  accord 1/3
+  Puy de l'Angle   score  15  vers 09:00  lever   12  haut des nuages  1297 m  accord 1/3
+  Puy de Sancy     score  65  vers 11:00  lever   62  haut des nuages  1475 m  accord 2/3
+  Couleurs        lever   0 (07:30)  coucher   0 (17:31)
+  Nuit étoilée     score   0  0 h  -–-  Lune 27 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+
+mer. 04/11  (lever 07:31)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages   651 m  accord 0/3
+  Puy de la Tâche  score  48  vers 07:00  lever   36  haut des nuages   524 m  accord 3/3
+  Puy de l'Angle   score  48  vers 07:00  lever   36  haut des nuages   524 m  accord 3/3
+  Puy de Sancy     score  48  vers 07:00  lever   36  haut des nuages   524 m  accord 3/3
+  Couleurs        lever   7 (07:31)  coucher   1 (17:30)
+  Nuit étoilée     score   0  0 h  -–-  Lune 18 %
+  Neige           Puy de Dôme 3.5 cm  Puy de Sancy 5.7 cm
+
+jeu. 05/11  (lever 07:33)
+  Puy de Dôme      score   3  vers 07:00  lever    3  haut des nuages   530 m  accord 0/3
+  Puy de la Tâche  score  20  vers 17:00  lever    6  haut des nuages   661 m  accord 0/3
+  Puy de l'Angle   score  20  vers 17:00  lever    8  haut des nuages   661 m  accord 0/3
+  Puy de Sancy     score  20  vers 17:00  lever   14  haut des nuages   661 m  accord 0/3
+  Couleurs        lever   0 (07:33)  coucher  34 (17:28)
+  Nuit étoilée     score  75  3 h  02:00–05:00  Lune 11 %
+  Neige           Puy de Dôme 1 cm  Puy de Sancy 0.2 cm
+
+ven. 06/11  (lever 07:34)
+  Puy de Dôme      score   3  vers 07:00  lever    2  haut des nuages   596 m  accord 1/3
+  Puy de la Tâche  score  94  vers 07:00  lever   82  haut des nuages   576 m  accord 3/3
+  Puy de l'Angle   score  94  vers 07:00  lever   82  haut des nuages   576 m  accord 3/3
+  Puy de Sancy     score  94  vers 07:00  lever   82  haut des nuages   576 m  accord 3/3
+  Couleurs        lever  17 (07:34)  coucher   0 (17:27)
+  Nuit étoilée     score  77  10 h  20:00–06:00  Lune 5 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+
+sam. 07/11  (lever 07:36)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages   728 m  accord 1/3
+  Puy de la Tâche  score 100  vers 07:00  lever   91  haut des nuages   730 m  accord 3/3
+  Puy de l'Angle   score 100  vers 07:00  lever   91  haut des nuages   730 m  accord 3/3
+  Puy de Sancy     score 100  vers 07:00  lever   91  haut des nuages   730 m  accord 3/3
+  Couleurs        lever   0 (07:36)  coucher   0 (17:26)
+  Nuit étoilée     score  50  2 h  20:00–22:00  Lune 2 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+
+dim. 08/11  (lever 07:37)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages   438 m  accord 1/3
+  Puy de la Tâche  score  20  vers 07:00  lever   15  haut des nuages   482 m  accord 2/3
+  Puy de l'Angle   score  20  vers 07:00  lever   15  haut des nuages   482 m  accord 2/3
+  Puy de Sancy     score  20  vers 07:00  lever   15  haut des nuages   482 m  accord 2/3
+  Couleurs        lever  19 (07:37)  coucher  11 (17:24)
+  Nuit étoilée     score   0  0 h  -–-  Lune 0 %
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
+
+lun. 09/11  (lever 07:38)
+  Puy de Dôme      score   0  vers –  lever    0  haut des nuages       -  accord 0/3
+  Puy de la Tâche  score   2  vers 07:00  lever    1  haut des nuages   534 m  accord 1/3
+  Puy de l'Angle   score   2  vers 07:00  lever    1  haut des nuages   534 m  accord 1/3
+  Puy de Sancy     score   2  vers 07:00  lever    1  haut des nuages   534 m  accord 1/3
+  Couleurs        lever   0 (07:38)  coucher   7 (17:23)
+  Neige           Puy de Dôme 0 cm  Puy de Sancy 0 cm
 
 Tableau de bord : rejeu/index.html
+
+Alertes qui auraient été envoyées sur la période :
+  ☁️ Mer de nuages : 10  2026-10-11 2026-10-15 2026-10-27 2026-10-29 2026-10-30 2026-10-31 2026-11-01 2026-11-03 2026-11-06 2026-11-07
+  🌅 Ciel coloré : 0  
+  ✨ Ciel étoilé : 2  2026-10-14 2026-10-15
+  ❄️ Neige sur les puys : 9  2026-10-08 2026-10-18 2026-10-21 2026-10-22 2026-10-23 2026-10-24 2026-10-25 2026-11-04 2026-11-05
