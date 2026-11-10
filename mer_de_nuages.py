@@ -865,7 +865,7 @@ def main():
         return
     try:
         envoyer_ntfy(cfg, args.topic, alerte)
-        ecrire_etat(chemin_etat, etat, nouveaux, aujourdhui)
+        ecrire_etat(chemin_etat, etat, nouveaux, maintenant.date())
         print("Notification envoyée.")
     except Exception as e:
         print(f"[erreur] envoi ntfy : {e}", file=sys.stderr)
