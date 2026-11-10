@@ -30,6 +30,7 @@ import math
 import os
 import statistics
 import sys
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -81,7 +82,13 @@ def recuperer_tout(cfg, debut=None, fin=None):
     for modele in cfg["modeles"]:
         for point in cfg["points_vallee"]:
             try:
-                rep = telecharger(point, modele, cfg.get("jours_prevision", 3), debut, fin)
+                try:
+                    rep = telecharger(point, modele, cfg.get("jours_prevision", 3), debut, fin)
+                except (urllib.error.URLError, TimeoutError) as e1:
+                    if isinstance(e1, urllib.error.HTTPError) and e1.code == 400:
+                        raise
+                    time.sleep(5)   # coupure réseau passagère : on réessaie une fois
+                    rep = telecharger(point, modele, cfg.get("jours_prevision", 3), debut, fin)
                 donnees.setdefault(modele, {})[point["id"]] = rep
             except (urllib.error.URLError, TimeoutError, ValueError) as e:
                 detail = ""
