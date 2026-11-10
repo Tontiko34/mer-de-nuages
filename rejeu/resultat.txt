@@ -1,0 +1,21 @@
+[avertissement] ecmwf_ifs025 / Limagne (Clermont) indisponible : <urlopen error _ssl.c:994: The handshake operation timed out> 
+
+Aujourd'hui (ven. 30/10)  (lever 07:24)
+  Puy de Dôme      score 100  vers 07:00  lever   83  haut des nuages   618 m  accord 2/2
+  Puy de la Tâche  score 100  vers 07:00  lever   91  haut des nuages   618 m  accord 2/2
+  Puy de l'Angle   score 100  vers 07:00  lever   91  haut des nuages   618 m  accord 2/2
+  Puy de Sancy     score 100  vers 07:00  lever   91  haut des nuages   618 m  accord 2/2
+
+Demain (sam. 31/10)  (lever 07:26)
+  Puy de Dôme      score  99  vers 08:00  lever   93  haut des nuages   852 m  accord 2/2
+  Puy de la Tâche  score 100  vers 10:00  lever  100  haut des nuages   772 m  accord 2/3
+  Puy de l'Angle   score 100  vers 10:00  lever  100  haut des nuages   772 m  accord 2/3
+  Puy de Sancy     score 100  vers 10:00  lever  100  haut des nuages   772 m  accord 2/3
+
+Après-demain (dim. 01/11)  (lever 07:27)
+  Puy de Dôme      score  52  vers 07:00  lever   46  haut des nuages   518 m  accord 1/2
+  Puy de la Tâche  score  62  vers 07:00  lever   61  haut des nuages   711 m  accord 2/3
+  Puy de l'Angle   score  62  vers 07:00  lever   61  haut des nuages   711 m  accord 2/3
+  Puy de Sancy     score  62  vers 07:00  lever   61  haut des nuages   711 m  accord 2/3
+
+Tableau de bord : rejeu/index.html
