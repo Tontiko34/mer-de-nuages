@@ -73,9 +73,9 @@ Le même calcul surveille aussi (réglages dans `config.json`, rubrique `eveneme
 
 | Alerte | Ce qui est calculé | Seuil par défaut |
 |---|---|---|
-| 🌅 Ciel coloré | nuages d'altitude au-dessus de toi (ni trop peu, ni couvert) × horizon dégagé côté soleil (à 60 et 150 km) × pas de plafond bas. Moyenne des modèles, ±1 h | score ≥ 55 et au moins 1 modèle favorable |
-| ✨ Ciel étoilé | heures de nuit noire (soleil < −18°, Lune couchée ou éclairée < 20 %) sans nuages au-dessus du col de la Croix-Morand, air sec | score ≥ 75 (≈ 3–4 h de ciel noir) et au moins 2 modèles d'accord |
-| ❄️ Neige | pluie × température à l'altitude du Puy de Dôme et du Sancy (≈ 1 cm par mm d'eau sous 0 °C) | ≥ 1 cm (médiane des modèles) ; un épisode de plusieurs jours = une seule alerte |
+| 🌅 Ciel coloré | calculé pour la vallée (Saint-Saturnin – Martres – Clermont) et la montagne (Mont-Dore – Super-Besse) : nuages d'altitude au-dessus de toi (ni trop peu, ni couvert) × horizon dégagé côté soleil (à 60 et 150 km) × pas de plafond bas. Moyenne des modèles, ±1 h | score ≥ 55 et au moins 1 modèle favorable |
+| ✨ Ciel étoilé | heures de nuit noire (soleil < −18°, Lune couchée ou éclairée < 20 %) sans nuages au-dessus du site (cols de la Croix-Morand et de la Croix-Saint-Robert, lac de Guéry), air sec | score ≥ 75 (≈ 3–4 h de ciel noir) et au moins 2 modèles d'accord |
+| ❄️ Neige | pluie × température à l'altitude du Puy de Dôme, du col de la Croix-Morand, de Super-Besse et du Sancy (≈ 1 cm par mm d'eau sous 0 °C) | ≥ 1 cm (médiane des modèles) ; un épisode de plusieurs jours = une seule alerte |
 
 **Anti-doublons** : chaque événement n'est signalé qu'une fois (score qui progresse de 15 points ou plus, ou neige
 qui double : nouvelle alerte). Les événements d'un même calcul arrivent groupés dans une seule notification.

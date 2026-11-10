@@ -115,18 +115,20 @@ def recuperer_tout(cfg, debut=None, fin=None):
 
         c = ev.get("couleurs", {})
         if c.get("actif"):
-            for cle, (lat, lon) in evenements.points_couleurs(c, date_ref).items():
-                rep = telecharger_sur({"lat": lat, "lon": lon}, modele, cfg, debut, fin,
-                                      f"couleurs {cle}", variables=evenements.VARIABLES_COULEURS)
-                if rep:
-                    donnees["couleurs"].setdefault(modele, {})[cle] = rep
+            for lieu in evenements.liste_lieux(c):
+                for cle, (lat, lon) in evenements.points_couleurs(c, date_ref, lieu).items():
+                    rep = telecharger_sur({"lat": lat, "lon": lon}, modele, cfg, debut, fin,
+                                          f"couleurs {lieu['nom']} {cle}", variables=evenements.VARIABLES_COULEURS)
+                    if rep:
+                        donnees["couleurs"].setdefault(lieu["nom"], {}).setdefault(modele, {})[cle] = rep
 
         e = ev.get("etoiles", {})
         if e.get("actif"):
-            rep = telecharger_sur(e["lieu"], modele, cfg, debut, fin, "étoiles",
-                                  variables=evenements.VARIABLES_ETOILES)
-            if rep:
-                donnees["etoiles"][modele] = rep
+            for lieu in evenements.liste_lieux(e):
+                rep = telecharger_sur(lieu, modele, cfg, debut, fin, f"étoiles {lieu['nom']}",
+                                      variables=evenements.VARIABLES_ETOILES)
+                if rep:
+                    donnees["etoiles"].setdefault(lieu["nom"], {})[modele] = rep
 
         n = ev.get("neige", {})
         if n.get("actif"):
@@ -420,30 +422,39 @@ def candidats_alertes(cfg, jours_mer, couleurs, etoiles, neige, maintenant, tout
                       "quand": dt.datetime.fromisoformat(f"{d}T{r_best['heure']}"),
                       "entete": f"{libelle_jour(d, aujourdhui)} (lever {j['lever']})", "lignes": lignes})
 
-    seuil = ev.get("couleurs", {}).get("seuil", 70)
-    for d, par_moment in couleurs.items():
-        for moment, r in par_moment.items():
-            if r["score"] < seuil or r["accord"] < 1:
-                continue
-            cands.append({
-                "cle": f"couleurs:{d}:{moment}", "type": "couleurs", "date": d, "valeur": r["score"],
-                "quand": dt.datetime.fromisoformat(f"{d}T{r['heure']}"),
-                "entete": libelle_jour(d, aujourdhui),
-                "lignes": [f"• {moment.capitalize()} à {r['heure']} : {r['score']}/100 "
-                           f"(nuages d'altitude {r['toile']} %, horizon côté soleil {100 - r['blocage']} % dégagé), "
-                           f"{r['accord']}/{r['n']} modèles"]})
-
-    seuil = ev.get("etoiles", {}).get("seuil", 80)
-    for d, r in etoiles.items():
-        if r["score"] < seuil or r["accord"] < min(2, r["n"]):
-            continue
-        jour_debut = d if r["debut"] >= "12:00" else (dt.date.fromisoformat(d) + dt.timedelta(days=1)).isoformat()
+    seuil = ev.get("couleurs", {}).get("seuil", 55)
+    groupes = {}
+    for lieu, par_jour in couleurs.items():
+        for d, par_moment in par_jour.items():
+            for moment, r in par_moment.items():
+                if r["score"] >= seuil and r["accord"] >= 1:
+                    groupes.setdefault((d, moment), []).append((lieu, r))
+    for (d, moment), liste in groupes.items():
+        best = max(r["score"] for _, r in liste)
         cands.append({
-            "cle": f"etoiles:{d}", "type": "etoiles", "date": d, "valeur": r["score"],
-            "quand": dt.datetime.fromisoformat(f"{jour_debut}T{r['debut']}"),
-            "entete": libelle_nuit(d, aujourdhui),
-            "lignes": [f"• {r['heures']} h de ciel noir et dégagé ({r['debut']}–{r['fin']}), "
-                       f"Lune éclairée à {r['lune']} %, score {r['score']}/100, {r['accord']}/{r['n']} modèles"]})
+            "cle": f"couleurs:{d}:{moment}", "type": "couleurs", "date": d, "valeur": best,
+            "quand": dt.datetime.fromisoformat(f"{d}T{liste[0][1]['heure']}"),
+            "entete": f"{libelle_jour(d, aujourdhui)} – {moment} à {liste[0][1]['heure']}",
+            "lignes": [f"• {lieu} : {r['score']}/100 (nuages d'altitude {r['toile']} %, "
+                       f"horizon côté soleil {100 - r['blocage']} % dégagé), {r['accord']}/{r['n']} modèles"
+                       for lieu, r in sorted(liste, key=lambda x: -x[1]["score"])]})
+
+    seuil = ev.get("etoiles", {}).get("seuil", 75)
+    groupes = {}
+    for lieu, par_nuit in etoiles.items():
+        for d, r in par_nuit.items():
+            if r["score"] >= seuil and r["accord"] >= min(2, r["n"]):
+                groupes.setdefault(d, []).append((lieu, r))
+    for d, liste in groupes.items():
+        liste.sort(key=lambda x: -x[1]["score"])
+        r0 = liste[0][1]
+        jour_debut = d if r0["debut"] >= "12:00" else (dt.date.fromisoformat(d) + dt.timedelta(days=1)).isoformat()
+        cands.append({
+            "cle": f"etoiles:{d}", "type": "etoiles", "date": d, "valeur": r0["score"],
+            "quand": dt.datetime.fromisoformat(f"{jour_debut}T{r0['debut']}"),
+            "entete": f"{libelle_nuit(d, aujourdhui)} – Lune éclairée à {r0['lune']} %",
+            "lignes": [f"• {lieu} : {r['heures']} h de ciel noir et dégagé ({r['debut']}–{r['fin']}), "
+                       f"score {r['score']}/100, {r['accord']}/{r['n']} modèles" for lieu, r in liste]})
 
     seuil = ev.get("neige", {}).get("seuil_cm", 1)
     jours_neige = []
@@ -635,57 +646,66 @@ def svg_graphique(heures, soleil, series, y_max, y_label, lignes_h=(), hauteur=2
 
 def html_evenements(cfg, couleurs, etoiles, neige, aujourdhui):
     ev = cfg.get("evenements", {})
-    jours = sorted(set(couleurs) | set(etoiles) | set(neige))
+    jours = sorted({d for x in list(couleurs.values()) + list(etoiles.values()) for d in x} | set(neige))
     if not jours:
         return ""
-    sommets_neige = [s["nom"] for s in ev.get("neige", {}).get("sommets", [])] if neige else []
-    seuil_n = ev.get("neige", {}).get("seuil_cm", 1)
+    s_coul = ev.get("couleurs", {}).get("seuil", 55)
+    s_etoi = ev.get("etoiles", {}).get("seuil", 75)
+    s_neige = ev.get("neige", {}).get("seuil_cm", 1)
 
     def pastille(v, seuil):
-        if v is None:
-            return "–"
         coul = "#2e9d5b" if v >= seuil else ("#8cc152" if v >= seuil - 20 else
                                               ("#f0c043" if v >= seuil - 40 else "#d9dde3"))
         return f'<span class="pastille petite" style="background:{coul}">{v}</span>'
+
+    courts = {l["nom"]: l.get("court", l["nom"]) for x in ("couleurs", "etoiles") if ev.get(x)
+              for l in evenements.liste_lieux(ev[x])}
+
+    def cellule(paires, seuil):
+        if not paires:
+            return "<td>–</td>"
+        return "<td>" + "<br>".join(f"{pastille(v, seuil)} <small>{html.escape(courts.get(nom, nom))}{suffixe}</small>"
+                                    for nom, v, suffixe in paires) + "</td>"
 
     tete = "<th>Jour</th>"
     if couleurs:
         tete += "<th>Lever coloré</th><th>Coucher coloré</th>"
     if etoiles:
-        tete += "<th>Nuit étoilée</th><th class=\"opt\">Créneau · Lune</th>"
-    for nom in sommets_neige:
-        tete += f"<th>Neige {html.escape(nom)}</th>"
+        tete += "<th>Nuit étoilée</th>"
+    if neige:
+        tete += "<th>Neige</th>"
     lignes = []
     for d in jours:
         cel = f"<td>{html.escape(libelle_jour(d, aujourdhui))}</td>"
         if couleurs:
             for m in ("lever", "coucher"):
-                r = couleurs.get(d, {}).get(m)
-                cel += (f"<td>{pastille(r['score'], ev['couleurs'].get('seuil', 70))} "
-                        f"<small>{r['heure']}</small></td>") if r else "<td>–</td>"
+                paires = [(lieu, par_jour[d][m]["score"], "") for lieu, par_jour in couleurs.items()
+                          if m in par_jour.get(d, {})]
+                heure = next((par_jour[d][m]["heure"] for par_jour in couleurs.values() if m in par_jour.get(d, {})), "")
+                c = cellule(paires, s_coul)
+                cel += c.replace("<td>", f"<td><small>{heure}</small><br>", 1) if paires else c
         if etoiles:
-            r = etoiles.get(d)
-            if r:
-                creneau = f"{r['debut']}–{r['fin']}" if r["debut"] else "–"
-                cel += (f"<td>{pastille(r['score'], ev['etoiles'].get('seuil', 80))}</td>"
-                        f"<td class=\"opt\"><small>{creneau} · Lune {r['lune']} %</small></td>")
-            else:
-                cel += "<td>–</td><td class=\"opt\">–</td>"
-        for nom in sommets_neige:
-            r = neige.get(d, {}).get(nom)
-            if r and r["cm"] >= seuil_n:
-                cel += f'<td><b style="color:#2a78c2">{r["cm"]:g} cm</b></td>'
-            elif r:
-                cel += f"<td><small>{r['cm']:g} cm</small></td>"
-            else:
-                cel += "<td>–</td>"
+            paires = []
+            for lieu, par_nuit in etoiles.items():
+                r = par_nuit.get(d)
+                if r:
+                    paires.append((lieu, r["score"], f" · {r['debut']}–{r['fin']}" if r["debut"] else ""))
+            lune = next((par_nuit[d]["lune"] for par_nuit in etoiles.values() if d in par_nuit), None)
+            c = cellule(paires, s_etoi)
+            cel += c.replace("<td>", f"<td><small>Lune {lune} %</small><br>", 1) if paires else c
+        if neige:
+            r = neige.get(d, {})
+            txt = ", ".join((f'<b style="color:#2a78c2">{html.escape(n)} {v["cm"]:g} cm</b>' if v["cm"] >= s_neige
+                             else f"<small>{html.escape(n)} {v['cm']:g} cm</small>")
+                            for n, v in r.items() if v["cm"] >= 0.3)
+            cel += f"<td>{txt or '–'}</td>"
         lignes.append(f"<tr>{cel}</tr>")
     return (f'<h2>Autres événements</h2><section class="carte"><table><thead><tr>{tete}</tr></thead>'
             f'<tbody>{"".join(lignes)}</tbody></table>'
-            f'<p class="note">Couleurs : nuages d\'altitude au-dessus de toi et horizon dégagé côté soleil. '
-            f'Nuit étoilée : heures de nuit noire (Lune couchée ou fine) sans nuages au-dessus de '
-            f'{html.escape(ev.get("etoiles", {}).get("lieu", {}).get("nom", "site"))}. '
-            f'Neige : cumul estimé à l\'altitude du sommet. Vert foncé = seuil d\'alerte atteint.</p></section>')
+            '<p class="note">Couleurs : nuages d\'altitude au-dessus de toi et horizon dégagé côté soleil. '
+            'Nuit étoilée : heures de nuit noire (Lune couchée ou fine) sans nuages au-dessus du site, et créneau. '
+            'Neige : cumul estimé à l\'altitude de chaque lieu (en bleu : seuil d\'alerte atteint). '
+            'Vert foncé = seuil d\'alerte atteint.</p></section>')
 
 
 def generer_html(cfg, heures, soleil, resultats, couches, jours, modeles_ok, aujourdhui, mode_hist,
@@ -822,13 +842,15 @@ def main():
             top = f"{r['sommet_nuages']} m" if r["sommet_nuages"] else "-"
             print(f"  {nom:<16} score {r['meilleur']:>3}  vers {r['heure']}  lever {r['matin']!s:>4}"
                   f"  haut des nuages {top:>7}  accord {round(r['accord'] * r['n_modeles'])}/{r['n_modeles']}")
-        c = couleurs.get(d, {})
-        if c:
-            print("  Couleurs        " + "  ".join(f"{m} {r['score']:>3} ({r['heure']})" for m, r in c.items()))
-        if d in etoiles:
-            r = etoiles[d]
-            print(f"  Nuit étoilée     score {r['score']:>3}  {r['heures']} h  {r['debut'] or '-'}–{r['fin'] or '-'}"
-                  f"  Lune {r['lune']} %")
+        for lieu, par_jour in couleurs.items():
+            c = par_jour.get(d, {})
+            if c:
+                print(f"  Couleurs {lieu[:22]:<22} " + "  ".join(f"{m} {r['score']:>3} ({r['heure']})" for m, r in c.items()))
+        for lieu, par_nuit in etoiles.items():
+            if d in par_nuit:
+                r = par_nuit[d]
+                print(f"  Étoiles {lieu[:23]:<23} score {r['score']:>3}  {r['heures']} h  "
+                      f"{r['debut'] or '-'}–{r['fin'] or '-'}  Lune {r['lune']} %")
         if d in neige:
             print("  Neige           " + "  ".join(f"{n} {r['cm']:g} cm" for n, r in neige[d].items()))
 

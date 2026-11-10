@@ -16,10 +16,34 @@
       "lon": 3.1
     },
     {
+      "id": "veyre",
+      "nom": "Vallée de la Veyre (Saint-Saturnin – Martres)",
+      "lat": 45.67,
+      "lon": 3.13
+    },
+    {
       "id": "limagne_sud",
       "nom": "Val d'Allier (Issoire)",
       "lat": 45.54,
       "lon": 3.25
+    },
+    {
+      "id": "chambon",
+      "nom": "Vallée de Chambon (Murol)",
+      "lat": 45.575,
+      "lon": 2.94
+    },
+    {
+      "id": "dordogne",
+      "nom": "Vallée de la Dordogne (La Bourboule)",
+      "lat": 45.59,
+      "lon": 2.745
+    },
+    {
+      "id": "sioule",
+      "nom": "Sioule (Pontgibaud)",
+      "lat": 45.83,
+      "lon": 2.85
     },
     {
       "id": "ouest",
@@ -30,9 +54,50 @@
   ],
   "sommets": [
     {
+      "nom": "Col de la Croix-Morand",
+      "altitude": 1401,
+      "vallees": [
+        "chambon",
+        "dordogne",
+        "limagne_nord",
+        "veyre"
+      ]
+    },
+    {
+      "nom": "Col de la Croix-Saint-Robert",
+      "altitude": 1451,
+      "vallees": [
+        "chambon",
+        "dordogne",
+        "limagne_sud",
+        "veyre"
+      ]
+    },
+    {
       "nom": "Puy de Dôme",
       "altitude": 1465,
       "vallees": [
+        "limagne_nord",
+        "veyre",
+        "sioule"
+      ]
+    },
+    {
+      "nom": "Puy Gros",
+      "altitude": 1485,
+      "vallees": [
+        "dordogne",
+        "sioule",
+        "ouest"
+      ]
+    },
+    {
+      "nom": "Banne d'Ordanche",
+      "altitude": 1512,
+      "vallees": [
+        "dordogne",
+        "sioule",
+        "ouest",
         "limagne_nord"
       ]
     },
@@ -41,7 +106,11 @@
       "altitude": 1629,
       "vallees": [
         "limagne_nord",
+        "veyre",
         "limagne_sud",
+        "chambon",
+        "dordogne",
+        "sioule",
         "ouest"
       ]
     },
@@ -50,7 +119,11 @@
       "altitude": 1738,
       "vallees": [
         "limagne_nord",
+        "veyre",
         "limagne_sud",
+        "chambon",
+        "dordogne",
+        "sioule",
         "ouest"
       ]
     },
@@ -59,7 +132,11 @@
       "altitude": 1886,
       "vallees": [
         "limagne_nord",
+        "veyre",
         "limagne_sud",
+        "chambon",
+        "dordogne",
+        "sioule",
         "ouest"
       ]
     }
@@ -70,27 +147,53 @@
     "couleurs": {
       "actif": true,
       "seuil": 55,
-      "lieu": {
-        "nom": "Chaîne des Puys / Monts Dore",
-        "lat": 45.65,
-        "lon": 2.92
-      },
       "distances_km": [
         60,
         150
+      ],
+      "lieux": [
+        {
+          "nom": "Vallée (Saint-Saturnin – Martres – Clermont)",
+          "lat": 45.7,
+          "lon": 3.12,
+          "court": "Vallée"
+        },
+        {
+          "nom": "Montagne (Mont-Dore – Super-Besse – Sancy)",
+          "lat": 45.55,
+          "lon": 2.85,
+          "court": "Montagne"
+        }
       ]
     },
     "etoiles": {
       "actif": true,
       "seuil": 75,
-      "lieu": {
-        "nom": "col de la Croix-Morand",
-        "lat": 45.585,
-        "lon": 2.855,
-        "altitude": 1400
-      },
       "nebulosite_max": 15,
-      "heures_cible": 4
+      "heures_cible": 4,
+      "lieux": [
+        {
+          "nom": "Col de la Croix-Morand",
+          "lat": 45.585,
+          "lon": 2.855,
+          "altitude": 1401,
+          "court": "Croix-Morand"
+        },
+        {
+          "nom": "Col de la Croix-Saint-Robert",
+          "lat": 45.555,
+          "lon": 2.84,
+          "altitude": 1451,
+          "court": "Croix-St-Robert"
+        },
+        {
+          "nom": "Lac de Guéry",
+          "lat": 45.611,
+          "lon": 2.818,
+          "altitude": 1246,
+          "court": "Guéry"
+        }
+      ]
     },
     "neige": {
       "actif": true,
@@ -101,6 +204,18 @@
           "lat": 45.772,
           "lon": 2.964,
           "altitude": 1465
+        },
+        {
+          "nom": "Col de la Croix-Morand",
+          "lat": 45.585,
+          "lon": 2.855,
+          "altitude": 1401
+        },
+        {
+          "nom": "Super-Besse",
+          "lat": 45.507,
+          "lon": 2.857,
+          "altitude": 1350
         },
         {
           "nom": "Puy de Sancy",

@@ -136,8 +136,11 @@ def _mediane(vals):
 VARIABLES_COULEURS = ["cloud_cover_low", "cloud_cover_mid", "cloud_cover_high", "precipitation"]
 
 
-def points_couleurs(cfg_c, date_ref):
-    obs = cfg_c["lieu"]
+def liste_lieux(cfg_x):
+    return cfg_x.get("lieux") or [cfg_x["lieu"]]
+
+
+def points_couleurs(cfg_c, date_ref, obs):
     az_lever, az_coucher = azimuts_lever_coucher(date_ref, obs["lat"])
     pts = {"obs": (obs["lat"], obs["lon"])}
     for moment, az in (("lever", az_lever), ("coucher", az_coucher)):
@@ -188,7 +191,11 @@ def _blocage(get, cfg_c, moment):
 
 
 def calculer_couleurs(cfg_c, donnees_c, soleil):
-    """resultat[date] = {"lever": {...}, "coucher": {...}}"""
+    """donnees_c[lieu][modele][point] -> resultat[lieu][date][moment]"""
+    return {lieu: _couleurs_lieu(cfg_c, d_lieu, soleil) for lieu, d_lieu in donnees_c.items() if d_lieu}
+
+
+def _couleurs_lieu(cfg_c, donnees_c, soleil):
     res = {}
     for d, (lever, coucher) in soleil.items():
         res[d] = {}
@@ -243,7 +250,13 @@ def _nebulosite_ciel(rep, t, alt_site):
 
 
 def calculer_etoiles(cfg_e, donnees_e, heures):
-    lieu = cfg_e["lieu"]
+    """donnees_e[lieu][modele] -> resultat[lieu][date]"""
+    par_nom = {l["nom"]: l for l in liste_lieux(cfg_e)}
+    return {nom: _etoiles_lieu(cfg_e, par_nom[nom], d_lieu, heures)
+            for nom, d_lieu in donnees_e.items() if d_lieu and nom in par_nom}
+
+
+def _etoiles_lieu(cfg_e, lieu, donnees_e, heures):
     alt = lieu.get("altitude", 0)
     max_nuages = cfg_e.get("nebulosite_max", 15)
     h_cible = cfg_e.get("heures_cible", 4)
