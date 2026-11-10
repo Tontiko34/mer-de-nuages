@@ -1,26 +1,114 @@
 {
-  "_commentaire": "Paramètres de l'alerte mer de nuages. Les altitudes sont en mètres.",
-
-  "modeles": ["meteofrance_seamless", "icon_seamless", "ecmwf_ifs025"],
+  "_commentaire": "Paramètres des alertes. Altitudes en mètres. Seuils : score 0-100 (neige : cm).",
+  "modeles": [
+    "meteofrance_seamless",
+    "icon_seamless",
+    "ecmwf_ifs025"
+  ],
   "jours_prevision": 3,
-
   "seuil_alerte": 60,
-  "jours_alerte": [1, 2],
   "fenetre_matin_heures": 3,
-
   "points_vallee": [
-    {"id": "limagne_nord", "nom": "Limagne (Clermont)",        "lat": 45.78, "lon": 3.10},
-    {"id": "limagne_sud",  "nom": "Val d'Allier (Issoire)",    "lat": 45.54, "lon": 3.25},
-    {"id": "ouest",        "nom": "Haute-Dordogne (Bort)",     "lat": 45.40, "lon": 2.50}
+    {
+      "id": "limagne_nord",
+      "nom": "Limagne (Clermont)",
+      "lat": 45.78,
+      "lon": 3.1
+    },
+    {
+      "id": "limagne_sud",
+      "nom": "Val d'Allier (Issoire)",
+      "lat": 45.54,
+      "lon": 3.25
+    },
+    {
+      "id": "ouest",
+      "nom": "Haute-Dordogne (Bort)",
+      "lat": 45.4,
+      "lon": 2.5
+    }
   ],
-
   "sommets": [
-    {"nom": "Puy de Dôme",     "altitude": 1465, "vallees": ["limagne_nord"]},
-    {"nom": "Puy de la Tâche", "altitude": 1629, "vallees": ["limagne_nord", "limagne_sud", "ouest"]},
-    {"nom": "Puy de l'Angle",  "altitude": 1738, "vallees": ["limagne_nord", "limagne_sud", "ouest"]},
-    {"nom": "Puy de Sancy",    "altitude": 1886, "vallees": ["limagne_nord", "limagne_sud", "ouest"]}
+    {
+      "nom": "Puy de Dôme",
+      "altitude": 1465,
+      "vallees": [
+        "limagne_nord"
+      ]
+    },
+    {
+      "nom": "Puy de la Tâche",
+      "altitude": 1629,
+      "vallees": [
+        "limagne_nord",
+        "limagne_sud",
+        "ouest"
+      ]
+    },
+    {
+      "nom": "Puy de l'Angle",
+      "altitude": 1738,
+      "vallees": [
+        "limagne_nord",
+        "limagne_sud",
+        "ouest"
+      ]
+    },
+    {
+      "nom": "Puy de Sancy",
+      "altitude": 1886,
+      "vallees": [
+        "limagne_nord",
+        "limagne_sud",
+        "ouest"
+      ]
+    }
   ],
-
   "ntfy_serveur": "https://ntfy.sh",
-  "url_tableau_de_bord": "https://tontiko34.github.io/mer-de-nuages/"
+  "url_tableau_de_bord": "https://tontiko34.github.io/mer-de-nuages/",
+  "evenements": {
+    "couleurs": {
+      "actif": true,
+      "seuil": 70,
+      "lieu": {
+        "nom": "Chaîne des Puys / Monts Dore",
+        "lat": 45.65,
+        "lon": 2.92
+      },
+      "distances_km": [
+        60,
+        150
+      ]
+    },
+    "etoiles": {
+      "actif": true,
+      "seuil": 80,
+      "lieu": {
+        "nom": "col de la Croix-Morand",
+        "lat": 45.585,
+        "lon": 2.855,
+        "altitude": 1400
+      },
+      "nebulosite_max": 15,
+      "heures_cible": 4
+    },
+    "neige": {
+      "actif": true,
+      "seuil_cm": 1,
+      "sommets": [
+        {
+          "nom": "Puy de Dôme",
+          "lat": 45.772,
+          "lon": 2.964,
+          "altitude": 1465
+        },
+        {
+          "nom": "Puy de Sancy",
+          "lat": 45.528,
+          "lon": 2.814,
+          "altitude": 1886
+        }
+      ]
+    }
+  }
 }

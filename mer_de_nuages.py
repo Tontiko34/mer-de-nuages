@@ -35,6 +35,8 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
+import evenements
+
 API_PREVISION = "https://api.open-meteo.com/v1/forecast"
 API_HISTORIQUE = "https://historical-forecast-api.open-meteo.com/v1/forecast"
 NIVEAUX_HPA = [1000, 975, 950, 925, 900, 850, 800, 750, 700]
@@ -54,16 +56,18 @@ def variables_horaires():
     return v
 
 
-def telecharger(point, modele, jours, debut=None, fin=None):
+def telecharger(point, modele, jours, debut=None, fin=None, variables=None, altitude=None):
     params = {
         "latitude": point["lat"],
         "longitude": point["lon"],
-        "hourly": ",".join(variables_horaires()),
+        "hourly": ",".join(variables or variables_horaires()),
         "daily": "sunrise,sunset",
         "models": modele,
         "timezone": "Europe/Paris",
         "wind_speed_unit": "kmh",
     }
+    if altitude is not None:
+        params["elevation"] = altitude   # descente d'échelle à l'altitude du sommet
     if debut:
         params["start_date"], params["end_date"] = debut, fin or debut
         base = API_HISTORIQUE
@@ -76,29 +80,61 @@ def telecharger(point, modele, jours, debut=None, fin=None):
         return json.load(r)
 
 
-def recuperer_tout(cfg, debut=None, fin=None):
-    """donnees[modele][id_vallee] = réponse JSON Open-Meteo"""
-    donnees = {}
-    for modele in cfg["modeles"]:
-        for point in cfg["points_vallee"]:
-            try:
-                try:
-                    rep = telecharger(point, modele, cfg.get("jours_prevision", 3), debut, fin)
-                except (urllib.error.URLError, TimeoutError) as e1:
-                    if isinstance(e1, urllib.error.HTTPError) and e1.code == 400:
-                        raise
-                    time.sleep(5)   # coupure réseau passagère : on réessaie une fois
-                    rep = telecharger(point, modele, cfg.get("jours_prevision", 3), debut, fin)
-                donnees.setdefault(modele, {})[point["id"]] = rep
-            except (urllib.error.URLError, TimeoutError, ValueError) as e:
+def telecharger_sur(point, modele, cfg, debut, fin, nom, **kw):
+    """Téléchargement avec un nouvel essai ; renvoie None (et un avertissement) en cas d'échec."""
+    jours = cfg.get("jours_prevision", 3)
+    for essai in (1, 2):
+        try:
+            return telecharger(point, modele, jours, debut, fin, **kw)
+        except (urllib.error.URLError, TimeoutError, ValueError) as e:
+            definitif = isinstance(e, urllib.error.HTTPError) and e.code == 400
+            if essai == 2 or definitif:
                 detail = ""
                 if isinstance(e, urllib.error.HTTPError):
                     try:
                         detail = e.read().decode()[:200]
                     except Exception:
                         pass
-                print(f"[avertissement] {modele} / {point['nom']} indisponible : {e} {detail}",
-                      file=sys.stderr)
+                print(f"[avertissement] {modele} / {nom} indisponible : {e} {detail}", file=sys.stderr)
+                return None
+            time.sleep(5)   # coupure réseau passagère : on réessaie une fois
+
+
+def recuperer_tout(cfg, debut=None, fin=None):
+    """donnees = {"vallees": {modele: {id: rep}}, "couleurs": ..., "etoiles": ..., "neige": ...}"""
+    donnees = {"vallees": {}, "couleurs": {}, "etoiles": {}, "neige": {}}
+    ev = cfg.get("evenements", {})
+    date_ref = dt.date.fromisoformat(debut) if debut else dt.date.today()
+    if debut and fin:
+        date_ref += (dt.date.fromisoformat(fin) - date_ref) / 2
+    for modele in cfg["modeles"]:
+        for point in cfg["points_vallee"]:
+            rep = telecharger_sur(point, modele, cfg, debut, fin, point["nom"])
+            if rep:
+                donnees["vallees"].setdefault(modele, {})[point["id"]] = rep
+
+        c = ev.get("couleurs", {})
+        if c.get("actif"):
+            for cle, (lat, lon) in evenements.points_couleurs(c, date_ref).items():
+                rep = telecharger_sur({"lat": lat, "lon": lon}, modele, cfg, debut, fin,
+                                      f"couleurs {cle}", variables=evenements.VARIABLES_COULEURS)
+                if rep:
+                    donnees["couleurs"].setdefault(modele, {})[cle] = rep
+
+        e = ev.get("etoiles", {})
+        if e.get("actif"):
+            rep = telecharger_sur(e["lieu"], modele, cfg, debut, fin, "étoiles",
+                                  variables=evenements.VARIABLES_ETOILES)
+            if rep:
+                donnees["etoiles"][modele] = rep
+
+        n = ev.get("neige", {})
+        if n.get("actif"):
+            for s in n["sommets"]:
+                rep = telecharger_sur(s, modele, cfg, debut, fin, f"neige {s['nom']}",
+                                      variables=evenements.VARIABLES_NEIGE, altitude=s["altitude"])
+                if rep:
+                    donnees["neige"].setdefault(modele, {})[s["nom"]] = rep
     return donnees
 
 
@@ -350,27 +386,134 @@ def libelle_jour(d, aujourdhui):
     return f"{nom} ({jj})" if nom else jj
 
 
-def construire_alerte(cfg, jours, aujourdhui):
+TITRES = {"mer": "☁️ Mer de nuages", "couleurs": "🌅 Ciel coloré",
+          "etoiles": "✨ Ciel étoilé", "neige": "❄️ Neige sur les puys"}
+
+
+def libelle_nuit(d, aujourdhui):
+    date = dt.date.fromisoformat(d)
+    lendemain = date + dt.timedelta(days=1)
+    jj = f"{JOURS_FR[date.weekday()]} {date.day:02d} → {JOURS_FR[lendemain.weekday()]} {lendemain.day:02d}/{lendemain.month:02d}"
+    nom = {0: "Cette nuit", 1: "Demain soir", 2: "Après-demain soir"}.get((date - aujourdhui).days, "Nuit")
+    return f"{nom} ({jj})"
+
+
+def candidats_alertes(cfg, jours_mer, couleurs, etoiles, neige, maintenant, tout=False):
+    """Liste des événements à venir (dans les ~2,5 jours) qui dépassent leur seuil."""
+    ev = cfg.get("evenements", {})
+    aujourdhui = maintenant.date()
+    limite = aujourdhui + dt.timedelta(days=2)
+    cands = []
+
     seuil = cfg.get("seuil_alerte", 60)
-    cibles = {(aujourdhui + dt.timedelta(days=k)).isoformat() for k in cfg.get("jours_alerte", [1, 2])}
-    lignes, maxi = [], 0
-    for d in sorted(jours):
-        if d not in cibles:
-            continue
-        retenus = [(nom, r) for nom, r in jours[d]["sommets"].items() if r["meilleur"] >= seuil]
+    for d, j in jours_mer.items():
+        retenus = [(nom, r) for nom, r in j["sommets"].items() if r["meilleur"] >= seuil]
         if not retenus:
             continue
-        lignes.append(f"{libelle_jour(d, aujourdhui)} – lever {jours[d]['lever']}")
+        nom_best, r_best = max(retenus, key=lambda x: x[1]["meilleur"])
+        lignes = []
         for nom, r in retenus:
-            maxi = max(maxi, r["meilleur"])
             top = f", nuages jusqu'à ~{r['sommet_nuages']} m" if r["sommet_nuages"] else ""
-            matin = f" (lever : {r['matin']})" if r["matin"] is not None else ""
-            lignes.append(f"• {nom} : {r['meilleur']}/100 vers {r['heure']}{matin}{top}, "
+            lignes.append(f"• {nom} : {r['meilleur']}/100 vers {r['heure']}{top}, "
                           f"{round(r['accord'] * r['n_modeles'])}/{r['n_modeles']} modèles")
-    if not lignes:
+        cands.append({"cle": f"mer:{d}", "type": "mer", "date": d, "valeur": r_best["meilleur"],
+                      "quand": dt.datetime.fromisoformat(f"{d}T{r_best['heure']}"),
+                      "entete": f"{libelle_jour(d, aujourdhui)} (lever {j['lever']})", "lignes": lignes})
+
+    seuil = ev.get("couleurs", {}).get("seuil", 70)
+    for d, par_moment in couleurs.items():
+        for moment, r in par_moment.items():
+            if r["score"] < seuil:
+                continue
+            cands.append({
+                "cle": f"couleurs:{d}:{moment}", "type": "couleurs", "date": d, "valeur": r["score"],
+                "quand": dt.datetime.fromisoformat(f"{d}T{r['heure']}"),
+                "entete": libelle_jour(d, aujourdhui),
+                "lignes": [f"• {moment.capitalize()} à {r['heure']} : {r['score']}/100 "
+                           f"(nuages d'altitude {r['toile']} %, horizon côté soleil {100 - r['blocage']} % dégagé), "
+                           f"{r['accord']}/{r['n']} modèles"]})
+
+    seuil = ev.get("etoiles", {}).get("seuil", 80)
+    for d, r in etoiles.items():
+        if r["score"] < seuil:
+            continue
+        jour_debut = d if r["debut"] >= "12:00" else (dt.date.fromisoformat(d) + dt.timedelta(days=1)).isoformat()
+        cands.append({
+            "cle": f"etoiles:{d}", "type": "etoiles", "date": d, "valeur": r["score"],
+            "quand": dt.datetime.fromisoformat(f"{jour_debut}T{r['debut']}"),
+            "entete": libelle_nuit(d, aujourdhui),
+            "lignes": [f"• {r['heures']} h de ciel noir et dégagé ({r['debut']}–{r['fin']}), "
+                       f"Lune éclairée à {r['lune']} %, score {r['score']}/100, {r['accord']}/{r['n']} modèles"]})
+
+    seuil = ev.get("neige", {}).get("seuil_cm", 1)
+    for d, par_sommet in neige.items():
+        retenus = [(nom, r) for nom, r in par_sommet.items() if r["cm"] >= seuil]
+        if not retenus:
+            continue
+        cands.append({
+            "cle": f"neige:{d}", "type": "neige", "date": d, "valeur": max(r["cm"] for _, r in retenus),
+            "quand": dt.datetime.fromisoformat(f"{d}T23:59"),
+            "entete": libelle_jour(d, aujourdhui),
+            "lignes": [f"• {nom} : ~{r['cm']:g} cm (modèles : {r['min']:g} à {r['max']:g} cm)"
+                       for nom, r in retenus]})
+
+    if tout:
+        return cands
+    return [c for c in cands
+            if c["quand"] > maintenant + dt.timedelta(hours=1)
+            and dt.date.fromisoformat(c["date"]) <= limite]
+
+
+def filtrer_nouveaux(cands, etat):
+    """Garde les événements jamais signalés, ou qui se sont nettement renforcés."""
+    nouveaux = []
+    for c in cands:
+        ancien = etat.get(c["cle"])
+        if ancien is None:
+            nouveaux.append(c)
+        elif c["type"] == "neige":
+            if c["valeur"] >= 2 * ancien and c["valeur"] - ancien >= 2:
+                nouveaux.append(c)
+        elif c["valeur"] >= ancien + 15:
+            nouveaux.append(c)
+    return nouveaux
+
+
+def construire_message(nouveaux):
+    if not nouveaux:
         return None
-    return {"titre": "Mer de nuages en vue", "message": "\n".join(lignes),
-            "priorite": 4 if maxi >= 80 else 3}
+    types = [t for t in TITRES if any(c["type"] == t for c in nouveaux)]
+    blocs = []
+    for t in types:
+        lignes = [TITRES[t]] if len(types) > 1 else []
+        precedent = None
+        for c in sorted((c for c in nouveaux if c["type"] == t), key=lambda c: c["quand"]):
+            if c["entete"] != precedent:
+                lignes.append(c["entete"])
+                precedent = c["entete"]
+            lignes += c["lignes"]
+        blocs.append("\n".join(lignes))
+    fort = any((c["type"] == "mer" and c["valeur"] >= 80) or (c["type"] == "couleurs" and c["valeur"] >= 85)
+               or (c["type"] == "etoiles" and c["valeur"] >= 90) for c in nouveaux)
+    titre = TITRES[types[0]] if len(types) == 1 else "Événements à venir"
+    return {"titre": titre, "message": "\n\n".join(blocs), "priorite": 4 if fort else 3}
+
+
+def lire_etat(chemin):
+    try:
+        with open(chemin, encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return {}
+
+
+def ecrire_etat(chemin, etat, nouveaux, aujourdhui):
+    for c in nouveaux:
+        etat[c["cle"]] = max(c["valeur"], etat.get(c["cle"], 0))
+    limite = (aujourdhui - dt.timedelta(days=5)).isoformat()
+    etat = {k: v for k, v in etat.items() if k.split(":")[1] >= limite}
+    with open(chemin, "w", encoding="utf-8") as f:
+        json.dump(etat, f, ensure_ascii=False, indent=1, sort_keys=True)
 
 
 def envoyer_ntfy(cfg, topic, alerte):
@@ -378,7 +521,7 @@ def envoyer_ntfy(cfg, topic, alerte):
         "topic": topic,
         "title": alerte["titre"],
         "message": alerte["message"],
-        "tags": ["cloud", "mountain"],
+        "tags": ["mountain"],
         "priority": alerte["priorite"],
     }
     if cfg.get("url_tableau_de_bord"):
@@ -472,7 +615,63 @@ def svg_graphique(heures, soleil, series, y_max, y_label, lignes_h=(), hauteur=2
     return f'<div class="legende">{leg}</div>' + "".join(out)
 
 
-def generer_html(cfg, heures, soleil, resultats, couches, jours, modeles_ok, aujourdhui, mode_hist):
+def html_evenements(cfg, couleurs, etoiles, neige, aujourdhui):
+    ev = cfg.get("evenements", {})
+    jours = sorted(set(couleurs) | set(etoiles) | set(neige))
+    if not jours:
+        return ""
+    sommets_neige = [s["nom"] for s in ev.get("neige", {}).get("sommets", [])] if neige else []
+    seuil_n = ev.get("neige", {}).get("seuil_cm", 1)
+
+    def pastille(v, seuil):
+        if v is None:
+            return "–"
+        coul = "#2e9d5b" if v >= seuil else ("#8cc152" if v >= seuil - 20 else
+                                              ("#f0c043" if v >= seuil - 40 else "#d9dde3"))
+        return f'<span class="pastille petite" style="background:{coul}">{v}</span>'
+
+    tete = "<th>Jour</th>"
+    if couleurs:
+        tete += "<th>Lever coloré</th><th>Coucher coloré</th>"
+    if etoiles:
+        tete += "<th>Nuit étoilée</th><th class=\"opt\">Créneau · Lune</th>"
+    for nom in sommets_neige:
+        tete += f"<th>Neige {html.escape(nom)}</th>"
+    lignes = []
+    for d in jours:
+        cel = f"<td>{html.escape(libelle_jour(d, aujourdhui))}</td>"
+        if couleurs:
+            for m in ("lever", "coucher"):
+                r = couleurs.get(d, {}).get(m)
+                cel += (f"<td>{pastille(r['score'], ev['couleurs'].get('seuil', 70))} "
+                        f"<small>{r['heure']}</small></td>") if r else "<td>–</td>"
+        if etoiles:
+            r = etoiles.get(d)
+            if r:
+                creneau = f"{r['debut']}–{r['fin']}" if r["debut"] else "–"
+                cel += (f"<td>{pastille(r['score'], ev['etoiles'].get('seuil', 80))}</td>"
+                        f"<td class=\"opt\"><small>{creneau} · Lune {r['lune']} %</small></td>")
+            else:
+                cel += "<td>–</td><td class=\"opt\">–</td>"
+        for nom in sommets_neige:
+            r = neige.get(d, {}).get(nom)
+            if r and r["cm"] >= seuil_n:
+                cel += f'<td><b style="color:#2a78c2">{r["cm"]:g} cm</b></td>'
+            elif r:
+                cel += f"<td><small>{r['cm']:g} cm</small></td>"
+            else:
+                cel += "<td>–</td>"
+        lignes.append(f"<tr>{cel}</tr>")
+    return (f'<h2>Autres événements</h2><section class="carte"><table><thead><tr>{tete}</tr></thead>'
+            f'<tbody>{"".join(lignes)}</tbody></table>'
+            f'<p class="note">Couleurs : nuages d\'altitude au-dessus de toi et horizon dégagé côté soleil. '
+            f'Nuit étoilée : heures de nuit noire (Lune couchée ou fine) sans nuages au-dessus de '
+            f'{html.escape(ev.get("etoiles", {}).get("lieu", {}).get("nom", "site"))}. '
+            f'Neige : cumul estimé à l\'altitude du sommet. Vert foncé = seuil d\'alerte atteint.</p></section>')
+
+
+def generer_html(cfg, heures, soleil, resultats, couches, jours, modeles_ok, aujourdhui, mode_hist,
+                 bloc_ev=""):
     noms_vallees = {p["id"]: p["nom"] for p in cfg["points_vallee"]}
     maj = dt.datetime.now().strftime("%d/%m/%Y %H:%M")
 
@@ -538,12 +737,13 @@ td {{ padding:5px 8px; border-bottom:1px solid var(--ligne); white-space:nowrap;
 .note {{ color:var(--doux); font-size:.85rem; }}
 @media (max-width:640px) {{ .opt {{ display:none; }} th, td {{ padding:4px 5px; }} }}
 </style></head><body><main>
-<h1>Mer de nuages – Chaîne des Puys &amp; Monts Dore</h1>
+<h1>Mer de nuages &amp; ciel – Chaîne des Puys &amp; Monts Dore</h1>
 <p class="sous">{titre_mode} · mise à jour {maj} · modèles : {html.escape(", ".join(modeles_ok))}</p>
 <p class="note">Score 0–100 : nuages denses sous le sommet × ciel dégagé au sommet × inversion × vent faible.
 <b style="color:#2e9d5b">≥ 75</b> très probable · <b style="color:#8cc152">50–75</b> probable · <b style="color:#c9a227">25–50</b> possible.
 « Lever » = score moyen autour du lever du soleil.</p>
 {"".join(cartes)}
+{bloc_ev}
 <h2>Score heure par heure</h2>{g_score}
 <h2>Altitude estimée du sommet de la couche nuageuse</h2>
 <p class="note">Lignes pleines : haut de la couche nuageuse la plus basse au-dessus de chaque vallée (médiane des modèles). Pointillés : altitude des sommets. La mer de nuages est visible quand la ligne pleine passe sous un pointillé et que le score est élevé. Bandes grises : nuit.</p>
@@ -581,10 +781,21 @@ def main():
     if args.sauver_donnees:
         with open(args.sauver_donnees, "w", encoding="utf-8") as f:
             json.dump(donnees, f)
+    if "vallees" not in donnees:          # ancien format de sauvegarde
+        donnees = {"vallees": donnees}
 
-    heures, soleil, resultats, couches = calculer(cfg, donnees)
+    heures, soleil, resultats, couches = calculer(cfg, donnees["vallees"])
     jours = synthese_journaliere(cfg, heures, soleil, resultats)
-    aujourdhui = dt.date.fromisoformat(heures[0][:10]) if (args.debut or args.donnees) else dt.date.today()
+    ev = cfg.get("evenements", {})
+    couleurs = (evenements.calculer_couleurs(ev["couleurs"], donnees["couleurs"], soleil)
+                if donnees.get("couleurs") and ev.get("couleurs", {}).get("actif") else {})
+    etoiles = (evenements.calculer_etoiles(ev["etoiles"], donnees["etoiles"], heures)
+               if donnees.get("etoiles") and ev.get("etoiles", {}).get("actif") else {})
+    neige = (evenements.calculer_neige(ev["neige"], donnees["neige"])
+             if donnees.get("neige") and ev.get("neige", {}).get("actif") else {})
+
+    rejeu = bool(args.debut or args.donnees)
+    aujourdhui = dt.date.fromisoformat(heures[0][:10]) if rejeu else dt.date.today()
 
     # Résumé console
     for d in sorted(jours):
@@ -593,25 +804,50 @@ def main():
             top = f"{r['sommet_nuages']} m" if r["sommet_nuages"] else "-"
             print(f"  {nom:<16} score {r['meilleur']:>3}  vers {r['heure']}  lever {r['matin']!s:>4}"
                   f"  haut des nuages {top:>7}  accord {round(r['accord'] * r['n_modeles'])}/{r['n_modeles']}")
+        c = couleurs.get(d, {})
+        if c:
+            print("  Couleurs        " + "  ".join(f"{m} {r['score']:>3} ({r['heure']})" for m, r in c.items()))
+        if d in etoiles:
+            r = etoiles[d]
+            print(f"  Nuit étoilée     score {r['score']:>3}  {r['heures']} h  {r['debut'] or '-'}–{r['fin'] or '-'}"
+                  f"  Lune {r['lune']} %")
+        if d in neige:
+            print("  Neige           " + "  ".join(f"{n} {r['cm']:g} cm" for n, r in neige[d].items()))
 
     os.makedirs(os.path.dirname(os.path.abspath(args.sortie)), exist_ok=True)
     with open(args.sortie, "w", encoding="utf-8") as f:
         f.write(generer_html(cfg, heures, soleil, resultats, couches, jours,
-                             list(donnees.keys()), aujourdhui, bool(args.debut)))
+                             list(donnees["vallees"].keys()), aujourdhui, bool(args.debut),
+                             html_evenements(cfg, couleurs, etoiles, neige, aujourdhui)))
     print(f"\nTableau de bord : {args.sortie}")
 
-    if args.debut or args.sans_alerte:
+    if rejeu:
+        # Bilan : combien d'alertes chaque type aurait déclenché sur la période
+        tous = candidats_alertes(cfg, jours, couleurs, etoiles, neige,
+                                 dt.datetime.combine(aujourdhui, dt.time()), tout=True)
+        print("\nAlertes qui auraient été envoyées sur la période :")
+        for t, titre in TITRES.items():
+            liste = [c for c in tous if c["type"] == t]
+            print(f"  {titre} : {len(liste)}  " + " ".join(c["cle"].split(":", 1)[1] for c in liste))
         return
-    alerte = construire_alerte(cfg, jours, aujourdhui)
+    if args.sans_alerte:
+        return
+
+    maintenant = evenements.maintenant_local()
+    chemin_etat = os.path.join(ici, "etat_alertes.json")
+    etat = lire_etat(chemin_etat)
+    nouveaux = filtrer_nouveaux(candidats_alertes(cfg, jours, couleurs, etoiles, neige, maintenant), etat)
+    alerte = construire_message(nouveaux)
     if not alerte:
-        print("Pas d'alerte : aucun créneau au-dessus du seuil.")
+        print("Pas de nouvelle alerte.")
         return
-    print("\n" + alerte["message"])
+    print("\n" + alerte["titre"] + "\n" + alerte["message"])
     if not args.topic:
         print("(NTFY_TOPIC non défini : notification non envoyée)")
         return
     try:
         envoyer_ntfy(cfg, args.topic, alerte)
+        ecrire_etat(chemin_etat, etat, nouveaux, aujourdhui)
         print("Notification envoyée.")
     except Exception as e:
         print(f"[erreur] envoi ntfy : {e}", file=sys.stderr)
