@@ -69,7 +69,7 @@
   "evenements": {
     "couleurs": {
       "actif": true,
-      "seuil": 70,
+      "seuil": 55,
       "lieu": {
         "nom": "Chaîne des Puys / Monts Dore",
         "lat": 45.65,
@@ -82,7 +82,7 @@
     },
     "etoiles": {
       "actif": true,
-      "seuil": 80,
+      "seuil": 75,
       "lieu": {
         "nom": "col de la Croix-Morand",
         "lat": 45.585,

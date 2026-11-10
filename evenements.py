@@ -146,38 +146,45 @@ def points_couleurs(cfg_c, date_ref):
     return pts
 
 
-def _score_couleur(rep, t, cfg_c, moment):
-    obs = rep["obs"]
-    haut = _val(obs, "cloud_cover_high", t)
-    moyen = _val(obs, "cloud_cover_mid", t)
-    bas = _val(obs, "cloud_cover_low", t)
-    pluie = _val(obs, "precipitation", t) or 0
-    if haut is None or moyen is None:
-        return None
+def _heures_autour(t, k=1):
+    t0 = dt.datetime.fromisoformat(t)
+    return [(t0 + dt.timedelta(hours=j)).strftime("%Y-%m-%dT%H:00") for j in range(-k, k + 1)]
+
+
+def _moyenne_ensemble(donnees_c, cle_point, var, t):
+    """Moyenne sur les modèles et sur l'heure ± 1 h : lisse les désaccords de timing et de position."""
+    vals = [_val(rep[cle_point], var, h) for rep in donnees_c.values() if cle_point in rep
+            for h in _heures_autour(t)]
+    vals = [v for v in vals if v is not None]
+    return sum(vals) / len(vals) if vals else None
+
+
+def _score_couleur_valeurs(haut, moyen, bas, pluie, blocage):
     # « Toile » : nuages moyens/hauts au-dessus de soi, qui vont s'embraser
     toile = min(100.0, haut + 0.6 * moyen)
-    if toile < 10:
+    if toile < 15:
         s_toile = 0.0
-    elif toile < 30:
-        s_toile = (toile - 10) / 20
+    elif toile < 40:
+        s_toile = (toile - 15) / 25
     elif toile <= 70:
         s_toile = 1.0
     else:
         s_toile = 1 - 0.6 * (toile - 70) / 30
-    # Chemin de la lumière : l'horizon côté soleil doit être dégagé
-    blocage = 0.0
-    for dist in cfg_c.get("distances_km", [60, 150]):
-        p = rep.get(f"{moment}_{dist}")
-        if not p:
-            continue
-        b = _val(p, "cloud_cover_low", t) or 0
-        m = _val(p, "cloud_cover_mid", t) or 0
-        blocage = max(blocage, b, m - 30 if m > 70 else 0)
-    s_chemin = (1 - blocage / 100) ** 1.5
-    s_local = 1 - 0.7 * (bas or 0) / 100
+    s_chemin = (1 - blocage / 100) ** 1.5           # horizon côté soleil dégagé
+    s_local = 1 - 0.7 * bas / 100                   # pas de plafond bas au-dessus de soi
     s_pluie = 0.5 if pluie > 0.2 else 1.0
-    return {"score": 100 * s_toile * s_chemin * s_local * s_pluie,
-            "toile": toile, "blocage": blocage}
+    return 100 * s_toile * s_chemin * s_local * s_pluie, toile
+
+
+def _blocage(get, cfg_c, moment):
+    b = 0.0
+    for dist in cfg_c.get("distances_km", [60, 150]):
+        bas = get(f"{moment}_{dist}", "cloud_cover_low")
+        moy = get(f"{moment}_{dist}", "cloud_cover_mid")
+        if bas is None:
+            continue
+        b = max(b, bas, (moy - 30) if (moy or 0) > 70 else 0)
+    return b
 
 
 def calculer_couleurs(cfg_c, donnees_c, soleil):
@@ -187,19 +194,31 @@ def calculer_couleurs(cfg_c, donnees_c, soleil):
         res[d] = {}
         for moment, t_ev in (("lever", lever), ("coucher", coucher)):
             t = _heure_ronde(t_ev)
-            par_modele = [_score_couleur(rep, t, cfg_c, moment) for rep in donnees_c.values() if "obs" in rep]
-            par_modele = [r for r in par_modele if r]
-            if not par_modele:
+            # Score de consensus (moyenne des modèles)
+            g = lambda cle, var: _moyenne_ensemble(donnees_c, cle, var, t)
+            haut, moyen = g("obs", "cloud_cover_high"), g("obs", "cloud_cover_mid")
+            if haut is None or moyen is None:
                 continue
-            scores = [r["score"] for r in par_modele]
-            res[d][moment] = {
-                "score": round(statistics.median(scores)),
-                "accord": sum(s >= 50 for s in scores),
-                "n": len(scores),
-                "heure": t_ev[11:16],
-                "toile": round(_mediane([r["toile"] for r in par_modele])),
-                "blocage": round(_mediane([r["blocage"] for r in par_modele])),
-            }
+            blocage = _blocage(g, cfg_c, moment)
+            score, toile = _score_couleur_valeurs(haut, moyen, g("obs", "cloud_cover_low") or 0,
+                                                  g("obs", "precipitation") or 0, blocage)
+            # Accord : nombre de modèles qui, seuls, donnent aussi un ciel favorable
+            accord, n = 0, 0
+            for rep in donnees_c.values():
+                if "obs" not in rep:
+                    continue
+                gm = lambda cle, var: (lambda v: sum(v) / len(v) if v else None)(
+                    [x for x in (_val(rep[cle], var, h) for h in _heures_autour(t)) if x is not None]
+                    if cle in rep else [])
+                hm, mm = gm("obs", "cloud_cover_high"), gm("obs", "cloud_cover_mid")
+                if hm is None or mm is None:
+                    continue
+                n += 1
+                sc, _ = _score_couleur_valeurs(hm, mm, gm("obs", "cloud_cover_low") or 0,
+                                               gm("obs", "precipitation") or 0, _blocage(gm, cfg_c, moment))
+                accord += sc >= 50
+            res[d][moment] = {"score": round(score), "accord": accord, "n": n, "heure": t_ev[11:16],
+                              "toile": round(toile), "blocage": round(blocage)}
     return res
 
 

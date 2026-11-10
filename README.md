@@ -67,13 +67,30 @@ python mer_de_nuages.py --debut 2025-12-01 --fin 2025-12-10 --sortie rejeu.html
 Si le score est trop prudent ou trop optimiste, ajuste dans `mer_de_nuages.py`, fonction `analyser()`,
 les bornes des lignes `s_dessous`, `s_sommet`, `s_inversion`, `s_vent`.
 
+## Autres alertes
+
+Le même calcul surveille aussi (réglages dans `config.json`, rubrique `evenements`) :
+
+| Alerte | Ce qui est calculé | Seuil par défaut |
+|---|---|---|
+| 🌅 Ciel coloré | nuages d'altitude au-dessus de toi (ni trop peu, ni couvert) × horizon dégagé côté soleil (à 60 et 150 km) × pas de plafond bas. Moyenne des modèles, ±1 h | score ≥ 55 et au moins 1 modèle favorable |
+| ✨ Ciel étoilé | heures de nuit noire (soleil < −18°, Lune couchée ou éclairée < 20 %) sans nuages au-dessus du col de la Croix-Morand, air sec | score ≥ 75 (≈ 3–4 h de ciel noir) et au moins 2 modèles d'accord |
+| ❄️ Neige | pluie × température à l'altitude du Puy de Dôme et du Sancy (≈ 1 cm par mm d'eau sous 0 °C) | ≥ 1 cm (médiane des modèles) ; un épisode de plusieurs jours = une seule alerte |
+
+**Anti-doublons** : chaque événement n'est signalé qu'une fois (score qui progresse de 15 points ou plus, ou neige
+qui double : nouvelle alerte). Les événements d'un même calcul arrivent groupés dans une seule notification.
+Le fichier `etat_alertes.json` garde la mémoire des alertes envoyées.
+
+Sur le rejeu du 1er octobre au 9 novembre 2026, avec ces seuils : 10 jours de mer de nuages, 3 ciels colorés,
+4 nuits étoilées et 4 épisodes neigeux, soit ~18 notifications en 38 jours. Les seuils « ciel coloré » et
+« ciel étoilé » ont été fixés pour ne retenir que les meilleurs cas : à affiner avec tes observations.
+
 ## Réglages (config.json)
 
 | Clé | Rôle |
 |---|---|
 | `modeles` | modèles Open-Meteo interrogés (retire-en un s'il renvoie une erreur) |
-| `seuil_alerte` | score minimal pour notifier (60 par défaut) |
-| `jours_alerte` | jours surveillés : 0 = aujourd'hui, 1 = demain, 2 = après-demain |
+| `seuil_alerte` | score minimal de mer de nuages pour notifier (60 par défaut) |
 | `points_vallee` | points où l'on regarde le profil (lat/lon) — ajoute-en librement |
 | `sommets` | nom, altitude, et vallées visibles depuis chaque sommet |
 

@@ -423,7 +423,7 @@ def candidats_alertes(cfg, jours_mer, couleurs, etoiles, neige, maintenant, tout
     seuil = ev.get("couleurs", {}).get("seuil", 70)
     for d, par_moment in couleurs.items():
         for moment, r in par_moment.items():
-            if r["score"] < seuil:
+            if r["score"] < seuil or r["accord"] < 1:
                 continue
             cands.append({
                 "cle": f"couleurs:{d}:{moment}", "type": "couleurs", "date": d, "valeur": r["score"],
@@ -435,7 +435,7 @@ def candidats_alertes(cfg, jours_mer, couleurs, etoiles, neige, maintenant, tout
 
     seuil = ev.get("etoiles", {}).get("seuil", 80)
     for d, r in etoiles.items():
-        if r["score"] < seuil:
+        if r["score"] < seuil or r["accord"] < min(2, r["n"]):
             continue
         jour_debut = d if r["debut"] >= "12:00" else (dt.date.fromisoformat(d) + dt.timedelta(days=1)).isoformat()
         cands.append({
@@ -446,16 +446,29 @@ def candidats_alertes(cfg, jours_mer, couleurs, etoiles, neige, maintenant, tout
                        f"Lune éclairée à {r['lune']} %, score {r['score']}/100, {r['accord']}/{r['n']} modèles"]})
 
     seuil = ev.get("neige", {}).get("seuil_cm", 1)
-    for d, par_sommet in neige.items():
-        retenus = [(nom, r) for nom, r in par_sommet.items() if r["cm"] >= seuil]
-        if not retenus:
-            continue
+    jours_neige = []
+    for d in sorted(neige):
+        retenus = [(nom, r) for nom, r in neige[d].items() if r["cm"] >= seuil]
+        if retenus and (tout or dt.date.fromisoformat(d) >= aujourdhui):
+            jours_neige.append((d, retenus))
+    # Jours consécutifs = un seul épisode = une seule alerte
+    episodes = []
+    for d, retenus in jours_neige:
+        if episodes and dt.date.fromisoformat(d) - dt.date.fromisoformat(episodes[-1][-1][0]) == dt.timedelta(days=1):
+            episodes[-1].append((d, retenus))
+        else:
+            episodes.append([(d, retenus)])
+    for ep in episodes:
+        d0 = ep[0][0]
+        lignes = []
+        for d, retenus in ep:
+            detail = ", ".join(f"{nom} ~{r['cm']:g} cm ({r['min']:g}–{r['max']:g})" for nom, r in retenus)
+            lignes.append(f"• {libelle_jour(d, aujourdhui)} : {detail}")
         cands.append({
-            "cle": f"neige:{d}", "type": "neige", "date": d, "valeur": max(r["cm"] for _, r in retenus),
-            "quand": dt.datetime.fromisoformat(f"{d}T23:59"),
-            "entete": libelle_jour(d, aujourdhui),
-            "lignes": [f"• {nom} : ~{r['cm']:g} cm (modèles : {r['min']:g} à {r['max']:g} cm)"
-                       for nom, r in retenus]})
+            "cle": f"neige:{d0}", "type": "neige", "date": d0, "jours": [d for d, _ in ep],
+            "valeur": round(sum(max(r["cm"] for _, r in ret) for _, ret in ep), 1),
+            "quand": dt.datetime.fromisoformat(f"{ep[-1][0]}T23:59"),
+            "entete": "Épisode neigeux" if len(ep) > 1 else "Neige prévue", "lignes": lignes})
 
     if tout:
         return cands
@@ -468,7 +481,11 @@ def filtrer_nouveaux(cands, etat):
     """Garde les événements jamais signalés, ou qui se sont nettement renforcés."""
     nouveaux = []
     for c in cands:
-        ancien = etat.get(c["cle"])
+        if c["type"] == "neige":
+            connus = [etat[f"neige:{j}"] for j in c["jours"] if f"neige:{j}" in etat]
+            ancien = max(connus) if connus else None
+        else:
+            ancien = etat.get(c["cle"])
         if ancien is None:
             nouveaux.append(c)
         elif c["type"] == "neige":
@@ -509,7 +526,8 @@ def lire_etat(chemin):
 
 def ecrire_etat(chemin, etat, nouveaux, aujourdhui):
     for c in nouveaux:
-        etat[c["cle"]] = max(c["valeur"], etat.get(c["cle"], 0))
+        for cle in ([f"neige:{j}" for j in c["jours"]] if c["type"] == "neige" else [c["cle"]]):
+            etat[cle] = max(c["valeur"], etat.get(cle, 0))
     limite = (aujourdhui - dt.timedelta(days=5)).isoformat()
     etat = {k: v for k, v in etat.items() if k.split(":")[1] >= limite}
     with open(chemin, "w", encoding="utf-8") as f:
