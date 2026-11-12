@@ -383,9 +383,9 @@ def synthese_journaliere(cfg, heures, soleil, resultats):
 def libelle_jour(d, aujourdhui):
     date = dt.date.fromisoformat(d)
     ecart = (date - aujourdhui).days
-    nom = {0: "Aujourd'hui", 1: "Demain", 2: "Après-demain"}.get(ecart, "")
-    jj = f"{JOURS_FR[date.weekday()]} {date.day:02d}/{date.month:02d}"
-    return f"{nom} ({jj})" if nom else jj
+    nom = {0: "aujourd'hui", 1: "demain", 2: "après-demain"}.get(ecart, "")
+    jj = f"{JOURS_FR[date.weekday()].capitalize()} {date.day:02d}/{date.month:02d}"
+    return f"{jj} ({nom})" if nom else jj
 
 
 TITRES = {"mer": "☁️ Mer de nuages", "couleurs": "🌅 Ciel coloré",
@@ -396,8 +396,8 @@ def libelle_nuit(d, aujourdhui):
     date = dt.date.fromisoformat(d)
     lendemain = date + dt.timedelta(days=1)
     jj = f"{JOURS_FR[date.weekday()]} {date.day:02d} → {JOURS_FR[lendemain.weekday()]} {lendemain.day:02d}/{lendemain.month:02d}"
-    nom = {0: "Cette nuit", 1: "Demain soir", 2: "Après-demain soir"}.get((date - aujourdhui).days, "Nuit")
-    return f"{nom} ({jj})"
+    nom = {0: "cette nuit", 1: "demain soir", 2: "après-demain soir"}.get((date - aujourdhui).days, "")
+    return f"Nuit du {jj} ({nom})" if nom else f"Nuit du {jj}"
 
 
 def candidats_alertes(cfg, jours_mer, couleurs, etoiles, neige, maintenant, tout=False):
