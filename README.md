@@ -79,6 +79,8 @@ Le même calcul surveille aussi (réglages dans `config.json`, rubrique `eveneme
 
 **Anti-doublons** : chaque événement n'est signalé qu'une fois (score qui progresse de 15 points ou plus, ou neige
 qui double : nouvelle alerte). Les événements d'un même calcul arrivent groupés dans une seule notification.
+Si la prévision d'un événement déjà annoncé se dégrade nettement (mer de nuages sous 40, ciel coloré sous 35,
+nuit étoilée sous 55, neige divisée par deux), une notification « Prévision dégradée » le signale une fois.
 Le fichier `etat_alertes.json` garde la mémoire des alertes envoyées.
 
 Sur le rejeu du 1er octobre au 9 novembre 2026, avec ces seuils : 10 jours de mer de nuages, 3 ciels colorés,

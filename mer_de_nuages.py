@@ -28,6 +28,7 @@ import html
 import json
 import math
 import os
+import re
 import statistics
 import sys
 import time
@@ -331,7 +332,8 @@ def calculer(cfg, donnees):
                 st = sommet_couche(profil(h, i, rep.get("elevation", 0) or 0))
                 if st is not None:
                     tops.append(st)
-            serie[t] = round(statistics.median(tops)) if tops else None
+            med = statistics.median(tops) if tops else None
+            serie[t] = round(med) if med is not None and med <= 2300 else None
         couches[p["id"]] = serie
     return heures, soleil, resultats, couches
 
@@ -496,7 +498,7 @@ def filtrer_nouveaux(cands, etat):
             connus = [etat[f"neige:{j}"] for j in c["jours"] if f"neige:{j}" in etat]
             ancien = max(connus) if connus else None
         else:
-            ancien = etat.get(c["cle"])
+            ancien = None if f"annule:{c['cle']}" in etat else etat.get(c["cle"])
         if ancien is None:
             nouveaux.append(c)
         elif c["type"] == "neige":
@@ -507,13 +509,57 @@ def filtrer_nouveaux(cands, etat):
     return nouveaux
 
 
-def construire_message(nouveaux):
-    if not nouveaux:
+def valeurs_actuelles(jours_mer, couleurs, etoiles, neige):
+    v = {}
+    for d, j in jours_mer.items():
+        v[f"mer:{d}"] = max((r["meilleur"] for r in j["sommets"].values()), default=0)
+    for par_jour in couleurs.values():
+        for d, par_moment in par_jour.items():
+            for m, r in par_moment.items():
+                v[f"couleurs:{d}:{m}"] = max(v.get(f"couleurs:{d}:{m}", 0), r["score"])
+    for par_nuit in etoiles.values():
+        for d, r in par_nuit.items():
+            v[f"etoiles:{d}"] = max(v.get(f"etoiles:{d}", 0), r["score"])
+    for d, par_lieu in neige.items():
+        v[f"neige:{d}"] = max((r["cm"] for r in par_lieu.values()), default=0)
+    return v
+
+
+def annulations(cfg, etat, actuelles, maintenant):
+    """Alertes déjà envoyées dont la prévision s'est nettement dégradée."""
+    ev = cfg.get("evenements", {})
+    seuils = {"mer": cfg.get("seuil_alerte", 60) - 20,
+              "couleurs": ev.get("couleurs", {}).get("seuil", 55) - 20,
+              "etoiles": ev.get("etoiles", {}).get("seuil", 75) - 20,
+              "neige": ev.get("neige", {}).get("seuil_cm", 1) / 2}
+    aujourdhui = maintenant.date().isoformat()
+    sortie = []
+    for cle, envoye in etat.items():
+        if cle.startswith("annule:") or f"annule:{cle}" in etat:
+            continue
+        morceaux = cle.split(":")
+        typ, d = morceaux[0], morceaux[1]
+        if d < aujourdhui or (d == aujourdhui and typ != "etoiles" and maintenant.hour >= 10):
+            continue
+        actuel = actuelles.get(cle)
+        if actuel is None or typ not in seuils:
+            continue
+        if actuel < seuils[typ]:
+            sortie.append({"cle": cle, "type": typ, "date": d, "moment": morceaux[2] if len(morceaux) > 2 else "",
+                           "avant": envoye, "actuel": actuel})
+    return sortie
+
+
+NOMS_COURTS = {"mer": "Mer de nuages", "couleurs": "Ciel coloré", "etoiles": "Nuit étoilée", "neige": "Neige"}
+
+
+def construire_message(nouveaux, annules=(), aujourdhui=None):
+    if not nouveaux and not annules:
         return None
     types = [t for t in TITRES if any(c["type"] == t for c in nouveaux)]
     blocs = []
     for t in types:
-        lignes = [TITRES[t]] if len(types) > 1 else []
+        lignes = [TITRES[t]] if (len(types) > 1 or annules) else []
         precedent = None
         for c in sorted((c for c in nouveaux if c["type"] == t), key=lambda c: c["quand"]):
             if c["entete"] != precedent:
@@ -521,9 +567,22 @@ def construire_message(nouveaux):
                 precedent = c["entete"]
             lignes += c["lignes"]
         blocs.append("\n".join(lignes))
+    if annules:
+        lignes = ["❌ Prévision dégradée (alerte précédente)"]
+        for a in sorted(annules, key=lambda a: a["date"]):
+            unite = " cm" if a["type"] == "neige" else ""
+            quoi = NOMS_COURTS[a["type"]] + (f" ({a['moment']})" if a["moment"] else "")
+            jour = libelle_jour(a["date"], aujourdhui) if aujourdhui else a["date"]
+            lignes.append(f"• {quoi} – {jour} : {a['avant']:g}{unite} → {a['actuel']:g}{unite}")
+        blocs.append("\n".join(lignes))
     fort = any((c["type"] == "mer" and c["valeur"] >= 80) or (c["type"] == "couleurs" and c["valeur"] >= 85)
                or (c["type"] == "etoiles" and c["valeur"] >= 90) for c in nouveaux)
-    titre = TITRES[types[0]] if len(types) == 1 else "Événements à venir"
+    if not nouveaux:
+        titre = "Prévision dégradée"
+    elif len(types) == 1 and not annules:
+        titre = TITRES[types[0]]
+    else:
+        titre = "Événements à venir"
     return {"titre": titre, "message": "\n\n".join(blocs), "priorite": 4 if fort else 3}
 
 
@@ -535,12 +594,16 @@ def lire_etat(chemin):
         return {}
 
 
-def ecrire_etat(chemin, etat, nouveaux, aujourdhui):
+def ecrire_etat(chemin, etat, nouveaux, aujourdhui, annules=()):
     for c in nouveaux:
         for cle in ([f"neige:{j}" for j in c["jours"]] if c["type"] == "neige" else [c["cle"]]):
-            etat[cle] = max(c["valeur"], etat.get(cle, 0))
+            etat[cle] = max(c["valeur"], 0 if f"annule:{cle}" in etat else etat.get(cle, 0))
+            etat.pop(f"annule:{cle}", None)
+    for a in annules:
+        etat[f"annule:{a['cle']}"] = a["actuel"]
     limite = (aujourdhui - dt.timedelta(days=5)).isoformat()
-    etat = {k: v for k, v in etat.items() if k.split(":")[1] >= limite}
+    etat = {k: v for k, v in etat.items()
+            if (re.search(r"\d{4}-\d{2}-\d{2}", k) or [""])[0] >= limite}
     with open(chemin, "w", encoding="utf-8") as f:
         json.dump(etat, f, ensure_ascii=False, indent=1, sort_keys=True)
 
@@ -566,8 +629,8 @@ def envoyer_ntfy(cfg, topic, alerte):
 # --------------------------------------------------------------------------- #
 # Tableau de bord HTML
 # --------------------------------------------------------------------------- #
-COULEURS_SOMMETS = ["#2a78c2", "#d0682b", "#3a9d5d", "#8b5cc4"]
-COULEURS_VALLEES = ["#5a6b7d", "#9a7b4f", "#4f8a8b"]
+COULEURS_SOMMETS = ["#7d8792"]
+COULEURS_VALLEES = ["#2a78c2", "#d0682b", "#3a9d5d", "#8b5cc4", "#c2417a", "#9a7b4f", "#4f8a8b"]
 
 
 def couleur_score(s):
@@ -617,7 +680,8 @@ def svg_graphique(heures, soleil, series, y_max, y_label, lignes_h=(), hauteur=2
     for k, (val, lib, coul) in enumerate(lignes_h):
         out.append(f'<line x1="{mg}" x2="{L - md}" y1="{y(val):.1f}" y2="{y(val):.1f}" '
                    f'stroke="{coul}" stroke-dasharray="5 4" stroke-width="1.4"/>'
-                   f'<text x="{L - md - 4 - k * 115}" y="{y(val) - 4:.1f}" class="axe" text-anchor="end" '
+                   f'<text x="{(L - md - 4) if k % 2 else (mg + 4)}" y="{y(val) - 4:.1f}" class="axe" '
+                   f'text-anchor="{"end" if k % 2 else "start"}" '
                    f'style="fill:{coul}">{html.escape(lib)}</text>')
     for nom, coul, valeurs in series:
         seg, segs = [], []
@@ -644,155 +708,174 @@ def svg_graphique(heures, soleil, series, y_max, y_label, lignes_h=(), hauteur=2
     return f'<div class="legende">{leg}</div>' + "".join(out)
 
 
-def html_evenements(cfg, couleurs, etoiles, neige, aujourdhui):
-    ev = cfg.get("evenements", {})
-    jours = sorted({d for x in list(couleurs.values()) + list(etoiles.values()) for d in x} | set(neige))
-    if not jours:
-        return ""
-    s_coul = ev.get("couleurs", {}).get("seuil", 55)
-    s_etoi = ev.get("etoiles", {}).get("seuil", 75)
-    s_neige = ev.get("neige", {}).get("seuil_cm", 1)
+def _pastille(v, seuil=None, grande=False):
+    if v is None:
+        return '<span class="pastille vide">–</span>'
+    if seuil is None:
+        coul = couleur_score(v)
+    else:
+        coul = "#2e9d5b" if v >= seuil else ("#8cc152" if v >= seuil - 15 else
+                                              ("#f0c043" if v >= seuil - 35 else "#d9dde3"))
+    return f'<span class="pastille{" grande" if grande else ""}" style="background:{coul}">{v}</span>'
 
-    def pastille(v, seuil):
-        coul = "#2e9d5b" if v >= seuil else ("#8cc152" if v >= seuil - 20 else
-                                              ("#f0c043" if v >= seuil - 40 else "#d9dde3"))
-        return f'<span class="pastille petite" style="background:{coul}">{v}</span>'
 
-    courts = {l["nom"]: l.get("court", l["nom"]) for x in ("couleurs", "etoiles") if ev.get(x)
-              for l in evenements.liste_lieux(ev[x])}
-
-    def cellule(paires, seuil):
-        if not paires:
-            return "<td>–</td>"
-        return "<td>" + "<br>".join(f"{pastille(v, seuil)} <small>{html.escape(courts.get(nom, nom))}{suffixe}</small>"
-                                    for nom, v, suffixe in paires) + "</td>"
-
-    tete = "<th>Jour</th>"
-    if couleurs:
-        tete += "<th>Lever coloré</th><th>Coucher coloré</th>"
-    if etoiles:
-        tete += "<th>Nuit étoilée</th>"
-    if neige:
-        tete += "<th>Neige</th>"
-    lignes = []
-    for d in jours:
-        cel = f"<td>{html.escape(libelle_jour(d, aujourdhui))}</td>"
-        if couleurs:
-            for m in ("lever", "coucher"):
-                paires = [(lieu, par_jour[d][m]["score"], "") for lieu, par_jour in couleurs.items()
-                          if m in par_jour.get(d, {})]
-                heure = next((par_jour[d][m]["heure"] for par_jour in couleurs.values() if m in par_jour.get(d, {})), "")
-                c = cellule(paires, s_coul)
-                cel += c.replace("<td>", f"<td><small>{heure}</small><br>", 1) if paires else c
-        if etoiles:
-            paires = []
-            for lieu, par_nuit in etoiles.items():
-                r = par_nuit.get(d)
-                if r:
-                    paires.append((lieu, r["score"], f" · {r['debut']}–{r['fin']}" if r["debut"] else ""))
-            lune = next((par_nuit[d]["lune"] for par_nuit in etoiles.values() if d in par_nuit), None)
-            c = cellule(paires, s_etoi)
-            cel += c.replace("<td>", f"<td><small>Lune {lune} %</small><br>", 1) if paires else c
-        if neige:
-            r = neige.get(d, {})
-            txt = ", ".join((f'<b style="color:#2a78c2">{html.escape(n)} {v["cm"]:g} cm</b>' if v["cm"] >= s_neige
-                             else f"<small>{html.escape(n)} {v['cm']:g} cm</small>")
-                            for n, v in r.items() if v["cm"] >= 0.3)
-            cel += f"<td>{txt or '–'}</td>"
-        lignes.append(f"<tr>{cel}</tr>")
-    return (f'<h2>Autres événements</h2><section class="carte"><table><thead><tr>{tete}</tr></thead>'
-            f'<tbody>{"".join(lignes)}</tbody></table>'
-            '<p class="note">Couleurs : nuages d\'altitude au-dessus de toi et horizon dégagé côté soleil. '
-            'Nuit étoilée : heures de nuit noire (Lune couchée ou fine) sans nuages au-dessus du site, et créneau. '
-            'Neige : cumul estimé à l\'altitude de chaque lieu (en bleu : seuil d\'alerte atteint). '
-            'Vert foncé = seuil d\'alerte atteint.</p></section>')
+def _tuile(icone, titre, corps, note="", large=False):
+    note = f'<div class="t-note">{note}</div>' if note else ""
+    return (f'<div class="tuile{" large" if large else ""}"><div class="t-titre">{icone} {html.escape(titre)}</div>'
+            f'<div class="t-corps">{corps}</div>{note}</div>')
 
 
 def generer_html(cfg, heures, soleil, resultats, couches, jours, modeles_ok, aujourdhui, mode_hist,
-                 bloc_ev=""):
+                 couleurs=None, etoiles=None, neige=None):
+    couleurs, etoiles, neige = couleurs or {}, etoiles or {}, neige or {}
+    ev = cfg.get("evenements", {})
+    s_mer = cfg.get("seuil_alerte", 60)
+    s_coul = ev.get("couleurs", {}).get("seuil", 55)
+    s_etoi = ev.get("etoiles", {}).get("seuil", 75)
+    s_neige = ev.get("neige", {}).get("seuil_cm", 1)
     noms_vallees = {p["id"]: p["nom"] for p in cfg["points_vallee"]}
-    maj = dt.datetime.now().strftime("%d/%m/%Y %H:%M")
+    courts = {l["nom"]: l.get("court", l["nom"]) for x in ("couleurs", "etoiles") if ev.get(x)
+              for l in evenements.liste_lieux(ev[x])}
+    maj = (evenements.maintenant_local() if not mode_hist else dt.datetime.now()).strftime("%d/%m/%Y %H:%M")
 
     cartes = []
     for d in sorted(jours):
         j = jours[d]
-        lignes = []
-        for i, s in enumerate(cfg["sommets"]):
+        tuiles = []
+
+        # Mer de nuages
+        sommets = sorted(j["sommets"].items(), key=lambda x: -x[1]["meilleur"])
+        if sommets:
+            nom, r = sommets[0]
+            nb = sum(1 for _, x in sommets if x["meilleur"] >= 50)
+            if r["meilleur"] >= 25:
+                corps = (f'{_pastille(r["meilleur"], grande=True)}<div><b>{html.escape(nom)}</b> vers {r["heure"]}'
+                         + (f'<br><small>nuages jusqu\'à ~{r["sommet_nuages"]} m · '
+                            f'{round(r["accord"] * r["n_modeles"])}/{r["n_modeles"]} modèles</small>'
+                            if r["sommet_nuages"] else "") + "</div>")
+                note = f"{nb} lieu(x) sur {len(sommets)} à 50 ou plus" if nb else "aucun lieu à 50 ou plus"
+            else:
+                corps, note = f'{_pastille(r["meilleur"], grande=True)}<div>Pas de mer de nuages</div>', ""
+            tuiles.append(_tuile("☁️", "Mer de nuages", corps, note, large=True))
+
+        # Lever / coucher colorés
+        for moment, icone, titre in (("lever", "🌅", "Lever coloré"), ("coucher", "🌇", "Coucher coloré")):
+            lignes = []
+            heure = j["lever"] if moment == "lever" else j["coucher"]
+            for lieu, par_jour in couleurs.items():
+                r = par_jour.get(d, {}).get(moment)
+                if r:
+                    lignes.append(f'<div class="ligne">{_pastille(r["score"], s_coul)} '
+                                  f'{html.escape(courts.get(lieu, lieu))}</div>')
+            if lignes:
+                tuiles.append(_tuile(icone, f"{titre} · {heure}", "".join(lignes)))
+
+        # Nuit étoilée
+        if etoiles:
+            lignes, lune = [], None
+            for lieu, par_nuit in etoiles.items():
+                r = par_nuit.get(d)
+                if r:
+                    lune = r["lune"]
+                    creneau = f' <small>{r["debut"]}–{r["fin"]}</small>' if r["debut"] else ""
+                    lignes.append(f'<div class="ligne">{_pastille(r["score"], s_etoi)} '
+                                  f'{html.escape(courts.get(lieu, lieu))}{creneau}</div>')
+            if lignes:
+                tuiles.append(_tuile("✨", "Nuit étoilée", "".join(lignes), f"Lune éclairée à {lune} %"))
+
+        # Neige
+        if neige:
+            r = neige.get(d, {})
+            lignes = [f'<div class="ligne"><b style="color:#2a78c2">{v["cm"]:g} cm</b> {html.escape(n)}</div>'
+                      if v["cm"] >= s_neige else f'<div class="ligne"><small>{v["cm"]:g} cm {html.escape(n)}</small></div>'
+                      for n, v in r.items() if v["cm"] >= 0.3]
+            tuiles.append(_tuile("❄️", "Neige", "".join(lignes) or "<div>Pas de neige</div>"))
+
+        # Détail par sommet (repliable)
+        lignes_t = []
+        for s in cfg["sommets"]:
             r = j["sommets"].get(s["nom"])
             if not r:
                 continue
             top = f"{r['sommet_nuages']} m" if r["sommet_nuages"] else "–"
-            matin = "–" if r["matin"] is None else r["matin"]
-            lignes.append(
+            lignes_t.append(
                 f'<tr><td>{html.escape(s["nom"])} <small>{s["altitude"]} m</small></td>'
-                f'<td><b class="pastille" style="background:{couleur_score(r["meilleur"])}">'
-                f'{r["meilleur"]}</b></td><td>{r["heure"]}</td>'
-                f'<td><span class="pastille petite" style="background:{couleur_score(r["matin"])}">'
-                f'{matin}</span></td><td>{top}</td>'
+                f'<td>{_pastille(r["meilleur"])}</td><td>{r["heure"]}</td><td>{top}</td>'
                 f'<td class="opt">{round(r["accord"] * r["n_modeles"])}/{r["n_modeles"]}</td>'
                 f'<td class="opt"><small>{html.escape(noms_vallees.get(r["vallee"], ""))}</small></td></tr>')
+        detail = (f'<details><summary>Mer de nuages : détail par sommet</summary><table><thead><tr>'
+                  f'<th>Sommet</th><th>Score</th><th>Heure</th><th>Haut des nuages</th>'
+                  f'<th class="opt">Modèles ≥ 50</th><th class="opt">Vallée</th></tr></thead>'
+                  f'<tbody>{"".join(lignes_t)}</tbody></table></details>')
+
         cartes.append(
             f'<section class="carte"><h3>{html.escape(libelle_jour(d, aujourdhui))}'
             f'<small> lever {j["lever"]} · coucher {j["coucher"]}</small></h3>'
-            f'<table><thead><tr><th>Sommet</th><th>Score</th><th>Créneau</th><th>Lever</th>'
-            f'<th>Haut des nuages</th><th class="opt">Modèles ≥ 50</th><th class="opt">Vallée</th></tr></thead>'
-            f'<tbody>{"".join(lignes)}</tbody></table></section>')
+            f'<div class="tuiles">{"".join(tuiles)}</div>{detail}</section>')
 
-    series_score = [(s["nom"], COULEURS_SOMMETS[i % 4],
-                     {t: (r["score"] if r else None) for t, r in resultats[s["nom"]].items()})
-                    for i, s in enumerate(cfg["sommets"])]
-    g_score = svg_graphique(heures, soleil, series_score, 100, "score", hauteur=210)
-
-    series_top = [(noms_vallees[vid], COULEURS_VALLEES[i % 3], serie)
+    series_top = [(noms_vallees[vid], COULEURS_VALLEES[i % len(COULEURS_VALLEES)], serie)
                   for i, (vid, serie) in enumerate(couches.items())]
-    alts = [(s["altitude"], s["nom"], COULEURS_SOMMETS[i % 4]) for i, s in enumerate(cfg["sommets"])]
-    g_top = svg_graphique(heures, soleil, series_top, 2500, "altitude (m)", lignes_h=alts)
+    # Sommets d'altitudes voisines regroupés sur une seule ligne pointillée
+    groupes = []
+    for s_ in sorted(cfg["sommets"], key=lambda x: x["altitude"]):
+        court = s_["nom"].replace("Col de la ", "").replace("Puy de la ", "").replace("Puy de l'", "")                         .replace("Puy de ", "")
+        if groupes and s_["altitude"] - groupes[-1][0] <= 70:
+            groupes[-1][1].append(court)
+        else:
+            groupes.append([s_["altitude"], [court]])
+    alts = [(alt, f"{' / '.join(noms)} ({alt} m)", COULEURS_SOMMETS[0]) for alt, noms in groupes]
+    g_top = svg_graphique(heures, soleil, series_top, 2500, "altitude (m)", lignes_h=alts, hauteur=300)
 
     titre_mode = "Rejeu historique" if mode_hist else "Prévision"
     return f"""<!DOCTYPE html>
 <html lang="fr"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mer de nuages – Puy-de-Dôme</title>
+<title>Mer de nuages &amp; ciel – Puy-de-Dôme</title>
 <style>
-:root {{ --fond:#f6f7f9; --carte:#fff; --texte:#1d2733; --doux:#6b7785; --ligne:#e3e7ec; --nuit:rgba(30,45,70,.07); }}
-@media (prefers-color-scheme: dark) {{ :root {{ --fond:#14181d; --carte:#1d232a; --texte:#e6ebf0; --doux:#93a0ad; --ligne:#2c343d; --nuit:rgba(255,255,255,.04); }} }}
+:root {{ --fond:#f6f7f9; --carte:#fff; --tuile:#f1f3f6; --texte:#1d2733; --doux:#6b7785; --ligne:#e3e7ec; --nuit:rgba(30,45,70,.07); }}
+@media (prefers-color-scheme: dark) {{ :root {{ --fond:#14181d; --carte:#1d232a; --tuile:#252c34; --texte:#e6ebf0; --doux:#93a0ad; --ligne:#2c343d; --nuit:rgba(255,255,255,.04); }} }}
 body {{ margin:0; font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; background:var(--fond); color:var(--texte); }}
-main {{ max-width:1000px; margin:auto; padding:20px 16px 40px; }}
-h1 {{ font-size:1.5rem; margin:0 0 4px; }} h2 {{ font-size:1.1rem; margin:28px 0 8px; }}
-.sous {{ color:var(--doux); margin:0 0 18px; font-size:.9rem; }}
-.carte {{ background:var(--carte); border:1px solid var(--ligne); border-radius:10px; padding:12px 14px; margin:12px 0; overflow-x:auto; }}
-.carte h3 {{ margin:0 0 8px; font-size:1rem; }} .carte h3 small {{ color:var(--doux); font-weight:400; margin-left:8px; }}
-table {{ border-collapse:collapse; width:100%; font-size:.9rem; }}
-th {{ text-align:left; color:var(--doux); font-weight:500; padding:4px 8px; border-bottom:1px solid var(--ligne); white-space:nowrap; }}
-td {{ padding:5px 8px; border-bottom:1px solid var(--ligne); white-space:nowrap; }} td small {{ color:var(--doux); }}
-.pastille {{ display:inline-block; min-width:34px; text-align:center; border-radius:6px; padding:1px 6px; color:#13202c; }}
-.petite {{ min-width:26px; font-size:.85rem; }}
-.graph {{ width:100%; height:auto; background:var(--carte); border:1px solid var(--ligne); border-radius:10px; }}
+main {{ max-width:1000px; margin:auto; padding:18px 14px 40px; }}
+h1 {{ font-size:1.4rem; margin:0 0 4px; }} h2 {{ font-size:1.1rem; margin:28px 0 8px; }}
+.sous {{ color:var(--doux); margin:0 0 14px; font-size:.88rem; }}
+.carte {{ background:var(--carte); border:1px solid var(--ligne); border-radius:12px; padding:12px 14px; margin:12px 0; }}
+.carte h3 {{ margin:0 0 10px; font-size:1.05rem; }} .carte h3 small {{ color:var(--doux); font-weight:400; margin-left:8px; font-size:.85rem; }}
+.tuiles {{ display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:8px; }}
+.tuile {{ background:var(--tuile); border-radius:10px; padding:9px 11px; }}
+.tuile.large {{ grid-column:1 / -1; }}
+.t-titre {{ font-size:.82rem; color:var(--doux); margin-bottom:6px; font-weight:600; }}
+.t-corps {{ display:flex; flex-direction:column; gap:4px; }}
+.t-corps:has(.grande) {{ flex-direction:row; align-items:center; gap:10px; }}
+.t-note {{ font-size:.78rem; color:var(--doux); margin-top:6px; }}
+.ligne {{ display:flex; align-items:center; gap:7px; }}
+.pastille {{ display:inline-block; min-width:30px; text-align:center; border-radius:6px; padding:1px 6px; color:#13202c; font-weight:600; font-size:.88rem; }}
+.pastille.grande {{ min-width:46px; font-size:1.25rem; padding:4px 8px; border-radius:8px; }}
+.pastille.vide {{ background:var(--ligne); color:var(--doux); }}
+details {{ margin-top:10px; }} summary {{ cursor:pointer; color:var(--doux); font-size:.88rem; }}
+table {{ border-collapse:collapse; width:100%; font-size:.88rem; margin-top:6px; }}
+th {{ text-align:left; color:var(--doux); font-weight:500; padding:4px 6px; border-bottom:1px solid var(--ligne); }}
+td {{ padding:4px 6px; border-bottom:1px solid var(--ligne); }} td small {{ color:var(--doux); }}
+.defile {{ overflow-x:auto; }} .graph {{ width:100%; min-width:720px; height:auto; background:var(--carte); border:1px solid var(--ligne); border-radius:12px; }}
 .graph .nuit {{ fill:var(--nuit); }} .graph .grille {{ stroke:var(--ligne); }} .graph .jour {{ stroke:var(--doux); stroke-opacity:.35; }}
 .graph .axe {{ font-size:11px; fill:var(--doux); }}
-.legende {{ display:flex; flex-wrap:wrap; gap:14px; font-size:.85rem; margin:4px 0 6px; color:var(--doux); }}
+.legende {{ display:flex; flex-wrap:wrap; gap:6px 14px; font-size:.82rem; margin:4px 0 6px; color:var(--doux); }}
 .legende i {{ display:inline-block; width:14px; height:3px; border-radius:2px; margin-right:6px; vertical-align:middle; }}
-.note {{ color:var(--doux); font-size:.85rem; }}
-@media (max-width:640px) {{ .opt {{ display:none; }} th, td {{ padding:4px 5px; }} }}
+.note {{ color:var(--doux); font-size:.84rem; }}
+@media (max-width:640px) {{ .opt {{ display:none; }} .tuiles {{ grid-template-columns:1fr 1fr; }} }}
+@media (max-width:380px) {{ .tuiles {{ grid-template-columns:1fr; }} }}
 </style></head><body><main>
-<h1>Mer de nuages &amp; ciel – Chaîne des Puys &amp; Monts Dore</h1>
+<h1>Mer de nuages &amp; ciel – Puys &amp; Monts Dore</h1>
 <p class="sous">{titre_mode} · mise à jour {maj} · modèles : {html.escape(", ".join(modeles_ok))}</p>
-<p class="note">Score 0–100 : nuages denses sous le sommet × ciel dégagé au sommet × inversion × vent faible.
-<b style="color:#2e9d5b">≥ 75</b> très probable · <b style="color:#8cc152">50–75</b> probable · <b style="color:#c9a227">25–50</b> possible.
-« Lever » = score moyen autour du lever du soleil.</p>
+<p class="note">Scores sur 100 · vert foncé = seuil d'alerte atteint (mer de nuages {s_mer}, ciel coloré {s_coul}, nuit étoilée {s_etoi}, neige {s_neige:g} cm).</p>
 {"".join(cartes)}
-{bloc_ev}
-<h2>Score heure par heure</h2>{g_score}
-<h2>Altitude estimée du sommet de la couche nuageuse</h2>
-<p class="note">Lignes pleines : haut de la couche nuageuse la plus basse au-dessus de chaque vallée (médiane des modèles). Pointillés : altitude des sommets. La mer de nuages est visible quand la ligne pleine passe sous un pointillé et que le score est élevé. Bandes grises : nuit.</p>
-{g_top}
-<p class="note">Données : Open-Meteo (Météo-France AROME/ARPEGE, DWD ICON, ECMWF IFS). Résolution verticale limitée aux niveaux de pression (≈ 250–500 m d'écart) : l'altitude du haut des nuages est indicative (± 200 m).</p>
+<h2>Altitude du haut des nuages</h2>
+<p class="note">Une ligne par vallée : altitude du haut de la couche nuageuse basse (médiane des modèles). Pointillés : altitude des sommets.
+Mer de nuages visible quand une ligne passe sous un pointillé ; plus elle reste longtemps basse et stable, plus la mer de nuages dure. Bandes grises : nuit.</p>
+<div class="defile">{g_top}</div>
+<p class="note">Données : Open-Meteo (Météo-France AROME/ARPEGE, DWD ICON, ECMWF IFS). Altitude des nuages indicative (± 200 m).</p>
 </main></body></html>"""
 
 
-# --------------------------------------------------------------------------- #
-# Programme principal
-# --------------------------------------------------------------------------- #
 def main():
     ici = os.path.dirname(os.path.abspath(__file__))
     ap = argparse.ArgumentParser(description="Alerte mer de nuages – Puy-de-Dôme")
@@ -858,7 +941,7 @@ def main():
     with open(args.sortie, "w", encoding="utf-8") as f:
         f.write(generer_html(cfg, heures, soleil, resultats, couches, jours,
                              list(donnees["vallees"].keys()), aujourdhui, bool(args.debut),
-                             html_evenements(cfg, couleurs, etoiles, neige, aujourdhui)))
+                             couleurs, etoiles, neige))
     print(f"\nTableau de bord : {args.sortie}")
 
     if rejeu:
@@ -877,7 +960,8 @@ def main():
     chemin_etat = os.path.join(ici, "etat_alertes.json")
     etat = lire_etat(chemin_etat)
     nouveaux = filtrer_nouveaux(candidats_alertes(cfg, jours, couleurs, etoiles, neige, maintenant), etat)
-    alerte = construire_message(nouveaux)
+    annules = annulations(cfg, etat, valeurs_actuelles(jours, couleurs, etoiles, neige), maintenant)
+    alerte = construire_message(nouveaux, annules, maintenant.date())
     if not alerte:
         print("Pas de nouvelle alerte.")
         return
@@ -887,7 +971,7 @@ def main():
         return
     try:
         envoyer_ntfy(cfg, args.topic, alerte)
-        ecrire_etat(chemin_etat, etat, nouveaux, maintenant.date())
+        ecrire_etat(chemin_etat, etat, nouveaux, maintenant.date(), annules)
         print("Notification envoyée.")
     except Exception as e:
         print(f"[erreur] envoi ntfy : {e}", file=sys.stderr)
