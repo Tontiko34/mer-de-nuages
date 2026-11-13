@@ -1,8 +1,8 @@
 {
- "annule:couleurs:2026-11-13:coucher": 9,
  "couleurs:2026-11-11:coucher": 80,
- "couleurs:2026-11-13:coucher": 91,
+ "couleurs:2026-11-13:coucher": 94,
  "etoiles:2026-11-13": 100,
  "mer:2026-11-13": 75,
- "neige:2026-11-13": 2.0
+ "neige:2026-11-13": 2.0,
+ "neige:2026-11-15": 3.9
 }
