@@ -1,32 +1,33 @@
-"""Sonde ponctuelle (2) : profondeur des archives Webcam-HD et accès bergfex."""
+"""Sonde ponctuelle (3) : début des archives + images des jours de test."""
 import json, re, time, urllib.request, os
 UA = {"User-Agent": "Mozilla/5.0 (alerte-mer-de-nuages; usage personnel)"}
+BASE = "https://skol-webcams-archives.s3.fr-par.scw.cloud/"
+CAM = "sancy_sommet-station"
 os.makedirs("sonde", exist_ok=True)
 rapport = {}
 
-def get(url):
-    try:
-        with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=30) as r:
-            return r.status, r.read().decode("utf-8", "replace")
-    except Exception as e:
-        return str(e), ""
+def get(url, binaire=False):
+    with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=30) as r:
+        d = r.read()
+        return d if binaire else d.decode("utf-8", "replace")
 
-BASE = "https://skol-webcams-archives.s3.fr-par.scw.cloud/"
-for jour in ["2026/11/24", "2026/11/13", "2026/10/31", "2026/01/15", "2025/12/15", "2025/01/15", "2024/12/15", "2023/12/15", "2022/12/15"]:
-    st, txt = get(f"{BASE}?list-type=2&prefix=archives/sancy_sommet-station/1080/{jour}/")
-    cles = re.findall(r"<Key>([^<]+)</Key>", txt)
-    rapport[jour] = {"statut": st, "nb": len(cles), "exemples": cles[:3] + cles[-2:], "debut": txt[:300] if not cles else ""}
-    time.sleep(1)
-# Dossiers de premier niveau (autres webcams du même hébergeur, autres résolutions)
-st, txt = get(f"{BASE}?list-type=2&prefix=archives/&delimiter=/&max-keys=1000")
-rapport["webcams_hebergees"] = {"statut": st, "prefixes": re.findall(r"<Prefix>([^<]+)</Prefix>", txt)[:300]}
-time.sleep(5)
-for nom, url in {"bergfex": "https://www.bergfex.fr/sommer/clermont-auvergne-metropole/webcams/c25369/",
-                 "bergfex_robots": "https://www.bergfex.fr/robots.txt"}.items():
-    st, txt = get(url)
-    rapport[nom] = {"statut": st, "images": sorted(set(re.findall(r'https?://[^"\'\s<>()]+?\.(?:jpe?g|webp)', txt)))[:30],
-                    "mentions": re.findall(r'[^<>]{0,60}(?:©|OPGC|Observatoire)[^<>]{0,60}', txt)[:10],
-                    "robots_extrait": txt[:1500] if "robots" in nom else ""}
-    time.sleep(5)
-with open("sonde/rapport2.json", "w", encoding="utf-8") as f:
+def cles(prefixe):
+    return re.findall(r"<Key>([^<]+)</Key>", get(f"{BASE}?list-type=2&prefix={prefixe}&max-keys=1000"))
+
+# Premier mois disponible
+for an, mois in [(2025, m) for m in range(2, 13)]:
+    n = len(cles(f"archives/{CAM}/1080/{an}/{mois:02d}/"))
+    rapport[f"{an}-{mois:02d}"] = n
+    time.sleep(0.5)
+
+# Images du matin (~8 h locale) des jours de test
+for jour in ["2026/10/31", "2026/11/12", "2026/11/13"]:
+    liste = [k for k in cles(f"archives/{CAM}/small/{jour}/")]
+    choix = min(liste, key=lambda k: abs(int(re.search(r"T(\d{4})", k).group(1)) - 715)) if liste else None
+    if choix:
+        with open("sonde/" + choix.split("/")[-1], "wb") as f:
+            f.write(get(BASE + choix, binaire=True))
+    rapport[jour] = {"nb": len(liste), "heures": [re.search(r"T(\d{4})", k).group(1) for k in liste], "choix": choix}
+    time.sleep(0.5)
+with open("sonde/rapport3.json", "w", encoding="utf-8") as f:
     json.dump(rapport, f, ensure_ascii=False, indent=1)
