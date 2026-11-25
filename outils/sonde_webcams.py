@@ -1,37 +1,32 @@
-"""Sonde ponctuelle (4) : archives des webcams OPGC (Puy de Dôme sommet, Cézeaux)."""
+"""Sonde ponctuelle (5) : diaporama d'archives OPGC pour les jours de test."""
 import json, re, time, urllib.request, urllib.parse, os
 UA = {"User-Agent": "Mozilla/5.0 (alerte-mer-de-nuages; usage personnel)"}
-os.makedirs("sonde", exist_ok=True)
 B = "https://wwwobs.univ-bpclermont.fr/opgc/"
+os.makedirs("sonde", exist_ok=True)
 rapport = {}
 
-def get(url, binaire=False):
+def req(url, data=None, binaire=False):
     try:
-        with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=30) as r:
-            d = r.read()
-            return r.status, (d if binaire else d.decode("latin-1", "replace"))
+        r = urllib.request.Request(url, headers=UA, data=urllib.parse.urlencode(data).encode() if data else None)
+        with urllib.request.urlopen(r, timeout=40) as rep:
+            d = rep.read()
+            return rep.status, (d if binaire else d.decode("latin-1", "replace"))
     except Exception as e:
-        return str(e), b"" if binaire else ""
+        return str(e), (b"" if binaire else "")
 
-for nom, url in {"page": B + "webcam.php", "mentions": B + "mentions.php"}.items():
-    st, txt = get(url)
-    with open(f"sonde/opgc_{nom}.html", "w", encoding="utf-8") as f:
-        f.write(txt)
-    rapport[nom] = {"statut": st, "liens": sorted(set(re.findall(r'(?:href|src|action)="([^"]+)"', txt)))[:120],
-                    "texte": re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", txt))[:3000]}
-    time.sleep(1)
-
-# Suivre les liens d'archives trouvés (1 niveau, quelques-uns)
-suivis = [l for l in rapport["page"]["liens"] if re.search(r"archiv|annee|year|mois|jour|\.php\?", l, re.I)][:8]
-for l in suivis:
-    url = urllib.parse.urljoin(B + "webcam.php", l)
-    st, txt = get(url)
-    rapport["suivi:" + l] = {"statut": st, "liens": sorted(set(re.findall(r'(?:href|src)="([^"]+)"', txt)))[:80],
-                             "texte": re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", txt))[:800]}
-    time.sleep(1)
-st, img = get(B + "webcampdd.jpg", binaire=True)
-if isinstance(img, bytes) and img:
-    open("sonde/opgc_webcampdd.jpg", "wb").write(img)
-rapport["image_live"] = {"statut": st, "taille": len(img)}
-with open("sonde/rapport4.json", "w", encoding="utf-8") as f:
+for (a, m, j) in [("2026", "10", "31"), ("2026", "11", "12"), ("2026", "11", "13"), ("2013", "01", "15")]:
+    st, txt = req(B + "diapocam.php", {"camera": "pdd", "annee": a, "mois": m, "jour": j, "Submit": "Valider"})
+    imgs = sorted(set(re.findall(r'["\']([^"\']+\.jpe?g)["\']', txt)))
+    rapport[f"{a}-{m}-{j}"] = {"statut": st, "nb": len(imgs), "images": imgs[:8] + ["..."] + imgs[-4:],
+                               "extrait": re.sub(r"\s+", " ", txt)[:1500] if len(imgs) < 3 else ""}
+    # image la plus proche de 8 h locale
+    cand = [i for i in imgs if re.search(r"(0[78])[-_:h]?\d\d", i)]
+    if cand:
+        u = urllib.parse.urljoin(B + "diapocam.php", cand[0])
+        s2, d = req(u, binaire=True)
+        if isinstance(d, bytes) and d:
+            open(f"sonde/opgc_{a}{m}{j}_" + os.path.basename(u), "wb").write(d)
+        rapport[f"{a}-{m}-{j}"]["telecharge"] = [u, s2, len(d)]
+    time.sleep(2)
+with open("sonde/rapport5.json", "w", encoding="utf-8") as f:
     json.dump(rapport, f, ensure_ascii=False, indent=1)
