@@ -1,0 +1,42 @@
+name: Collecte des images de webcams
+
+# Lancement : modifier collecte.txt ("AAAA-MM-JJ AAAA-MM-JJ"), ou chaque jour pour la veille
+on:
+  push:
+    paths: ["collecte.txt"]
+  schedule:
+    - cron: "40 12 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: collecte
+  cancel-in-progress: false
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pillow
+      - name: Collecte
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            D=$(date -u -d "yesterday" +%F); python outils/collecte_webcams.py "$D" "$(date -u +%F)"
+          else
+            read DEBUT FIN < collecte.txt; python outils/collecte_webcams.py "$DEBUT" "$FIN"
+          fi
+      - name: Enregistrer
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
+          git add etiquetage
+          git commit -m "Collecte webcams $(date -u +%F)" || echo rien
+          git pull --rebase -X ours origin main || true
+          git push
