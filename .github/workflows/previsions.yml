@@ -1,0 +1,35 @@
+name: Extraction des prévisions archivées (apprentissage)
+
+# Lancement : modifier previsions.txt ("AAAA-MM-JJ AAAA-MM-JJ")
+on:
+  push:
+    paths: ["previsions.txt"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: previsions
+  cancel-in-progress: false
+
+jobs:
+  extraction:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Extraction
+        run: |
+          read DEBUT FIN < previsions.txt
+          python outils/features_mer.py "$DEBUT" "$FIN"
+      - name: Enregistrer
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
+          git add etiquetage/previsions.csv
+          git commit -m "Prévisions archivées $(cat previsions.txt)" || echo rien
+          for i in 1 2 3; do git pull --rebase origin main && git push && break; sleep 10; done
