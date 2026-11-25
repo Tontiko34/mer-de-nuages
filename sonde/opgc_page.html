@@ -1,0 +1,343 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- InstanceBegin template="/Templates/modeleOPGC.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="Titre_Fenetre" --> 
+<title>Webcam puy de DÃ´me</title>
+<!-- InstanceEndEditable --> 
+<meta name="keywords" content="OPGC,Observatoire de Physique du Globe de
+Clermont-Ferrand,LaMP,LMV,atmosphÃ¨re,volcan,mÃ©tÃ©o,clermont-ferrand,puy de DÃ´me">
+<meta name="description" content="OPGC - Centre de recherches volcaniques,
+dÃ©partement Terre et AtmosphÃ¨re, rÃ©seau sismologique Auvergne et radars
+profileurs de vent,plateforme aeroportÃ©e">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!--  Utilisation de la feuille de style CSS Style_OPGC.css-->
+<link href="css/Style_OPGC.css" rel="stylesheet" type="text/css">
+<!--  DÃ©finition des menus-->
+<script language="JavaScript" src="mm_menu.js"></script>
+<script language="JavaScript" type="text/JavaScript">function mmLoadMenus() {
+  if (window.mm_menu_presentation) return;
+                  window.mm_menu_presentation = new Menu("root",145,16,"verdana",11,"#000000","#FFFFFF","#D9B4CD","#926A85","left","middle",3,00,1000,-5,7,true,false,true,0,true,true);
+  mm_menu_presentation.addMenuItem("Accueil","location='index.php'");
+    //mm_menu_presentation.addMenuItem("Pr&eacute;sentation","location='presentation.php'");
+    mm_menu_presentation.addMenuItem("Rapport&nbsp;d&acute;activit&eacute;","location='http://wwwobs.univ-bpclermont.fr/opgc/aeresOPGC.pdf'");
+  mm_menu_presentation.addMenuItem("Organigramme","location='http://wwwobs.univ-bpclermont.fr/opgc/organigrammedossier.pdf'");
+  mm_menu_presentation.addMenuItem("Histoire&nbsp;et&nbsp;patrimoine","location='historique.php'");
+//  mm_menu_presentation.addMenuItem("Publications","location='http://wwwobs.univ-bpclermont.fr/atmos2/Travaux.htm'");
+    mm_menu_presentation.hideOnMouseOut=true;
+   mm_menu_presentation.bgColor='#555555';
+   mm_menu_presentation.menuBorder=1;
+   mm_menu_presentation.menuLiteBgColor='#FFFFFF';
+   mm_menu_presentation.menuBorderBgColor='';
+   
+  window.mm_menu_recherche = new Menu("root",184,16,"verdana",11,"#000000","#FFFFFF","#D9B4CD","#926A85","left","middle",3,0,1000,-5,7,true,false,true,0,true,true);
+  mm_menu_recherche.addMenuItem("AtmosphÃ¨re&nbsp;(LaMP)","location='http://wwwobs.univ-bpclermont.fr/atmos/fr/index.php'");
+  mm_menu_recherche.addMenuItem("Terre&nbsp;(LMV)","location='http://lmv.univ-bpclermont.fr/fr/'");
+  mm_menu_recherche.addMenuItem("DÃ©veloppement&nbsp;technologique","location='sdt.php'");
+   mm_menu_recherche.hideOnMouseOut=true;
+   mm_menu_recherche.bgColor='#555555';
+   mm_menu_recherche.menuBorder=1;
+   mm_menu_recherche.menuLiteBgColor='#FFFFFF';
+   mm_menu_recherche.menuBorderBgColor='';
+        window.mm_menu_programmes = new Menu("root",167,16,"verdana",11,"#000000","#FFFFFF","#D9B4CD","#926A85","left","middle",0,0,1000,-5,7,true,false,true,0,true,true);
+   mm_menu_programmes.addMenuItem("ACCENT","location='accent.php'");
+  mm_menu_programmes.addMenuItem("EUSAAR","location='eusaar.php'");
+   mm_menu_programmes.addMenuItem("Partenariat&nbsp;et&nbsp;valorisation","location='valorisation.php'");
+   mm_menu_programmes.hideOnMouseOut=true;
+   mm_menu_programmes.bgColor='#555555';
+   mm_menu_programmes.menuBorder=1;
+   mm_menu_programmes.menuLiteBgColor='#FFFFFF';
+   mm_menu_programmes.menuBorderBgColor='';
+window.mm_menu_services = new Menu("root",250,16,"verdana",11,"#000000","#FFFFFF","#D9B4CD","#926A85","left","middle",3,0,1000,-5,7,true,false,true,0,true,true);
+  mm_menu_services.addMenuItem("CO&nbsp;PDD&nbsp;Mesures&nbsp;syst&eacute;matiques","location='../SO/mesures/'");
+  mm_menu_services.addMenuItem("PAES","location='paes.php'");
+  mm_menu_services.addMenuItem("BEAM","location='../SO/beam/'");
+  mm_menu_services.addMenuItem("Sismologie","location='../SO/sismo/'");
+  mm_menu_services.addMenuItem("P&ocirc;le&nbsp;de&nbsp;T&eacute;l&eacute;detection&nbsp;des&nbsp;Volcans","location='../SO/televolc/'");
+  mm_menu_services.addMenuItem("Plateforme&nbsp;a&eacute;roport&eacute;e","location='aeroportee.php'");
+  mm_menu_services.addMenuItem("GravimÃ©trie","location='../SO/gravimetrie/'");
+    mm_menu_services.addMenuItem("Electromagn&eacute;tisme,&nbsp;volcans&nbsp;et&nbsp;s&eacute;ismes","location='../SO/emg/'");
+   mm_menu_services.hideOnMouseOut=true;
+   mm_menu_services.bgColor='#555555';
+   mm_menu_services.menuBorder=1;
+   mm_menu_services.menuLiteBgColor='#FFFFFF';
+   mm_menu_services.menuBorderBgColor='';
+
+   window.mm_menu_grandpublic = new Menu("root",188,16,"verdana",11,"#000000","#FFFFFF","#D9B4CD","#926A85","left","middle",3,0,1000,-5,7,true,false,true,0,true,true);
+  mm_menu_grandpublic.addMenuItem("Visite&nbsp;en&nbsp;images&nbsp;puy&nbsp;de&nbsp;DÃ´me","location='visitePDD.php'");
+  mm_menu_grandpublic.addMenuItem("Installations&nbsp;scientifiques","location='installationOPGC.php'");
+  mm_menu_grandpublic.addMenuItem("EvÃ©nements&nbsp;publics","location='evenementspublics.php'");
+  mm_menu_grandpublic.addMenuItem("Revue&nbsp;de&nbsp;presse","location='presse.php'");
+   mm_menu_grandpublic.addMenuItem("Documentation","location='doc.php'");
+      mm_menu_grandpublic.addMenuItem("Galerie","location='galerie.php'");
+     mm_menu_grandpublic.hideOnMouseOut=true;
+   mm_menu_grandpublic.bgColor='#555555';
+   mm_menu_grandpublic.menuBorder=1;
+   mm_menu_grandpublic.menuLiteBgColor='#FFFFFF';
+   mm_menu_grandpublic.menuBorderBgColor='';
+
+mm_menu_grandpublic.writeMenus();
+} // mmLoadMenus()
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+<!-- variable encodage pour le mail-->
+var tg="<";             
+var ar="@opgc.";
+var dom="univ-bpclermo";
+var ext="nt.fr";  
+
+<!-- Fonction pour imprimer la page en cours-->   
+function imprime() 
+
+{
+		// Imprime  la fenetre
+	window.print();
+	 
+} 
+
+</SCRIPT>
+<!-- Zone entete modifiable-->
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable --> 
+</head>
+
+<body background="images/fondgrisMotif.jpg" topmargin="0">
+<script language="JavaScript1.2">mmLoadMenus();</script>
+
+    <table width="1024"  border="0" align="center" cellpadding="0" cellspacing="0" class="bordure" bgcolor="#FFFFFF">
+      <tr height="25"> 
+        <td width="1024" height="20" background="images/bandeau.jpg" > 
+           <table width="1024" height="20">
+            <tr>
+              <td width="15">&nbsp;</td>
+              <td width="15">&nbsp;</td>
+              <td width="15">&nbsp;</td>
+               <td width="15">&nbsp;</td>
+			   <td></td>
+		    </tr>
+		
+		</table></td>
+      </tr>
+	  <tr> 
+        <td width="800" height="150" valign="top" background="images/bandeauSiteOPGCtxt.jpg">
+		 
+          </div></td>
+      </tr>
+	  <tr> 
+        <td width="1024" height="20" background="images/bandeau.jpg" > 
+		 <table width="1024" height="20">
+            <tr>
+              <td width="879" height="20"><p align="left" class="fil"><font color="#FFFFFF">Vous 
+                  &ecirc;tes ici : <!-- InstanceBeginEditable name="fil" -->Accueil<!-- InstanceEndEditable --> 
+                  </font></p></td>
+              <td width="34" height="20" ><a href="http://wwwobs.univ-bpclermont.fr/" title="Accueil"><img src="images/maison.gif" width="24" height="18" border="0"></a></td>
+              <td width="25" height="20"><a href="javascript:imprime()" title="Imprimer"><img src="images/imprimante.gif" width="19" height="20" border="0"></a></td>
+              <td width="33" height="20"><script type="text/javascript">
+									<!-- encodage  -->
+									var deb3="webmaster";
+									var texte3="<img src='images/contact.gif' width='25' height='17' border='0'>";  
+									document.write(tg+"a title='Contact' hr"+"ef=mai"+"lto:"+deb3);
+									document.write(ar+dom+ext+">"+texte3+tg+"/a></td>");
+								</script></td>
+              <td width="29" height="20"><a href="plan.php" title="Plan du site"><img src="images/boussole.gif" width="20" height="19" border="0"></a></td>
+            </tr>
+                   </table>
+		</td>
+      </tr>
+      <tr> 
+        <td><table width="1024" border="0" cellspacing="0" cellpadding="0">
+            <tr> 
+              <td width="180" rowspan="2"  valign="top"  ><a href="http://wwwobs.univ-bpclermont.fr/atmos/fr/"><img src="images/logos/logo_lamp_transp_ptt copie.png" width="80" height="34" border="0"></a><a href="http://lmv.univ-bpclermont.fr/fr/"><img src="images/logos/LaboratoireMagmasetVolcans_2.png" width="50" height="38" border="0"></a><br>
+			  <table width="140" border="0" cellspacing="0" cellpadding="0" align="center">
+              <tr> 
+                <td><a href="index.php"><img src="images/hautMenu.jpg" width="172" height="35" border="0" ></a></td>
+              </tr>
+              <tr> 
+                <td class="MenuGauche"><a href="#" name="link1" class="lienmenu" id="link1" onMouseOver="MM_showMenu(window.mm_menu_presentation,163,-5,null,'link1')" onMouseOut="MM_startTimeout();">Organisation g&eacute;n&eacute;rale</a> 
+                  <br> <a href="#" name="link2" class="lienmenu" id="link2" onMouseOver="MM_showMenu(window.mm_menu_recherche,163,-5,null,'link2')" onMouseOut="MM_startTimeout();">Recherche 
+                  et technologie</a> <br>
+				                        <a href="GrandProgrammes.php" class="lienmenu">Grands programmes</a> <br>
+					  <a href="valorisation.php" class="lienmenu">Partenariat et valorisation</a> <br>
+					  <a href="#" name="link4" class="lienmenu" id="link4" onMouseOver="MM_showMenu(window.mm_menu_services,163,-5,null,'link4')" onMouseOut="MM_startTimeout();">Services 
+                  d'observations</a> <br>
+                  <a href="data.php" class="lienmenu">Acc&egrave;s aux donn&eacute;es</a><br>
+                   <a href="#" name="link5" class="lienmenu" id="link5" onMouseOver="MM_showMenu(window.mm_menu_grandpublic,163,-5,null,'link5')" onMouseOut="MM_startTimeout();">Grand 
+                  Public</a> <br> 
+				  <a href="webcam.php" class="lienmenu">Webcams</a> <br><a href="annuaire.php" class="lienmenu">Annuaire</a> 
+                  <br> <a href="liens.php" class="lienmenu">Liens</a> <br> <a href="http://wwwobs.univ-bpclermont.fr/local/services/"" class="lienmenu">Intranet</a> 
+                  <br> <a href="https://wwwobs.univ-bpclermont.fr/mail/" class="lienmenu">Webmail</a> 
+                  <br></td>
+              </tr>
+               <!--  <tr> 
+                <td>&nbsp;</td>
+              </tr>
+           
+             <tr> 
+                <td background="../images/rubrique.jpg" class="Rubrique"><div align="center">Actualit&eacute;s</div></td>
+              </tr>
+              <tr> 
+                <td class="MenuGauche"> 
+                  
+<br>
+<br>                </td>
+                
+              </tr>
+              -->
+              <tr> 
+                <td>&nbsp;</td>
+              </tr>
+              <tr> 
+                <td><a href="http://wwwobs.univ-bpclermont.fr/SO/mesures/direct.php" title="Page des mesures en direct"><img src="images/mesures.jpg" width="172" border="0"></a></td>
+              </tr>
+              <tr> 
+                <td class="MenuGauche"><span class="titredroite">Puy de d&ocirc;me 
+                  :</span> <br> 
+                         <font size='-20' face='Verdana, Arial, Helvetica, sans-serif'> (Le 25/11 Ã  14:10)</font> <br>Temp&eacute;rature : -0.8 Â°C <br>Vent : 20 km/h <br>				<span class="titredroite">C&eacute;zeaux :</span> <br>
+                     <font size='-20' face='Verdana, Arial, Helvetica, sans-serif'> (Le 25/11 Ã  14:12)</font> <br>Temp&eacute;rature : 12 Â°C <br>Vent : 4 km/h <br>                  <br> 
+                  <div align="center"><a href="javascript:location.reload()" title="Actualiser"><img src="images/actu.jpg" border="0" class="hautmenu" align="left"></a><a href="http://wwwobs.univ-bpclermont.fr/SO/mesures/direct.php" title="Plus de mesures"><img src="images/plus.jpg" width="20" height="20" border="0" align="right"></a><a href="webcam.php"><img src="images/webcam.jpg" width="48" height="48" border="0"></a></div>
+                  </span> 
+                </td>
+              </tr>
+              <tr> 
+                <td>&nbsp;</td>
+              </tr>
+              <tr> 
+                <td background="images/rubrique.jpg" class="Rubrique"><div align="center">Radar 
+                    X</div></td>
+              </tr>
+              <tr> 
+                <td class="MenuGauche"><a href="radar_topo.php"><img src="http://wwwobs.univ-bpclermont.fr/observ/radar/DATA/wrdr_topo.png" width="135" border="0" ></a></td>
+              </tr>
+               <tr> 
+                    <td>&nbsp;</td>
+                  </tr>
+				  <tr> 
+                    <td background="images/rubrique.jpg" class="Rubrique"><div align="center">Lidar</div></td>
+                  </tr>
+				  <tr> 
+                    <td class="MenuGauche"><a href="http://www.opgc.fr/SO/mesures/lidarTR.php"><img src=imglidar.php?fichier=/mnt/lidar/Daily_Quicklooks/lidar_depol_RT.PNG width='135' /></a></td>
+                  </tr>
+              <tr> 
+                <td>&nbsp;</td>
+              </tr>
+              <tr> 
+                <td background="images/rubrique.jpg"><div align="center" class="Rubrique">Recherche</font></em></font></div></td>
+              </tr>
+              <tr> 
+                <td class="MenuGauche"><form action="/cgi-bin/htsearch" method="post">
+                    <input type="text" size="6" name="words" value="">
+                    <input type="submit" value="OK">
+                  </form></td>
+              </tr>
+            </table>
+
+
+                  
+                
+                
+                <p align="center">&nbsp;</p>
+                </td>
+              <td width="884"  valign="top" > 
+                <p>&nbsp;</p>
+              
+				<!-- InstanceBeginEditable name="body-titre" -->
+                
+            <p class="titre">Vue depuis le sommet du puy de D&ocirc;me</p>
+				
+            <!-- InstanceEndEditable --> <!-- InstanceBeginEditable name="body-texte" --> 
+            <p class="body-centre"><a href="webcampdd.jpg"><img src="webcampdd.jpg" width="750" height="563" border="0"></a> </p>
+			<p class="body">Image actualis&eacute;e toutes les 10 minutes. <br>
+            Cliquez sur l'image pour afficher en 800*600.
+            </p>
+              <p class="titre">Vue du puy de D&ocirc;me depuis le campus des CÃ©zeaux</p>
+               <p class="body-centre"><a href="webcamcez.jpg"><img src="webcamcez.jpg" width="750" height="563" border="0"></a> </p>
+			<p class="body">Image actualis&eacute;e toutes les 10 minutes. <br>
+            Cliquez sur l'image pour afficher en 800*600.
+            </p>
+			<p class="body">&nbsp;</p>
+             <p class="titre">Archives des camÃ©ras</p>
+             <p class="body"> (Donn&eacute;es disponibles depuis le <strong><em>21 d&eacute;cembre 2012</em></strong>).</p>
+            <form action="diapocam.php" name="formu" method="post" id="formu">
+       
+          <table cellpadding="5" >
+            <tr> 
+               <td>CamÃ©ra </td>
+               <td><select name="camera">
+           				<option value='cezeaux'>Campus des CÃ©zeaux</option>
+                    	<option value='pdd'>Sommet du puy de DÃ´me</option>
+					</select>
+               </td>
+            </tr>
+            <tr> 
+               <td align="left">Date</font></td>
+               <td align="left">
+               <select name="annee">
+
+ <option value='2012'>2012</option><option value='2013'>2013</option><option value='2014'>2014</option><option value='2015'>2015</option><option value='2016'>2016</option><option value='2017'>2017</option><option value='2018'>2018</option><option value='2019'>2019</option><option value='2020'>2020</option><option value='2021'>2021</option><option value='2022'>2022</option><option value='2023'>2023</option><option value='2024'>2024</option><option value='2025'>2025</option><option value='2026' selected="selected">2026</option>            </select>
+              <select name="mois">
+						<option value='01'>Janvier</option><option value='02'>Fevrier</option><option value='03'>Mars</option><option value='04'>Avril</option><option value='05'>Mai</option><option value='06'>Juin</option><option value='07'>Juillet</option><option value='08'>Aout</option><option value='09'>Septembre</option><option value='10'>Octobre</option><option value='11' selected="selected">Novembre</option><option value='12'>Decembre</option>					</select>
+                      
+                  <select name="jour">
+						<option value='01'>01</option><option value='02'>02</option><option value='03'>03</option><option value='04'>04</option><option value='05'>05</option><option value='06'>06</option><option value='07'>07</option><option value='08'>08</option><option value='09'>09</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option><option value='13'>13</option><option value='14'>14</option><option value='15'>15</option><option value='16'>16</option><option value='17'>17</option><option value='18'>18</option><option value='19'>19</option><option value='20'>20</option><option value='21'>21</option><option value='22'>22</option><option value='23'>23</option><option value='24'>24</option><option value='25' selected="selected">25</option><option value='26'>26</option><option value='27'>27</option><option value='28'>28</option><option value='29'>29</option><option value='30'>30</option><option value='31'>31</option>				  </select></td>
+                  </tr>
+                 </table>
+                  <div align="left"> 
+                  <input type="submit" name="Submit" value="Valider" />
+                </div>
+                
+      </form>
+			<p class="body">&nbsp;</p>
+            <!-- InstanceEndEditable --> </td>
+              
+            </tr>
+          </table></td>
+      </tr>
+      <tr> 
+        <td><div align="center">
+		    <table width="650" border="0" align="center">
+              <tr> 
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr> 
+                <td><div align="center"><a href="http://www.univ-bpclermont.fr/"><img src="images/UBP.jpg" border="0" ></a> 
+                  </div></td>
+                <td><div align="center"><a href="http://www.cnrs.fr/"><img src="images/CNRS-Insu1.jpg" border="0" usemap="#Map3"></a> 
+                  </div></td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+            </table>
+          </div></td>
+      </tr>
+      <tr> 
+        <td bgcolor="#916984" height="20" align="center">
+            <a href="mentions.php" class="Mention">Mentions l&eacute;gales</a>
+          </td>
+      </tr>
+    </table>
+	</body>
+<!-- InstanceEnd --></html>
