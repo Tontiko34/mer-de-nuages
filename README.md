@@ -103,3 +103,17 @@ Sur le rejeu du 1er octobre au 9 novembre 2026, avec ces seuils : 10 jours de me
 * Les stratus d'inversion sont un point faible connu des modèles (ils les dissipent souvent trop tôt) :
   un score de 30–50 avec un fort accord sur l'inversion mérite parfois un coup d'œil aux webcams.
 * AROME ne couvre que ~2 jours ; au-delà, `meteofrance_seamless` bascule sur ARPEGE (moins fin).
+
+## Apprentissage sur les webcams (vérité terrain)
+
+* `outils/collecte_webcams.py` récupère chaque matin (lever + 50 min et + 2 h 30) une image de la webcam
+  du sommet du Puy de Dôme (archives OPGC depuis 2012, avec leur accord) et du sommet de la station du
+  Mont-Dore (archives depuis octobre 2025). Vignettes et mesures dans `etiquetage/` ; collecte quotidienne automatique.
+* `etiquetage/etiquettes.csv` : classe de chaque image — M mer de nuages, P mer partielle, N sommet dans le nuage,
+  D dégagé sans mer, I illisible.
+* `outils/features_mer.py` reconstitue ce que prévoyaient les modèles ces jours-là (`etiquetage/previsions.csv`).
+* `outils/evaluer.py` compare le score de l'outil aux étiquettes.
+
+Premier bilan (Puy de Dôme, lever, oct. 2025 → nov. 2026, 22 mers de nuages observées) : la médiane des
+3 modèles n'en voyait que 11 au seuil 60 ; la moyenne pondérée Météo-France 60 % / ICON 40 % / ECMWF 0 %
+en voit 17, pour 18 fausses alertes au lieu de 13 sur l'année. C'est désormais le réglage par défaut (`poids_modeles`).

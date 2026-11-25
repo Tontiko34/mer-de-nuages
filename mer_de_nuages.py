@@ -287,6 +287,7 @@ def calculer(cfg, donnees):
                     if vid in s["vallees"]:
                         r = analyser(niv, s["altitude"], vent)
                         if r:
+                            r["modele"] = modele
                             brut.setdefault((s["nom"], t, vid), []).append(r)
 
     resultats = {}   # resultats[sommet][heure] = dict
@@ -300,8 +301,13 @@ def calculer(cfg, donnees):
                     continue
                 scores = [r["score"] for r in rs]
                 sommets = [r["sommet_nuages"] for r in rs if r["sommet_nuages"] is not None]
+                # Moyenne pondérée des modèles (poids calibrés sur les webcams, cf. etiquetage/)
+                poids = cfg.get("poids_modeles", {})
+                tw = sum(poids.get(r["modele"], 1.0) for r in rs)
+                score_pond = (sum(poids.get(r["modele"], 1.0) * r["score"] for r in rs) / tw
+                              if tw > 0 else statistics.median(scores))
                 cand = {
-                    "score": round(statistics.median(scores)),
+                    "score": round(score_pond),
                     "accord": sum(sc >= 50 for sc in scores) / len(scores),
                     "n_modeles": len(scores),
                     "sommet_nuages": round(statistics.median(sommets)) if sommets else None,

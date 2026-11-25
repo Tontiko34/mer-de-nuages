@@ -5,6 +5,12 @@
     "icon_seamless",
     "ecmwf_ifs025"
   ],
+  "poids_modeles": {
+    "meteofrance_seamless": 0.6,
+    "icon_seamless": 0.4,
+    "ecmwf_ifs025": 0.0
+  },
+  "_poids_modeles": "Calibré sur la webcam du Puy de Dôme (oct. 2025 – nov. 2026) : AROME voit le mieux les mers de nuages, ECMWF (niveaux trop espacés) presque jamais.",
   "jours_prevision": 3,
   "seuil_alerte": 60,
   "fenetre_matin_heures": 3,
