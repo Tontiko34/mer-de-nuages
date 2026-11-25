@@ -1,33 +1,37 @@
-"""Sonde ponctuelle (3) : début des archives + images des jours de test."""
-import json, re, time, urllib.request, os
+"""Sonde ponctuelle (4) : archives des webcams OPGC (Puy de Dôme sommet, Cézeaux)."""
+import json, re, time, urllib.request, urllib.parse, os
 UA = {"User-Agent": "Mozilla/5.0 (alerte-mer-de-nuages; usage personnel)"}
-BASE = "https://skol-webcams-archives.s3.fr-par.scw.cloud/"
-CAM = "sancy_sommet-station"
 os.makedirs("sonde", exist_ok=True)
+B = "https://wwwobs.univ-bpclermont.fr/opgc/"
 rapport = {}
 
 def get(url, binaire=False):
-    with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=30) as r:
-        d = r.read()
-        return d if binaire else d.decode("utf-8", "replace")
+    try:
+        with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=30) as r:
+            d = r.read()
+            return r.status, (d if binaire else d.decode("latin-1", "replace"))
+    except Exception as e:
+        return str(e), b"" if binaire else ""
 
-def cles(prefixe):
-    return re.findall(r"<Key>([^<]+)</Key>", get(f"{BASE}?list-type=2&prefix={prefixe}&max-keys=1000"))
+for nom, url in {"page": B + "webcam.php", "mentions": B + "mentions.php"}.items():
+    st, txt = get(url)
+    with open(f"sonde/opgc_{nom}.html", "w", encoding="utf-8") as f:
+        f.write(txt)
+    rapport[nom] = {"statut": st, "liens": sorted(set(re.findall(r'(?:href|src|action)="([^"]+)"', txt)))[:120],
+                    "texte": re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", txt))[:3000]}
+    time.sleep(1)
 
-# Premier mois disponible
-for an, mois in [(2025, m) for m in range(2, 13)]:
-    n = len(cles(f"archives/{CAM}/1080/{an}/{mois:02d}/"))
-    rapport[f"{an}-{mois:02d}"] = n
-    time.sleep(0.5)
-
-# Images du matin (~8 h locale) des jours de test
-for jour in ["2026/10/31", "2026/11/12", "2026/11/13"]:
-    liste = [k for k in cles(f"archives/{CAM}/small/{jour}/")]
-    choix = min(liste, key=lambda k: abs(int(re.search(r"T(\d{4})", k).group(1)) - 715)) if liste else None
-    if choix:
-        with open("sonde/" + choix.split("/")[-1], "wb") as f:
-            f.write(get(BASE + choix, binaire=True))
-    rapport[jour] = {"nb": len(liste), "heures": [re.search(r"T(\d{4})", k).group(1) for k in liste], "choix": choix}
-    time.sleep(0.5)
-with open("sonde/rapport3.json", "w", encoding="utf-8") as f:
+# Suivre les liens d'archives trouvés (1 niveau, quelques-uns)
+suivis = [l for l in rapport["page"]["liens"] if re.search(r"archiv|annee|year|mois|jour|\.php\?", l, re.I)][:8]
+for l in suivis:
+    url = urllib.parse.urljoin(B + "webcam.php", l)
+    st, txt = get(url)
+    rapport["suivi:" + l] = {"statut": st, "liens": sorted(set(re.findall(r'(?:href|src)="([^"]+)"', txt)))[:80],
+                             "texte": re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", txt))[:800]}
+    time.sleep(1)
+st, img = get(B + "webcampdd.jpg", binaire=True)
+if isinstance(img, bytes) and img:
+    open("sonde/opgc_webcampdd.jpg", "wb").write(img)
+rapport["image_live"] = {"statut": st, "taille": len(img)}
+with open("sonde/rapport4.json", "w", encoding="utf-8") as f:
     json.dump(rapport, f, ensure_ascii=False, indent=1)
