@@ -1679,3 +1679,11 @@ date,camera,moment,heure_locale,fichier,lum,contraste,satur,lum_haut,lum_bas,con
 2026-11-24,montdore,lever,08:42,vignettes/montdore/2026/2026-11-24_lever.jpg,182.4,20.4,10.4,185.7,174.4,23.1,13.1,-0.8
 2026-11-24,pdd,matinee,10:30,,,,,,,,,
 2026-11-24,montdore,matinee,10:43,vignettes/montdore/2026/2026-11-24_matinee.jpg,181.6,22.1,10.2,184.9,174.7,26.3,14.0,0.1
+2026-11-25,pdd,lever,08:52,vignettes/pdd/2026/2026-11-25_lever.jpg,137.4,50.5,10.7,175.8,170.9,5.3,7.7,1.9
+2026-11-25,montdore,lever,08:42,vignettes/montdore/2026/2026-11-25_lever.jpg,179.3,15.7,10.5,180.5,184.2,8.9,11.8,2.5
+2026-11-25,pdd,matinee,10:32,vignettes/pdd/2026/2026-11-25_matinee.jpg,141.3,49.7,13.7,173.7,183.1,5.3,11.5,4.7
+2026-11-25,montdore,matinee,10:41,vignettes/montdore/2026/2026-11-25_matinee.jpg,178.3,15.6,8.1,180.5,182.9,8.9,8.1,2.1
+2026-11-26,pdd,lever,08:52,vignettes/pdd/2026/2026-11-26_lever.jpg,133.8,41.8,22.3,162.3,161.6,3.7,15.6,-3.0
+2026-11-26,montdore,lever,08:39,vignettes/montdore/2026/2026-11-26_lever.jpg,180.9,15.4,9.9,181.0,184.6,9.2,10.5,1.3
+2026-11-26,pdd,matinee,10:32,vignettes/pdd/2026/2026-11-26_matinee.jpg,141.8,47.0,8.4,175.2,170.9,3.3,6.8,2.3
+2026-11-26,montdore,matinee,10:41,vignettes/montdore/2026/2026-11-26_matinee.jpg,178.4,17.1,8.6,180.0,183.3,9.2,9.8,2.1
